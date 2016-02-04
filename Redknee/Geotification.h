@@ -16,7 +16,7 @@ typedef enum : NSInteger {
     OnExit
 } EventType;
 
-@interface Geotification : NSObject <NSCoding, MKAnnotation>
+@interface Geotification : NSObject <NSCoding, MKAnnotation >
 
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;
 @property (nonatomic, assign) CLLocationDistance radius;
