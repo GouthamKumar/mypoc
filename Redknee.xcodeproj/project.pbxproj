@@ -1,0 +1,688 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		22B2221F1C60B86B0028E7DB /* splash_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B2221E1C60B86B0028E7DB /* splash_screen.png */; };
+		22B222221C60B8FF0028E7DB /* redknee_logo326ppi.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B222201C60B8FF0028E7DB /* redknee_logo326ppi.png */; };
+		22B222231C60B8FF0028E7DB /* smart_logo_326ppi.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B222211C60B8FF0028E7DB /* smart_logo_326ppi.png */; };
+		22B222261C60C0080028E7DB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B222251C60C0080028E7DB /* LoginViewController.m */; };
+		40304E5A1C5E8147008E3EE5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40304E591C5E8147008E3EE5 /* main.m */; };
+		40304E5D1C5E8147008E3EE5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40304E5C1C5E8147008E3EE5 /* AppDelegate.m */; };
+		40304E601C5E8147008E3EE5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40304E5F1C5E8147008E3EE5 /* ViewController.m */; };
+		40304E631C5E8147008E3EE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40304E611C5E8147008E3EE5 /* Main.storyboard */; };
+		40304E651C5E8147008E3EE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40304E641C5E8147008E3EE5 /* Assets.xcassets */; };
+		40304E681C5E8147008E3EE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40304E661C5E8147008E3EE5 /* LaunchScreen.storyboard */; };
+		40304E731C5E8147008E3EE5 /* RedkneeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 40304E721C5E8147008E3EE5 /* RedkneeTests.m */; };
+		40304E7E1C5E8147008E3EE5 /* RedkneeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 40304E7D1C5E8147008E3EE5 /* RedkneeUITests.m */; };
+		40304E8D1C5E82A5008E3EE5 /* CarrierModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40304E8C1C5E82A5008E3EE5 /* CarrierModel.m */; };
+		40304E901C5E82E6008E3EE5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40304E8F1C5E82E6008E3EE5 /* CoreTelephony.framework */; };
+		40474A531C618C2C00959AC7 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40474A521C618C2C00959AC7 /* NetworkExtension.framework */; };
+		406F168F1C60374E003AF8F5 /* MFSideMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 406F168A1C60374E003AF8F5 /* MFSideMenuContainerViewController.m */; };
+		406F16901C60374E003AF8F5 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 406F168C1C60374E003AF8F5 /* UIViewController+MFSideMenuAdditions.m */; };
+		406F16911C60374E003AF8F5 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 406F168E1C60374E003AF8F5 /* MFSideMenuShadow.m */; };
+		406F16941C603814003AF8F5 /* SideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 406F16931C603814003AF8F5 /* SideMenuViewController.m */; };
+		408375BD1C5EE19200B5E7F6 /* YSLContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 408375BA1C5EE19200B5E7F6 /* YSLContainerViewController.m */; };
+		408375BE1C5EE19200B5E7F6 /* YSLScrollMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 408375BC1C5EE19200B5E7F6 /* YSLScrollMenuView.m */; };
+		408375C11C5EE2FA00B5E7F6 /* CurrentPlansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 408375C01C5EE2FA00B5E7F6 /* CurrentPlansViewController.m */; };
+		408375C41C5EE31400B5E7F6 /* BestOffersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 408375C31C5EE31400B5E7F6 /* BestOffersViewController.m */; };
+		408375C71C5EE33000B5E7F6 /* RecommendedPlansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 408375C61C5EE33000B5E7F6 /* RecommendedPlansViewController.m */; };
+		408375D51C5EEBBC00B5E7F6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 408375D41C5EEBBC00B5E7F6 /* Reachability.m */; };
+		408375D81C5EEFF500B5E7F6 /* WifiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 408375D71C5EEFF500B5E7F6 /* WifiModel.m */; };
+		408375DA1C5EF02900B5E7F6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 408375D91C5EF02800B5E7F6 /* SystemConfiguration.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		40304E6F1C5E8147008E3EE5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 40304E4D1C5E8146008E3EE5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 40304E541C5E8146008E3EE5;
+			remoteInfo = Redknee;
+		};
+		40304E7A1C5E8147008E3EE5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 40304E4D1C5E8146008E3EE5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 40304E541C5E8146008E3EE5;
+			remoteInfo = Redknee;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		22B2221E1C60B86B0028E7DB /* splash_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_screen.png; sourceTree = "<group>"; };
+		22B222201C60B8FF0028E7DB /* redknee_logo326ppi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redknee_logo326ppi.png; sourceTree = "<group>"; };
+		22B222211C60B8FF0028E7DB /* smart_logo_326ppi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smart_logo_326ppi.png; sourceTree = "<group>"; };
+		22B222241C60C0080028E7DB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		22B222251C60C0080028E7DB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		40304E551C5E8146008E3EE5 /* Redknee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redknee.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		40304E591C5E8147008E3EE5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		40304E5B1C5E8147008E3EE5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		40304E5C1C5E8147008E3EE5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		40304E5E1C5E8147008E3EE5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		40304E5F1C5E8147008E3EE5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		40304E621C5E8147008E3EE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		40304E641C5E8147008E3EE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		40304E671C5E8147008E3EE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		40304E691C5E8147008E3EE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40304E6E1C5E8147008E3EE5 /* RedkneeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedkneeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		40304E721C5E8147008E3EE5 /* RedkneeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RedkneeTests.m; sourceTree = "<group>"; };
+		40304E741C5E8147008E3EE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40304E791C5E8147008E3EE5 /* RedkneeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedkneeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		40304E7D1C5E8147008E3EE5 /* RedkneeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RedkneeUITests.m; sourceTree = "<group>"; };
+		40304E7F1C5E8147008E3EE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40304E8B1C5E82A4008E3EE5 /* CarrierModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarrierModel.h; sourceTree = "<group>"; };
+		40304E8C1C5E82A5008E3EE5 /* CarrierModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarrierModel.m; sourceTree = "<group>"; };
+		40304E8F1C5E82E6008E3EE5 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		40474A521C618C2C00959AC7 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		406F16881C60374E003AF8F5 /* MFSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenu.h; sourceTree = "<group>"; };
+		406F16891C60374E003AF8F5 /* MFSideMenuContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenuContainerViewController.h; sourceTree = "<group>"; };
+		406F168A1C60374E003AF8F5 /* MFSideMenuContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuContainerViewController.m; sourceTree = "<group>"; };
+		406F168B1C60374E003AF8F5 /* UIViewController+MFSideMenuAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MFSideMenuAdditions.h"; sourceTree = "<group>"; };
+		406F168C1C60374E003AF8F5 /* UIViewController+MFSideMenuAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MFSideMenuAdditions.m"; sourceTree = "<group>"; };
+		406F168D1C60374E003AF8F5 /* MFSideMenuShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenuShadow.h; sourceTree = "<group>"; };
+		406F168E1C60374E003AF8F5 /* MFSideMenuShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuShadow.m; sourceTree = "<group>"; };
+		406F16921C603814003AF8F5 /* SideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuViewController.h; sourceTree = "<group>"; };
+		406F16931C603814003AF8F5 /* SideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuViewController.m; sourceTree = "<group>"; };
+		408375B91C5EE19200B5E7F6 /* YSLContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSLContainerViewController.h; sourceTree = "<group>"; };
+		408375BA1C5EE19200B5E7F6 /* YSLContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSLContainerViewController.m; sourceTree = "<group>"; };
+		408375BB1C5EE19200B5E7F6 /* YSLScrollMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSLScrollMenuView.h; sourceTree = "<group>"; };
+		408375BC1C5EE19200B5E7F6 /* YSLScrollMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSLScrollMenuView.m; sourceTree = "<group>"; };
+		408375BF1C5EE2FA00B5E7F6 /* CurrentPlansViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentPlansViewController.h; sourceTree = "<group>"; };
+		408375C01C5EE2FA00B5E7F6 /* CurrentPlansViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentPlansViewController.m; sourceTree = "<group>"; };
+		408375C21C5EE31400B5E7F6 /* BestOffersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BestOffersViewController.h; sourceTree = "<group>"; };
+		408375C31C5EE31400B5E7F6 /* BestOffersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BestOffersViewController.m; sourceTree = "<group>"; };
+		408375C51C5EE33000B5E7F6 /* RecommendedPlansViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendedPlansViewController.h; sourceTree = "<group>"; };
+		408375C61C5EE33000B5E7F6 /* RecommendedPlansViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendedPlansViewController.m; sourceTree = "<group>"; };
+		408375D31C5EEBBC00B5E7F6 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		408375D41C5EEBBC00B5E7F6 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		408375D61C5EEFF500B5E7F6 /* WifiModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiModel.h; sourceTree = "<group>"; };
+		408375D71C5EEFF500B5E7F6 /* WifiModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiModel.m; sourceTree = "<group>"; };
+		408375D91C5EF02800B5E7F6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		40304E521C5E8146008E3EE5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40474A531C618C2C00959AC7 /* NetworkExtension.framework in Frameworks */,
+				408375DA1C5EF02900B5E7F6 /* SystemConfiguration.framework in Frameworks */,
+				40304E901C5E82E6008E3EE5 /* CoreTelephony.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40304E6B1C5E8147008E3EE5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40304E761C5E8147008E3EE5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		40304E4C1C5E8146008E3EE5 = {
+			isa = PBXGroup;
+			children = (
+				40304E8E1C5E82D3008E3EE5 /* Frameworks */,
+				40304E571C5E8146008E3EE5 /* Redknee */,
+				40304E711C5E8147008E3EE5 /* RedkneeTests */,
+				40304E7C1C5E8147008E3EE5 /* RedkneeUITests */,
+				40304E561C5E8146008E3EE5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		40304E561C5E8146008E3EE5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				40304E551C5E8146008E3EE5 /* Redknee.app */,
+				40304E6E1C5E8147008E3EE5 /* RedkneeTests.xctest */,
+				40304E791C5E8147008E3EE5 /* RedkneeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		40304E571C5E8146008E3EE5 /* Redknee */ = {
+			isa = PBXGroup;
+			children = (
+				408375B81C5EE16300B5E7F6 /* Custom */,
+				22B2221E1C60B86B0028E7DB /* splash_screen.png */,
+				22B222201C60B8FF0028E7DB /* redknee_logo326ppi.png */,
+				22B222211C60B8FF0028E7DB /* smart_logo_326ppi.png */,
+				40304E5B1C5E8147008E3EE5 /* AppDelegate.h */,
+				40304E5C1C5E8147008E3EE5 /* AppDelegate.m */,
+				406F16921C603814003AF8F5 /* SideMenuViewController.h */,
+				406F16931C603814003AF8F5 /* SideMenuViewController.m */,
+				40304E5E1C5E8147008E3EE5 /* ViewController.h */,
+				40304E5F1C5E8147008E3EE5 /* ViewController.m */,
+				22B222241C60C0080028E7DB /* LoginViewController.h */,
+				22B222251C60C0080028E7DB /* LoginViewController.m */,
+				40304E8B1C5E82A4008E3EE5 /* CarrierModel.h */,
+				40304E8C1C5E82A5008E3EE5 /* CarrierModel.m */,
+				408375D61C5EEFF500B5E7F6 /* WifiModel.h */,
+				408375D71C5EEFF500B5E7F6 /* WifiModel.m */,
+				40304E611C5E8147008E3EE5 /* Main.storyboard */,
+				408375BF1C5EE2FA00B5E7F6 /* CurrentPlansViewController.h */,
+				408375C01C5EE2FA00B5E7F6 /* CurrentPlansViewController.m */,
+				408375C21C5EE31400B5E7F6 /* BestOffersViewController.h */,
+				408375C31C5EE31400B5E7F6 /* BestOffersViewController.m */,
+				408375C51C5EE33000B5E7F6 /* RecommendedPlansViewController.h */,
+				408375C61C5EE33000B5E7F6 /* RecommendedPlansViewController.m */,
+				40304E641C5E8147008E3EE5 /* Assets.xcassets */,
+				40304E661C5E8147008E3EE5 /* LaunchScreen.storyboard */,
+				40304E691C5E8147008E3EE5 /* Info.plist */,
+				40304E581C5E8147008E3EE5 /* Supporting Files */,
+			);
+			path = Redknee;
+			sourceTree = "<group>";
+		};
+		40304E581C5E8147008E3EE5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				40304E591C5E8147008E3EE5 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		40304E711C5E8147008E3EE5 /* RedkneeTests */ = {
+			isa = PBXGroup;
+			children = (
+				40304E721C5E8147008E3EE5 /* RedkneeTests.m */,
+				40304E741C5E8147008E3EE5 /* Info.plist */,
+			);
+			path = RedkneeTests;
+			sourceTree = "<group>";
+		};
+		40304E7C1C5E8147008E3EE5 /* RedkneeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				40304E7D1C5E8147008E3EE5 /* RedkneeUITests.m */,
+				40304E7F1C5E8147008E3EE5 /* Info.plist */,
+			);
+			path = RedkneeUITests;
+			sourceTree = "<group>";
+		};
+		40304E8E1C5E82D3008E3EE5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				40474A521C618C2C00959AC7 /* NetworkExtension.framework */,
+				408375D91C5EF02800B5E7F6 /* SystemConfiguration.framework */,
+				40304E8F1C5E82E6008E3EE5 /* CoreTelephony.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		406F16871C60373F003AF8F5 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				406F16881C60374E003AF8F5 /* MFSideMenu.h */,
+				406F16891C60374E003AF8F5 /* MFSideMenuContainerViewController.h */,
+				406F168A1C60374E003AF8F5 /* MFSideMenuContainerViewController.m */,
+				406F168B1C60374E003AF8F5 /* UIViewController+MFSideMenuAdditions.h */,
+				406F168C1C60374E003AF8F5 /* UIViewController+MFSideMenuAdditions.m */,
+				406F168D1C60374E003AF8F5 /* MFSideMenuShadow.h */,
+				406F168E1C60374E003AF8F5 /* MFSideMenuShadow.m */,
+			);
+			name = SideMenu;
+			sourceTree = "<group>";
+		};
+		408375B71C5EDF1E00B5E7F6 /* Rechability */ = {
+			isa = PBXGroup;
+			children = (
+				408375D31C5EEBBC00B5E7F6 /* Reachability.h */,
+				408375D41C5EEBBC00B5E7F6 /* Reachability.m */,
+			);
+			name = Rechability;
+			sourceTree = "<group>";
+		};
+		408375B81C5EE16300B5E7F6 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				406F16871C60373F003AF8F5 /* SideMenu */,
+				408375B71C5EDF1E00B5E7F6 /* Rechability */,
+				408375C91C5EE84500B5E7F6 /* RechabilityManager */,
+				408375C81C5EE82E00B5E7F6 /* TopMenuTab */,
+			);
+			name = Custom;
+			sourceTree = "<group>";
+		};
+		408375C81C5EE82E00B5E7F6 /* TopMenuTab */ = {
+			isa = PBXGroup;
+			children = (
+				408375B91C5EE19200B5E7F6 /* YSLContainerViewController.h */,
+				408375BA1C5EE19200B5E7F6 /* YSLContainerViewController.m */,
+				408375BB1C5EE19200B5E7F6 /* YSLScrollMenuView.h */,
+				408375BC1C5EE19200B5E7F6 /* YSLScrollMenuView.m */,
+			);
+			name = TopMenuTab;
+			sourceTree = "<group>";
+		};
+		408375C91C5EE84500B5E7F6 /* RechabilityManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = RechabilityManager;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		40304E541C5E8146008E3EE5 /* Redknee */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40304E821C5E8147008E3EE5 /* Build configuration list for PBXNativeTarget "Redknee" */;
+			buildPhases = (
+				40304E511C5E8146008E3EE5 /* Sources */,
+				40304E521C5E8146008E3EE5 /* Frameworks */,
+				40304E531C5E8146008E3EE5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Redknee;
+			productName = Redknee;
+			productReference = 40304E551C5E8146008E3EE5 /* Redknee.app */;
+			productType = "com.apple.product-type.application";
+		};
+		40304E6D1C5E8147008E3EE5 /* RedkneeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40304E851C5E8147008E3EE5 /* Build configuration list for PBXNativeTarget "RedkneeTests" */;
+			buildPhases = (
+				40304E6A1C5E8147008E3EE5 /* Sources */,
+				40304E6B1C5E8147008E3EE5 /* Frameworks */,
+				40304E6C1C5E8147008E3EE5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				40304E701C5E8147008E3EE5 /* PBXTargetDependency */,
+			);
+			name = RedkneeTests;
+			productName = RedkneeTests;
+			productReference = 40304E6E1C5E8147008E3EE5 /* RedkneeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		40304E781C5E8147008E3EE5 /* RedkneeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40304E881C5E8147008E3EE5 /* Build configuration list for PBXNativeTarget "RedkneeUITests" */;
+			buildPhases = (
+				40304E751C5E8147008E3EE5 /* Sources */,
+				40304E761C5E8147008E3EE5 /* Frameworks */,
+				40304E771C5E8147008E3EE5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				40304E7B1C5E8147008E3EE5 /* PBXTargetDependency */,
+			);
+			name = RedkneeUITests;
+			productName = RedkneeUITests;
+			productReference = 40304E791C5E8147008E3EE5 /* RedkneeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		40304E4D1C5E8146008E3EE5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = Goutham;
+				TargetAttributes = {
+					40304E541C5E8146008E3EE5 = {
+						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = 4N255DN957;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+					40304E6D1C5E8147008E3EE5 = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = 40304E541C5E8146008E3EE5;
+					};
+					40304E781C5E8147008E3EE5 = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = 40304E541C5E8146008E3EE5;
+					};
+				};
+			};
+			buildConfigurationList = 40304E501C5E8146008E3EE5 /* Build configuration list for PBXProject "Redknee" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 40304E4C1C5E8146008E3EE5;
+			productRefGroup = 40304E561C5E8146008E3EE5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				40304E541C5E8146008E3EE5 /* Redknee */,
+				40304E6D1C5E8147008E3EE5 /* RedkneeTests */,
+				40304E781C5E8147008E3EE5 /* RedkneeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		40304E531C5E8146008E3EE5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40304E681C5E8147008E3EE5 /* LaunchScreen.storyboard in Resources */,
+				40304E651C5E8147008E3EE5 /* Assets.xcassets in Resources */,
+				22B222221C60B8FF0028E7DB /* redknee_logo326ppi.png in Resources */,
+				22B2221F1C60B86B0028E7DB /* splash_screen.png in Resources */,
+				22B222231C60B8FF0028E7DB /* smart_logo_326ppi.png in Resources */,
+				40304E631C5E8147008E3EE5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40304E6C1C5E8147008E3EE5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40304E771C5E8147008E3EE5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		40304E511C5E8146008E3EE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				406F16941C603814003AF8F5 /* SideMenuViewController.m in Sources */,
+				40304E601C5E8147008E3EE5 /* ViewController.m in Sources */,
+				406F168F1C60374E003AF8F5 /* MFSideMenuContainerViewController.m in Sources */,
+				406F16911C60374E003AF8F5 /* MFSideMenuShadow.m in Sources */,
+				40304E5D1C5E8147008E3EE5 /* AppDelegate.m in Sources */,
+				408375D81C5EEFF500B5E7F6 /* WifiModel.m in Sources */,
+				40304E8D1C5E82A5008E3EE5 /* CarrierModel.m in Sources */,
+				406F16901C60374E003AF8F5 /* UIViewController+MFSideMenuAdditions.m in Sources */,
+				22B222261C60C0080028E7DB /* LoginViewController.m in Sources */,
+				408375D51C5EEBBC00B5E7F6 /* Reachability.m in Sources */,
+				408375BE1C5EE19200B5E7F6 /* YSLScrollMenuView.m in Sources */,
+				40304E5A1C5E8147008E3EE5 /* main.m in Sources */,
+				408375BD1C5EE19200B5E7F6 /* YSLContainerViewController.m in Sources */,
+				408375C11C5EE2FA00B5E7F6 /* CurrentPlansViewController.m in Sources */,
+				408375C71C5EE33000B5E7F6 /* RecommendedPlansViewController.m in Sources */,
+				408375C41C5EE31400B5E7F6 /* BestOffersViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40304E6A1C5E8147008E3EE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40304E731C5E8147008E3EE5 /* RedkneeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40304E751C5E8147008E3EE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40304E7E1C5E8147008E3EE5 /* RedkneeUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		40304E701C5E8147008E3EE5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 40304E541C5E8146008E3EE5 /* Redknee */;
+			targetProxy = 40304E6F1C5E8147008E3EE5 /* PBXContainerItemProxy */;
+		};
+		40304E7B1C5E8147008E3EE5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 40304E541C5E8146008E3EE5 /* Redknee */;
+			targetProxy = 40304E7A1C5E8147008E3EE5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		40304E611C5E8147008E3EE5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				40304E621C5E8147008E3EE5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		40304E661C5E8147008E3EE5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				40304E671C5E8147008E3EE5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		40304E801C5E8147008E3EE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		40304E811C5E8147008E3EE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		40304E831C5E8147008E3EE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = Redknee/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.redknee.iossd;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		40304E841C5E8147008E3EE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = Redknee/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.redknee.iossd;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		40304E861C5E8147008E3EE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = RedkneeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.goutham.RedkneeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Redknee.app/Redknee";
+			};
+			name = Debug;
+		};
+		40304E871C5E8147008E3EE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = RedkneeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.goutham.RedkneeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Redknee.app/Redknee";
+			};
+			name = Release;
+		};
+		40304E891C5E8147008E3EE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = RedkneeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.goutham.RedkneeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Redknee;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		40304E8A1C5E8147008E3EE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = RedkneeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.goutham.RedkneeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Redknee;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		40304E501C5E8146008E3EE5 /* Build configuration list for PBXProject "Redknee" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40304E801C5E8147008E3EE5 /* Debug */,
+				40304E811C5E8147008E3EE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		40304E821C5E8147008E3EE5 /* Build configuration list for PBXNativeTarget "Redknee" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40304E831C5E8147008E3EE5 /* Debug */,
+				40304E841C5E8147008E3EE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		40304E851C5E8147008E3EE5 /* Build configuration list for PBXNativeTarget "RedkneeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40304E861C5E8147008E3EE5 /* Debug */,
+				40304E871C5E8147008E3EE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		40304E881C5E8147008E3EE5 /* Build configuration list for PBXNativeTarget "RedkneeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40304E891C5E8147008E3EE5 /* Debug */,
+				40304E8A1C5E8147008E3EE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 40304E4D1C5E8146008E3EE5 /* Project object */;
+}
