@@ -40,6 +40,9 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
     
+    [[NSUserDefaults standardUserDefaults] setValue:@"no" forKey:@"enableGesture"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
 //    NSString *remoteHostName = @"www.apple.com";
 //    self.hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
 ////    [self.hostReachability startNotifier];
@@ -55,7 +58,7 @@
     
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     
-    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"" size:14.0], NSFontAttributeName, nil]];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"" size:16.0], NSFontAttributeName, nil]];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     MFSideMenuContainerViewController *container = (MFSideMenuContainerViewController *)self.window.rootViewController;

@@ -402,7 +402,7 @@ typedef enum {
 }
 
 - (void)setLeftMenuWidth:(CGFloat)leftMenuWidth animated:(BOOL)animated {
-    _leftMenuWidth = 200.0f;
+    _leftMenuWidth = 300.0f;
     
     if(self.menuState != MFSideMenuStateLeftMenuOpen) {
         [self setLeftSideMenuFrameToClosedPosition];
@@ -523,60 +523,60 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 - (void) handleRightPan:(UIPanGestureRecognizer *)recognizer {
     if(!self.leftMenuViewController && self.menuState == MFSideMenuStateClosed) return;
     
-//    NSString *strValue = [[NSUserDefaults standardUserDefaults] valueForKey:@"enableGesture"];
-//    
-//    if ([strValue isEqualToString:@"yes"]) {
-//        
-//        
-//        
-//    }
-
-    UIView *view = [self.centerViewController view];
+    NSString *strValue = [[NSUserDefaults standardUserDefaults] valueForKey:@"enableGesture"];
     
-    CGPoint translatedPoint = [recognizer translationInView:view];
-    CGPoint adjustedOrigin = panGestureOrigin;
-    translatedPoint = CGPointMake(adjustedOrigin.x + translatedPoint.x,
-                                  adjustedOrigin.y + translatedPoint.y);
-    
-    translatedPoint.x = MAX(translatedPoint.x, -1*self.rightMenuWidth);
-    translatedPoint.x = MIN(translatedPoint.x, self.leftMenuWidth);
-    if(self.menuState == MFSideMenuStateRightMenuOpen) {
-        // menu is already open, the most the user can do is close it in this gesture
-        translatedPoint.x = MIN(translatedPoint.x, 0);
-    } else {
-        // we are opening the menu
-        translatedPoint.x = MAX(translatedPoint.x, 0);
-    }
-    
-    if(recognizer.state == UIGestureRecognizerStateEnded) {
-        CGPoint velocity = [recognizer velocityInView:view];
-        CGFloat finalX = translatedPoint.x + (.35*velocity.x);
-        CGFloat viewWidth = view.frame.size.width;
+    if ([strValue isEqualToString:@"yes"]) {
         
-        if(self.menuState == MFSideMenuStateClosed) {
-            BOOL showMenu = (finalX > viewWidth/2) || (finalX > self.leftMenuWidth/2);
-            if(showMenu) {
-                self.panGestureVelocity = velocity.x;
-                [self setMenuState:MFSideMenuStateLeftMenuOpen];
-            } else {
-                self.panGestureVelocity = 0;
-                [self setCenterViewControllerOffset:0 animated:YES completion:nil];
-            }
+        UIView *view = [self.centerViewController view];
+        
+        CGPoint translatedPoint = [recognizer translationInView:view];
+        CGPoint adjustedOrigin = panGestureOrigin;
+        translatedPoint = CGPointMake(adjustedOrigin.x + translatedPoint.x,
+                                      adjustedOrigin.y + translatedPoint.y);
+        
+        translatedPoint.x = MAX(translatedPoint.x, -1*self.rightMenuWidth);
+        translatedPoint.x = MIN(translatedPoint.x, self.leftMenuWidth);
+        if(self.menuState == MFSideMenuStateRightMenuOpen) {
+            // menu is already open, the most the user can do is close it in this gesture
+            translatedPoint.x = MIN(translatedPoint.x, 0);
         } else {
-            BOOL hideMenu = (finalX > adjustedOrigin.x);
-            if(hideMenu) {
-                self.panGestureVelocity = velocity.x;
-                [self setMenuState:MFSideMenuStateClosed];
-            } else {
-                self.panGestureVelocity = 0;
-                [self setCenterViewControllerOffset:adjustedOrigin.x animated:YES completion:nil];
-            }
+            // we are opening the menu
+            translatedPoint.x = MAX(translatedPoint.x, 0);
         }
         
-        self.panDirection = MFSideMenuPanDirectionNone;
-    } else {
-        [self setCenterViewControllerOffset:translatedPoint.x];
+        if(recognizer.state == UIGestureRecognizerStateEnded) {
+            CGPoint velocity = [recognizer velocityInView:view];
+            CGFloat finalX = translatedPoint.x + (.35*velocity.x);
+            CGFloat viewWidth = view.frame.size.width;
+            
+            if(self.menuState == MFSideMenuStateClosed) {
+                BOOL showMenu = (finalX > viewWidth/2) || (finalX > self.leftMenuWidth/2);
+                if(showMenu) {
+                    self.panGestureVelocity = velocity.x;
+                    [self setMenuState:MFSideMenuStateLeftMenuOpen];
+                } else {
+                    self.panGestureVelocity = 0;
+                    [self setCenterViewControllerOffset:0 animated:YES completion:nil];
+                }
+            } else {
+                BOOL hideMenu = (finalX > adjustedOrigin.x);
+                if(hideMenu) {
+                    self.panGestureVelocity = velocity.x;
+                    [self setMenuState:MFSideMenuStateClosed];
+                } else {
+                    self.panGestureVelocity = 0;
+                    [self setCenterViewControllerOffset:adjustedOrigin.x animated:YES completion:nil];
+                }
+            }
+            
+            self.panDirection = MFSideMenuPanDirectionNone;
+        } else {
+            [self setCenterViewControllerOffset:translatedPoint.x];
+        }
+        
     }
+
+    
 }
 
 - (void) handleLeftPan:(UIPanGestureRecognizer *)recognizer {

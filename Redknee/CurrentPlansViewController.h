@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CurrentPlansViewController : UIViewController
+@interface CurrentPlansViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end

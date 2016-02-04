@@ -66,13 +66,19 @@
     
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
+    [[NSUserDefaults standardUserDefaults] setValue:@"no" forKey:@"enableGesture"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
+/*
+ Exclusive for app users: high speed on demand! 30 minites for just 99 cent - usage countsagainst your data allowance.
+ */
 
 -(void)viewDidAppear:(BOOL)animated{
     
     [super viewDidAppear:animated];
     
-    self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     
@@ -181,8 +187,6 @@
     }];
     [controller addAction:okAction];
     
-    
-    
     [self presentViewController:controller animated:YES completion:nil];
     
 }
@@ -192,11 +196,7 @@
  
  
  
- ServicesViewController *serviceViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ServicesViewController"];
- UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
- NSArray *controllers = [NSArray arrayWithObject:serviceViewController];
- navigationController.viewControllers = controllers;
- [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
+ 
  
  hsejar@271968
  
@@ -212,7 +212,7 @@
     
     UIViewController *flyoutMenu = [self.storyboard instantiateViewControllerWithIdentifier:@"SideMenuViewController"];
     [container setLeftMenuViewController:flyoutMenu];
-    [container setLeftMenuWidth:200.0f];
+    [container setLeftMenuWidth:300.0f];
     [self.menuContainerViewController toggleLeftSideMenuCompletion:nil];
     
 }

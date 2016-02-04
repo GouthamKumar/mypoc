@@ -43,6 +43,9 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
     
+    [[NSUserDefaults standardUserDefaults] setValue:@"no" forKey:@"enableGesture"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     NSString *strStatus = [[NSUserDefaults standardUserDefaults] valueForKey:@"isActive"];
     if((![strStatus isKindOfClass:[NSNull class]]) && !(strStatus == nil) && strStatus.length > 0){
         
@@ -118,6 +121,60 @@
         ViewController *viewC = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
         [self.navigationController pushViewController:viewC animated:YES];
 //    }
+    
+}
+
+-(UIImage *)image:(UIImage*)img resizeTo:(CGSize)newSize
+
+{
+    
+    CGFloat scale = [[UIScreen mainScreen]scale];
+    
+    /*You can remove the below comment if you dont want to scale the image in retina   device .Dont forget to comment UIGraphicsBeginImageContextWithOptions*/
+    
+    //UIGraphicsBeginImageContext(newSize);
+    
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, scale);
+    
+    [img drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+    
+}
+
+-(void)generateImagesForTextFields
+
+{
+    
+    self.textName.layer.borderColor = [UIColor whiteColor].CGColor;
+    
+    self.textName.layer.borderWidth = 1.0;
+    
+    NSString *searchIconPath = [[NSBundle mainBundle] pathForResource:@"globe" ofType:@"png" ];
+    
+    UIImage * searchIcon =[self image:[UIImage imageWithContentsOfFile:searchIconPath] resizeTo:CGSizeMake(15, 16)];
+    
+    //UIImage * searchIcon =[UIImage imageWithContentsOfFile:searchResourcePath];
+    
+    
+    
+    UIImageView * searchIconView = [[UIImageView  alloc] initWithImage:searchIcon];
+    
+    searchIconView.frame = CGRectMake(0.0, 0.0, searchIconView.image.size.width+15.0, searchIconView.image.size.height);
+    
+    searchIconView.contentMode = UIViewContentModeCenter;
+    
+    
+    
+    [self.textName  setRightView :searchIconView];
+    
+    [self.textName  setRightViewMode: UITextFieldViewModeAlways];
+    
+    
     
 }
 

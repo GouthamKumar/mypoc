@@ -7,10 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2221F0D71C633482006863D1 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2221F0D61C633482006863D1 /* SettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		2221F0DA1C6334EC006863D1 /* MyPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2221F0D91C6334EC006863D1 /* MyPlanViewController.m */; settings = {ASSET_TAGS = (); }; };
+		2221F0DD1C633505006863D1 /* MyUsageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2221F0DC1C633505006863D1 /* MyUsageViewController.m */; settings = {ASSET_TAGS = (); }; };
+		22302DB71C63611B00A03011 /* abc.png in Resources */ = {isa = PBXBuildFile; fileRef = 22302DB61C63611B00A03011 /* abc.png */; settings = {ASSET_TAGS = (); }; };
+		22302DBB1C63698100A03011 /* asdf.png in Resources */ = {isa = PBXBuildFile; fileRef = 22302DBA1C63698100A03011 /* asdf.png */; settings = {ASSET_TAGS = (); }; };
+		224E73571C638E6C00BFA7F4 /* libAmChartsMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 224E73541C638DCE00BFA7F4 /* libAmChartsMobile.a */; };
+		224E735B1C638ED300BFA7F4 /* AmChartResources.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 224E73561C638DCE00BFA7F4 /* AmChartResources.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		22B2221F1C60B86B0028E7DB /* splash_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B2221E1C60B86B0028E7DB /* splash_screen.png */; };
 		22B222221C60B8FF0028E7DB /* redknee_logo326ppi.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B222201C60B8FF0028E7DB /* redknee_logo326ppi.png */; };
 		22B222231C60B8FF0028E7DB /* smart_logo_326ppi.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B222211C60B8FF0028E7DB /* smart_logo_326ppi.png */; };
 		22B222261C60C0080028E7DB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B222251C60C0080028E7DB /* LoginViewController.m */; };
+		22F461541C637677003A95FB /* pinkimg.png in Resources */ = {isa = PBXBuildFile; fileRef = 22F461511C637677003A95FB /* pinkimg.png */; settings = {ASSET_TAGS = (); }; };
+		22F461551C637677003A95FB /* grayimg.png in Resources */ = {isa = PBXBuildFile; fileRef = 22F461521C637677003A95FB /* grayimg.png */; settings = {ASSET_TAGS = (); }; };
+		22F461571C637755003A95FB /* slideThumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 22F461561C637755003A95FB /* slideThumb.png */; settings = {ASSET_TAGS = (); }; };
 		40304E5A1C5E8147008E3EE5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40304E591C5E8147008E3EE5 /* main.m */; };
 		40304E5D1C5E8147008E3EE5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40304E5C1C5E8147008E3EE5 /* AppDelegate.m */; };
 		40304E601C5E8147008E3EE5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40304E5F1C5E8147008E3EE5 /* ViewController.m */; };
@@ -39,6 +49,48 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		224E734D1C638DCE00BFA7F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 224E73451C638DCE00BFA7F4 /* AmChartsLibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1151A491190E9E5A004D52EC;
+			remoteInfo = AmChartsLibrary;
+		};
+		224E734F1C638DCE00BFA7F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 224E73451C638DCE00BFA7F4 /* AmChartsLibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 111DF6EE1917C92100E11137;
+			remoteInfo = "AmCharts iOS Example";
+		};
+		224E73511C638DCE00BFA7F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 224E73451C638DCE00BFA7F4 /* AmChartsLibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 110386721912881900F917CE;
+			remoteInfo = AmCharts;
+		};
+		224E73531C638DCE00BFA7F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 224E73451C638DCE00BFA7F4 /* AmChartsLibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 111DF7281917C94F00E11137;
+			remoteInfo = AmChartsMobile;
+		};
+		224E73551C638DCE00BFA7F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 224E73451C638DCE00BFA7F4 /* AmChartsLibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 111DF8151917E3C700E11137;
+			remoteInfo = AmChartResources;
+		};
+		224E73581C638EAF00BFA7F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 224E73451C638DCE00BFA7F4 /* AmChartsLibrary.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 111DF7271917C94F00E11137;
+			remoteInfo = AmChartsMobile;
+		};
 		40304E6F1C5E8147008E3EE5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 40304E4D1C5E8146008E3EE5 /* Project object */;
@@ -55,12 +107,37 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		224E735A1C638EB900BFA7F4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				224E735B1C638ED300BFA7F4 /* AmChartResources.bundle in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2221F0D51C633482006863D1 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		2221F0D61C633482006863D1 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		2221F0D81C6334EC006863D1 /* MyPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlanViewController.h; sourceTree = "<group>"; };
+		2221F0D91C6334EC006863D1 /* MyPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPlanViewController.m; sourceTree = "<group>"; };
+		2221F0DB1C633505006863D1 /* MyUsageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUsageViewController.h; sourceTree = "<group>"; };
+		2221F0DC1C633505006863D1 /* MyUsageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUsageViewController.m; sourceTree = "<group>"; };
+		22302DB61C63611B00A03011 /* abc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abc.png; sourceTree = "<group>"; };
+		22302DBA1C63698100A03011 /* asdf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asdf.png; sourceTree = "<group>"; };
+		224E73451C638DCE00BFA7F4 /* AmChartsLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AmChartsLibrary.xcodeproj; path = "../../../../Downloads/AmCharts-master/AmChartsLibrary.xcodeproj"; sourceTree = "<group>"; };
 		22B2221E1C60B86B0028E7DB /* splash_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_screen.png; sourceTree = "<group>"; };
 		22B222201C60B8FF0028E7DB /* redknee_logo326ppi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redknee_logo326ppi.png; sourceTree = "<group>"; };
 		22B222211C60B8FF0028E7DB /* smart_logo_326ppi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smart_logo_326ppi.png; sourceTree = "<group>"; };
 		22B222241C60C0080028E7DB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		22B222251C60C0080028E7DB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		22F461511C637677003A95FB /* pinkimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinkimg.png; sourceTree = "<group>"; };
+		22F461521C637677003A95FB /* grayimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayimg.png; sourceTree = "<group>"; };
+		22F461561C637755003A95FB /* slideThumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slideThumb.png; sourceTree = "<group>"; };
 		40304E551C5E8146008E3EE5 /* Redknee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redknee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40304E591C5E8147008E3EE5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		40304E5B1C5E8147008E3EE5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -116,6 +193,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				224E73571C638E6C00BFA7F4 /* libAmChartsMobile.a in Frameworks */,
 				40474A531C618C2C00959AC7 /* NetworkExtension.framework in Frameworks */,
 				408375DA1C5EF02900B5E7F6 /* SystemConfiguration.framework in Frameworks */,
 				40304E901C5E82E6008E3EE5 /* CoreTelephony.framework in Frameworks */,
@@ -139,9 +217,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2221F0DE1C633518006863D1 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				406F16921C603814003AF8F5 /* SideMenuViewController.h */,
+				406F16931C603814003AF8F5 /* SideMenuViewController.m */,
+				2221F0D81C6334EC006863D1 /* MyPlanViewController.h */,
+				2221F0D91C6334EC006863D1 /* MyPlanViewController.m */,
+				2221F0DB1C633505006863D1 /* MyUsageViewController.h */,
+				2221F0DC1C633505006863D1 /* MyUsageViewController.m */,
+				2221F0D51C633482006863D1 /* SettingsViewController.h */,
+				2221F0D61C633482006863D1 /* SettingsViewController.m */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		224E73461C638DCE00BFA7F4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				224E734E1C638DCE00BFA7F4 /* AmChartsLibrary.app */,
+				224E73501C638DCE00BFA7F4 /* AmCharts iOS Example.app */,
+				224E73521C638DCE00BFA7F4 /* AmCharts.framework */,
+				224E73541C638DCE00BFA7F4 /* libAmChartsMobile.a */,
+				224E73561C638DCE00BFA7F4 /* AmChartResources.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		40304E4C1C5E8146008E3EE5 = {
 			isa = PBXGroup;
 			children = (
+				224E73451C638DCE00BFA7F4 /* AmChartsLibrary.xcodeproj */,
 				40304E8E1C5E82D3008E3EE5 /* Frameworks */,
 				40304E571C5E8146008E3EE5 /* Redknee */,
 				40304E711C5E8147008E3EE5 /* RedkneeTests */,
@@ -169,12 +275,16 @@
 				A3A6E5271C6324E300947770 /* Utilities.m */,
 				408375B81C5EE16300B5E7F6 /* Custom */,
 				22B2221E1C60B86B0028E7DB /* splash_screen.png */,
+				22F461561C637755003A95FB /* slideThumb.png */,
+				22F461511C637677003A95FB /* pinkimg.png */,
+				22F461521C637677003A95FB /* grayimg.png */,
+				22302DBA1C63698100A03011 /* asdf.png */,
+				22302DB61C63611B00A03011 /* abc.png */,
 				22B222201C60B8FF0028E7DB /* redknee_logo326ppi.png */,
 				22B222211C60B8FF0028E7DB /* smart_logo_326ppi.png */,
 				40304E5B1C5E8147008E3EE5 /* AppDelegate.h */,
 				40304E5C1C5E8147008E3EE5 /* AppDelegate.m */,
-				406F16921C603814003AF8F5 /* SideMenuViewController.h */,
-				406F16931C603814003AF8F5 /* SideMenuViewController.m */,
+				2221F0DE1C633518006863D1 /* Menu */,
 				40304E5E1C5E8147008E3EE5 /* ViewController.h */,
 				40304E5F1C5E8147008E3EE5 /* ViewController.m */,
 				22B222241C60C0080028E7DB /* LoginViewController.h */,
@@ -296,10 +406,12 @@
 				40304E511C5E8146008E3EE5 /* Sources */,
 				40304E521C5E8146008E3EE5 /* Frameworks */,
 				40304E531C5E8146008E3EE5 /* Resources */,
+				224E735A1C638EB900BFA7F4 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				224E73591C638EAF00BFA7F4 /* PBXTargetDependency */,
 			);
 			name = Redknee;
 			productName = Redknee;
@@ -353,7 +465,7 @@
 				TargetAttributes = {
 					40304E541C5E8146008E3EE5 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = 4N255DN957;
+						DevelopmentTeam = 75G6XQEVGT;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -381,6 +493,12 @@
 			mainGroup = 40304E4C1C5E8146008E3EE5;
 			productRefGroup = 40304E561C5E8146008E3EE5 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 224E73461C638DCE00BFA7F4 /* Products */;
+					ProjectRef = 224E73451C638DCE00BFA7F4 /* AmChartsLibrary.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				40304E541C5E8146008E3EE5 /* Redknee */,
@@ -390,17 +508,60 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		224E734E1C638DCE00BFA7F4 /* AmChartsLibrary.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = AmChartsLibrary.app;
+			remoteRef = 224E734D1C638DCE00BFA7F4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		224E73501C638DCE00BFA7F4 /* AmCharts iOS Example.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "AmCharts iOS Example.app";
+			remoteRef = 224E734F1C638DCE00BFA7F4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		224E73521C638DCE00BFA7F4 /* AmCharts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AmCharts.framework;
+			remoteRef = 224E73511C638DCE00BFA7F4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		224E73541C638DCE00BFA7F4 /* libAmChartsMobile.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAmChartsMobile.a;
+			remoteRef = 224E73531C638DCE00BFA7F4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		224E73561C638DCE00BFA7F4 /* AmChartResources.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AmChartResources.bundle;
+			remoteRef = 224E73551C638DCE00BFA7F4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		40304E531C5E8146008E3EE5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22F461551C637677003A95FB /* grayimg.png in Resources */,
 				40304E681C5E8147008E3EE5 /* LaunchScreen.storyboard in Resources */,
+				22302DBB1C63698100A03011 /* asdf.png in Resources */,
 				40304E651C5E8147008E3EE5 /* Assets.xcassets in Resources */,
 				22B222221C60B8FF0028E7DB /* redknee_logo326ppi.png in Resources */,
 				22B2221F1C60B86B0028E7DB /* splash_screen.png in Resources */,
+				22F461571C637755003A95FB /* slideThumb.png in Resources */,
+				22302DB71C63611B00A03011 /* abc.png in Resources */,
 				22B222231C60B8FF0028E7DB /* smart_logo_326ppi.png in Resources */,
 				40304E631C5E8147008E3EE5 /* Main.storyboard in Resources */,
+				22F461541C637677003A95FB /* pinkimg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,8 +595,11 @@
 				40304E8D1C5E82A5008E3EE5 /* CarrierModel.m in Sources */,
 				406F16901C60374E003AF8F5 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				22B222261C60C0080028E7DB /* LoginViewController.m in Sources */,
+				2221F0DD1C633505006863D1 /* MyUsageViewController.m in Sources */,
+				2221F0DA1C6334EC006863D1 /* MyPlanViewController.m in Sources */,
 				408375D51C5EEBBC00B5E7F6 /* Reachability.m in Sources */,
 				408375BE1C5EE19200B5E7F6 /* YSLScrollMenuView.m in Sources */,
+				2221F0D71C633482006863D1 /* SettingsViewController.m in Sources */,
 				A3A6E5281C6324E300947770 /* Geotification.m in Sources */,
 				A3A6E5291C6324E300947770 /* Utilities.m in Sources */,
 				40304E5A1C5E8147008E3EE5 /* main.m in Sources */,
@@ -465,6 +629,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		224E73591C638EAF00BFA7F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AmChartsMobile;
+			targetProxy = 224E73581C638EAF00BFA7F4 /* PBXContainerItemProxy */;
+		};
 		40304E701C5E8147008E3EE5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 40304E541C5E8146008E3EE5 /* Redknee */;
@@ -582,13 +751,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kishore Sai (U9LX5B53XM)";
 				INFOPLIST_FILE = Redknee/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.redknee.iossd;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hopon.employeeapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "3966b029-65c2-4f3a-b98f-016862a82e32";
 			};
 			name = Debug;
 		};
@@ -597,13 +767,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kishore Sai (U9LX5B53XM)";
 				INFOPLIST_FILE = Redknee/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.redknee.iossd;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hopon.employeeapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "3966b029-65c2-4f3a-b98f-016862a82e32";
 			};
 			name = Release;
 		};
