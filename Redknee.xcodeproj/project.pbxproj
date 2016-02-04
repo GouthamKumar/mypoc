@@ -34,6 +34,8 @@
 		408375D51C5EEBBC00B5E7F6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 408375D41C5EEBBC00B5E7F6 /* Reachability.m */; };
 		408375D81C5EEFF500B5E7F6 /* WifiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 408375D71C5EEFF500B5E7F6 /* WifiModel.m */; };
 		408375DA1C5EF02900B5E7F6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 408375D91C5EF02800B5E7F6 /* SystemConfiguration.framework */; };
+		A3A6E5281C6324E300947770 /* Geotification.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A6E5251C6324E300947770 /* Geotification.m */; };
+		A3A6E5291C6324E300947770 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A6E5271C6324E300947770 /* Utilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +105,10 @@
 		408375D61C5EEFF500B5E7F6 /* WifiModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiModel.h; sourceTree = "<group>"; };
 		408375D71C5EEFF500B5E7F6 /* WifiModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiModel.m; sourceTree = "<group>"; };
 		408375D91C5EF02800B5E7F6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A3A6E5241C6324E300947770 /* Geotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Geotification.h; sourceTree = "<group>"; };
+		A3A6E5251C6324E300947770 /* Geotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Geotification.m; sourceTree = "<group>"; };
+		A3A6E5261C6324E300947770 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		A3A6E5271C6324E300947770 /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +163,10 @@
 		40304E571C5E8146008E3EE5 /* Redknee */ = {
 			isa = PBXGroup;
 			children = (
+				A3A6E5241C6324E300947770 /* Geotification.h */,
+				A3A6E5251C6324E300947770 /* Geotification.m */,
+				A3A6E5261C6324E300947770 /* Utilities.h */,
+				A3A6E5271C6324E300947770 /* Utilities.m */,
 				408375B81C5EE16300B5E7F6 /* Custom */,
 				22B2221E1C60B86B0028E7DB /* splash_screen.png */,
 				22B222201C60B8FF0028E7DB /* redknee_logo326ppi.png */,
@@ -426,6 +436,8 @@
 				22B222261C60C0080028E7DB /* LoginViewController.m in Sources */,
 				408375D51C5EEBBC00B5E7F6 /* Reachability.m in Sources */,
 				408375BE1C5EE19200B5E7F6 /* YSLScrollMenuView.m in Sources */,
+				A3A6E5281C6324E300947770 /* Geotification.m in Sources */,
+				A3A6E5291C6324E300947770 /* Utilities.m in Sources */,
 				40304E5A1C5E8147008E3EE5 /* main.m in Sources */,
 				408375BD1C5EE19200B5E7F6 /* YSLContainerViewController.m in Sources */,
 				408375C11C5EE2FA00B5E7F6 /* CurrentPlansViewController.m in Sources */,

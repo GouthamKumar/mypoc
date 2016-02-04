@@ -14,14 +14,21 @@
 #import <ifaddrs.h>
 #import <net/if.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
+#import "Geotification.h"
+#import "Utilities.h"
 
 //#import "MTReachabilityManager.h"
 
-@interface AppDelegate ()
+@import CoreLocation;
+
+@interface AppDelegate () <CLLocationManagerDelegate>
 
 @property (nonatomic) Reachability *hostReachability;
 @property (nonatomic) Reachability *internetReachability;
 @property (nonatomic) Reachability *wifiReachability;
+
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) NSMutableArray *geotifications;
 
 @end
 
@@ -64,7 +71,48 @@
                                                                                         | UIUserNotificationTypeBadge
                                                                                         | UIUserNotificationTypeSound) categories:nil];
     [application registerUserNotificationSettings:settings];
-//    [MTReachabilityManager sharedManager];
+
+    
+    
+    
+    self.locationManager = [CLLocationManager new];
+    [self.locationManager setDelegate:self];
+    [self.locationManager requestAlwaysAuthorization];
+    self.geotifications = [NSMutableArray array];
+    
+    
+    //Co-ordinates of the maumbai
+    CLLocationCoordinate2D coordinate;
+    coordinate.latitude = 19.076903148088462;
+    coordinate.longitude = 72.867914822978236;
+    CGFloat radius = 100000;
+    NSString *identifier = [[NSUUID new] UUIDString];
+    NSString *note = @"Welcome to Mumbai....!!";
+    EventType eventType = OnEntry;  //(self.eventTypeSegmentedControl.selectedSegmentIndex == 0) ? OnEntry : OnExit;
+    
+    //Calling the the method to add the co-ordinates of the mumbai location to user NSUseDefaults
+    [self addGeotificationCoordinate:coordinate radius:radius identifier:identifier note:note eventType:eventType];
+    
+    
+    
+    
+    //Co-ordinates of the maumbai
+    CLLocationCoordinate2D tcoordinate;
+    tcoordinate.latitude = 35.6833;
+    tcoordinate.longitude = 139.6833;
+    CGFloat tradius = 100000;
+    NSString *tidentifier = [[NSUUID new] UUIDString];
+    NSString *tnote = @"Welcome to Tokyo....!!";
+    EventType teventType = OnEntry;  //(self.eventTypeSegmentedControl.selectedSegmentIndex == 0) ? OnEntry : OnExit;
+    
+    //Calling the the method to add the co-ordinates of the mumbai location to user NSUseDefaults
+    [self addGeotificationCoordinate:tcoordinate radius:tradius identifier:tidentifier note:tnote eventType:teventType];
+    
+    
+    [self saveAllGeotifications];
+    
+    [self startGeotificationMonitoring];
+    
     
     return YES;
 }
@@ -322,5 +370,186 @@
     
     return [cset countForObject:@"awdl0"] > 1 ? YES : NO;
 }
+
+
+//===============================GeoFencing=====================================================
+
+
+#pragma mark - AddGeotificationsToMonitor
+
+- (void)addGeotificationCoordinate:(CLLocationCoordinate2D)coordinate radius:(CGFloat)radius identifier:(NSString *)identifier note:(NSString *)note eventType:(EventType)eventType{
+    
+    CGFloat clampedRadius = (radius > self.locationManager.maximumRegionMonitoringDistance)?self.locationManager.maximumRegionMonitoringDistance : radius;
+    Geotification *geotification = [[Geotification alloc] initWithCoordinate:coordinate radius:clampedRadius identifier:identifier note:note eventType:eventType];
+    [self addGeotification:geotification];
+}
+
+
+#pragma mark - Functions that update the model/associated views with geotification changes
+
+- (void)addGeotification:(Geotification *)geotification{
+    [self.geotifications addObject:geotification];
+    [self updateGeotificationsCount];
+}
+
+- (void)removeGeotification:(Geotification *)geotification{
+    [self.geotifications removeObject:geotification];
+    [self updateGeotificationsCount];
+}
+
+- (void)updateGeotificationsCount{
+    //self.title = [NSString stringWithFormat:@"Geotifications (%lu)", (unsigned long)self.geotifications.count];
+    //[self.navigationItem.rightBarButtonItem setEnabled:self.geotifications.count<20];
+}
+
+
+
+#pragma mark - Loading and saving functions
+
+- (void)loadAllGeotifications{
+    self.geotifications = [NSMutableArray array];
+    
+    NSArray *savedItems = [[NSUserDefaults standardUserDefaults] arrayForKey:kSavedItemsKey];
+    if (savedItems) {
+        for (id savedItem in savedItems) {
+            Geotification *geotification = [NSKeyedUnarchiver unarchiveObjectWithData:savedItem];
+            if ([geotification isKindOfClass:[Geotification class]]) {
+                [self addGeotification:geotification];
+            }
+        }
+    }
+    
+    NSLog(@"geotification count is %@ ", self.geotifications);
+}
+
+- (void)saveAllGeotifications{
+    NSMutableArray *items = [NSMutableArray array];
+    for (Geotification *geotification in self.geotifications) {
+        id item = [NSKeyedArchiver archivedDataWithRootObject:geotification];
+        [items addObject:item];
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:items forKey:kSavedItemsKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+#pragma mark - Geotifications
+
+- (CLCircularRegion *)regionWithGeotification:(Geotification *)geotification{
+    CLCircularRegion *region = [[CLCircularRegion alloc] initWithCenter:geotification.coordinate radius:geotification.radius identifier:geotification.identifier];
+    [region setNotifyOnEntry:geotification.eventType==OnEntry];
+    [region setNotifyOnExit:!region.notifyOnEntry];
+    
+    return region;
+}
+
+- (void)startMonitoringGeotification:(Geotification *)geotification{
+    if (![CLLocationManager isMonitoringAvailableForClass:[CLCircularRegion class]]) {
+        NSLog(@"Geofencing is not supported on this device!");
+        //[Utilities showSimpleAlertWithTitle:@"Error" message:@"Geofencing is not supported on this device!" viewController:self.window.rootViewController];
+        return;
+    }
+    
+    if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedAlways) {
+        //[Utilities showSimpleAlertWithTitle:@"Warning" message:@"Your geotification is saved but will only be activated once you grant GeofencesTest permission to access the device location." viewController:self.window.rootViewController];
+        NSLog(@"Your geotification is saved but will only be activated once you grant GeofencesTest permission to access the device location.");
+    }
+    
+    CLCircularRegion *region = [self regionWithGeotification:geotification];
+    [self.locationManager startMonitoringForRegion:region];
+}
+
+- (void)stopMonitoringGeotification:(Geotification *)geotification{
+    for (CLCircularRegion *circularRegion in self.locationManager.monitoredRegions) {
+        if ([circularRegion isKindOfClass:[CLCircularRegion class]]) {
+            if ([circularRegion.identifier isEqualToString:geotification.identifier]) {
+                [self.locationManager stopMonitoringForRegion:circularRegion];
+            }
+        }
+    }
+}
+
+
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region{
+    if ([region isKindOfClass:[CLCircularRegion class]]) {
+        [self handleRegionEvent:region];
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region{
+    if ([region isKindOfClass:[CLCircularRegion class]]) {
+        [self handleRegionEvent:region];
+    }
+}
+
+
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    NSLog(@"locationManager didFailWithError %@", error);
+}
+
+-(void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error {
+    NSLog(@"locationManager monitoringDidFailForRegion %@ with eroor %@", region, error);
+}
+
+
+#pragma mark - Helpers
+
+- (void)handleRegionEvent:(CLRegion *)region{
+    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+        NSString *message = [self noteFromRegionIdentifier:region.identifier];
+        if (message) {
+            UIViewController *viewController = self.window.rootViewController;
+            if (viewController) {
+                NSLog(@"UIAlertNotification is being sent since the app in foreground");
+                [Utilities showSimpleAlertWithTitle:nil message:message viewController:viewController];
+            }
+        }
+    }else{
+        NSLog(@"UILocalNotification is being sent since the app in background");
+        
+        UILocalNotification *notification = [UILocalNotification new];
+        [notification setAlertBody:[self noteFromRegionIdentifier:region.identifier]];
+        [notification setSoundName:@"Default"];
+        [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+    }
+}
+
+- (NSString *)noteFromRegionIdentifier:(NSString *)identifier{
+    NSArray *savedItems = [[NSUserDefaults standardUserDefaults] arrayForKey:kSavedItemsKey];
+    if(savedItems){
+        for (id savedItem in savedItems) {
+            Geotification *geotification = [NSKeyedUnarchiver unarchiveObjectWithData:savedItem];
+            if ([geotification isKindOfClass:[Geotification class]]) {
+                if ([geotification.identifier isEqualToString:identifier]) {
+                    return geotification.note;
+                }
+            }
+        }
+    }
+    return nil;
+}
+
+
+-(void)startGeotificationMonitoring {
+    
+    //Please stop all monitoring before you set the notification
+    for (CLRegion *thisRegion in [self.locationManager monitoredRegions]) {
+        NSLog(@"%@", thisRegion);
+        [self.locationManager stopMonitoringForRegion:thisRegion];
+    }
+    
+    NSArray *savedItems = [[NSUserDefaults standardUserDefaults] arrayForKey:kSavedItemsKey];
+    
+    if(savedItems){
+        for (Geotification *savedItem in savedItems) {
+            [self startMonitoringGeotification:[NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)savedItem]];
+        }
+    }
+}
+
+
+
+
 
 @end

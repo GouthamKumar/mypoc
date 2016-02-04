@@ -102,22 +102,22 @@
 
 - (IBAction)btnLoginTapped:(id)sender {
     
-    if (![self.textName.text length]) {
-        
-        
-    }
-    else if (![self.textPassword.text length]){
-        
-        
-    }
-    else{
-        
+//    if (![self.textName.text length]) {
+//        
+//        
+//    }
+//    else if (![self.textPassword.text length]){
+//        
+//        
+//    }
+//    else{
+    
         [[NSUserDefaults standardUserDefaults] setValue:@"registered" forKey:@"isActive"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
         ViewController *viewC = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
         [self.navigationController pushViewController:viewC animated:YES];
-    }
+//    }
     
 }
 

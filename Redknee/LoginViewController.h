@@ -10,7 +10,7 @@
 #import <NetworkExtension/NetworkExtension.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController<UITextFieldDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UITextField *textName;
