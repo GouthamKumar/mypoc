@@ -80,7 +80,8 @@
 
 - (IBAction)btnCancelTapped:(id)sender {
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.delegate dismissfromRootView:self];
+//    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)btnBuyTapped:(id)sender {

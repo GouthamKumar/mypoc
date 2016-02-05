@@ -22,7 +22,7 @@
 
 @import CoreLocation;
 
-@interface AppDelegate () <CLLocationManagerDelegate>
+@interface AppDelegate () <CLLocationManagerDelegate, PopupDelegate>
 
 @property (nonatomic) Reachability *hostReachability;
 @property (nonatomic) Reachability *internetReachability;
@@ -247,6 +247,7 @@
                 PopUpViewController *popupVc = [storyboard instantiateViewControllerWithIdentifier:@"PopUpViewController"];
                 popupVc.strWifi_Name = strSSID1;
                 popupVc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                popupVc.delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                 [self.window.rootViewController presentViewController:popupVc animated:YES completion:nil];
                 
             }
@@ -265,6 +266,11 @@
         }
         
     }
+}
+
+-(void) dismissfromRootView:(UIViewController *)viewController{
+    
+    [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark -
@@ -368,6 +374,8 @@
     UILocalNotification* localNotification = [[UILocalNotification alloc] init];
     
     localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:0];
+    
+    localNotification.alertTitle = @"Goutham";
     
     localNotification.alertTitle = strMessage;
     

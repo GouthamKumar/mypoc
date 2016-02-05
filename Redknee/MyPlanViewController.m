@@ -8,8 +8,10 @@
 
 #import "MyPlanViewController.h"
 #import "MFSideMenu.h"
+#import "PopUpViewController.h"
+#import "ViewController.h"
 
-@interface MyPlanViewController ()
+@interface MyPlanViewController ()<PopupDelegate>
 
 
 
@@ -112,5 +114,14 @@
 //    UISlider *MYslider = (UISlider *)sender;
 //    float SliderValue = (float)roundf(MYslider.value);
 //    self.dataLabel.text = [NSString stringWithFormat:@"%.2f", SliderValue];
+}
+
+
+-(void) dismissfromRootView:(UIViewController *)viewController{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    ViewController *mainVc = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+    [self.navigationController pushViewController:mainVc animated:YES];
 }
 @end
