@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LocationTracker.h"
 
 static NSString *kSavedItemsKey = @"savedItems";
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property LocationTracker * locationTracker;
+@property (nonatomic) NSTimer* locationUpdateTimer;
 
 @end
 

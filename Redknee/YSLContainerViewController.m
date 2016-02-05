@@ -13,7 +13,7 @@ static const CGFloat kYSLScrollMenuViewHeight = 40;
 
 @interface YSLContainerViewController () <UIScrollViewDelegate, YSLScrollMenuViewDelegate>
 
-@property (nonatomic, assign) CGFloat topBarHeight;
+
 @property (nonatomic, assign) NSInteger currentIndex;
 @property (nonatomic, strong) YSLScrollMenuView *menuView;
 

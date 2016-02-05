@@ -13,12 +13,13 @@
 #import "BestOffersViewController.h"
 #import "RecommendedPlansViewController.h"
 #import "MFSideMenu.h"
+#import "PopUpViewController.h"
 
 //#import "MTReachabilityManager.h"
 
 @interface ViewController ()<YSLContainerViewControllerDelegate>
 {
-    
+    YSLContainerViewController *containerVC;
 }
 
 
@@ -51,7 +52,7 @@
     float statusHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
     float navigationHeight = self.navigationController.navigationBar.frame.size.height;
     
-    YSLContainerViewController *containerVC = [[YSLContainerViewController alloc]initWithControllers:@[currentPlansVC,bestOffersVC,recomendedVC]
+    containerVC = [[YSLContainerViewController alloc]initWithControllers:@[currentPlansVC,bestOffersVC,recomendedVC]
                                                                                         topBarHeight:statusHeight + navigationHeight
                                                                                 parentViewController:self];
     containerVC.delegate = self;
@@ -68,6 +69,8 @@
     self.navigationController.navigationBarHidden = NO;
     [[NSUserDefaults standardUserDefaults] setValue:@"no" forKey:@"enableGesture"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
 }
 
 /*
@@ -77,11 +80,18 @@
 -(void)viewDidAppear:(BOOL)animated{
     
     [super viewDidAppear:animated];
-    
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
-    
+    if ([self.strWifiName length]) {
+        
+        PopUpViewController *popupVc = [self.storyboard instantiateViewControllerWithIdentifier:@"PopUpViewController"];
+        popupVc.strWifi_Name = self.strWifiName;
+        self.strWifiName = @"";
+//        popupVc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+//        [self presentViewController:popupVc animated:YES completion:nil];
+        [self.navigationController pushViewController:popupVc animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -101,78 +111,6 @@
     
 }
 
-/*
-#pragma mark -
-#pragma mark Notification Handling
-- (void)reachabilityDidChange:(NSNotification *)notification {
-    Reachability *reachability = (Reachability *)[notification object];
-    
-    if ([reachability isReachable]) {
-        NSLog(@"Reachable");
-        
-        if ([MTReachabilityManager isReachableViaWiFi]) {
-            
-            UILocalNotification* localNotification = [[UILocalNotification alloc] init];
-            
-            localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:3];
-            
-            localNotification.alertBody = @"Wifi Available";
-            
-            localNotification.timeZone = [NSTimeZone defaultTimeZone];
-            
-            localNotification.soundName = UILocalNotificationDefaultSoundName; // den den den
-            
-            //localNotification.soundName = @"sound.caf";
-            
-            [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-            
-            // Request to reload table view data
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:self];
-        }
-        else if([MTReachabilityManager isReachableViaWWAN]){
-            
-            UILocalNotification* localNotification = [[UILocalNotification alloc] init];
-            
-            localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:3];
-            
-            localNotification.alertBody = @"3G/2G Available";
-            
-            localNotification.timeZone = [NSTimeZone defaultTimeZone];
-            
-            localNotification.soundName = UILocalNotificationDefaultSoundName; // den den den
-            
-            //localNotification.soundName = @"sound.caf";
-            
-            [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-            
-            // Request to reload table view data
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:self];
-        }
-        
-    } else {
-        NSLog(@"Unreachable");
-        UILocalNotification* localNotification = [[UILocalNotification alloc] init];
-        
-        localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:3];
-        
-        localNotification.alertBody = @"Jaffa no";
-        
-        localNotification.timeZone = [NSTimeZone defaultTimeZone];
-        
-        localNotification.soundName = UILocalNotificationDefaultSoundName; // den den den
-        
-        //localNotification.soundName = @"sound.caf";
-        
-        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-        
-        
-        // Request to reload table view data
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:self];
-    }
-}
-*/
-
-
 
 
 #pragma mark - Custom Methods
@@ -186,21 +124,8 @@
         
     }];
     [controller addAction:okAction];
-    
     [self presentViewController:controller animated:YES completion:nil];
-    
 }
-
-
-/*
- 
- 
- 
- 
- 
- hsejar@271968
- 
- */
 
 #pragma mark - User Actions
 
@@ -216,4 +141,5 @@
     [self.menuContainerViewController toggleLeftSideMenuCompletion:nil];
     
 }
+
 @end

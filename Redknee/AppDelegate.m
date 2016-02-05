@@ -16,6 +16,7 @@
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import "Geotification.h"
 #import "Utilities.h"
+#import "PopUpViewController.h"
 
 //#import "MTReachabilityManager.h"
 
@@ -43,18 +44,18 @@
     [[NSUserDefaults standardUserDefaults] setValue:@"no" forKey:@"enableGesture"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-//    NSString *remoteHostName = @"www.apple.com";
-//    self.hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
-////    [self.hostReachability startNotifier];
-////    [self updateInterfaceWithReachability:self.hostReachability];
-//    
-//    self.internetReachability = [Reachability reachabilityForInternetConnection];
-////    [self.internetReachability startNotifier];
-////    [self updateInterfaceWithReachability:self.internetReachability];
-//    
-//    self.wifiReachability = [Reachability reachabilityForLocalWiFi];
-//    [self.wifiReachability startNotifier];
-////    [self updateInterfaceWithReachability:self.wifiReachability];
+    //    NSString *remoteHostName = @"www.apple.com";
+    //    self.hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
+    ////    [self.hostReachability startNotifier];
+    ////    [self updateInterfaceWithReachability:self.hostReachability];
+    //
+    //    self.internetReachability = [Reachability reachabilityForInternetConnection];
+    ////    [self.internetReachability startNotifier];
+    ////    [self updateInterfaceWithReachability:self.internetReachability];
+    //
+    //    self.wifiReachability = [Reachability reachabilityForLocalWiFi];
+    //    [self.wifiReachability startNotifier];
+    //    [self updateInterfaceWithReachability:self.wifiReachability];
     
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     
@@ -71,12 +72,19 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert
-                                                                                        | UIUserNotificationTypeBadge
-                                                                                        | UIUserNotificationTypeSound) categories:nil];
+                                                                                         | UIUserNotificationTypeBadge
+                                                                                         | UIUserNotificationTypeSound) categories:nil];
     [application registerUserNotificationSettings:settings];
+    
+    
+    [self performSelector:@selector(registerGeofencing) withObject:nil afterDelay:1.0];
+    
+    
+    return YES;
+}
 
-    
-    
+
+-(void)registerGeofencing{
     
     self.locationManager = [CLLocationManager new];
     [self.locationManager setDelegate:self];
@@ -96,9 +104,6 @@
     //Calling the the method to add the co-ordinates of the mumbai location to user NSUseDefaults
     [self addGeotificationCoordinate:coordinate radius:radius identifier:identifier note:note eventType:eventType];
     
-    
-    
-    
     //Co-ordinates of the maumbai
     CLLocationCoordinate2D tcoordinate;
     tcoordinate.latitude = 35.6833;
@@ -115,11 +120,7 @@
     [self saveAllGeotifications];
     
     [self startGeotificationMonitoring];
-    
-    
-    return YES;
 }
-
 
 -(BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler{
     
@@ -130,21 +131,21 @@
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
     
     
-//    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        // Add code here to do background processing
-//        //
-//        //
-//        
-//        [self scheduleLocalNotificationwithOUTMessage];
-//        NSLog(@"results of the background processing");
-//        dispatch_async( dispatch_get_main_queue(), ^{
-//            // Add code here to update the UI/send notifications based on the
-//            // results of the background processing
-//            
-//            
-//        });
-//    });
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChangedBG:) name:kReachabilityChangedNotification object:nil];
+    //    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    //        // Add code here to do background processing
+    //        //
+    //        //
+    //
+    //        [self scheduleLocalNotificationwithOUTMessage];
+    //        NSLog(@"results of the background processing");
+    //        dispatch_async( dispatch_get_main_queue(), ^{
+    //            // Add code here to update the UI/send notifications based on the
+    //            // results of the background processing
+    //
+    //
+    //        });
+    //    });
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChangedBG:) name:kReachabilityChangedNotification object:nil];
     
 }
 
@@ -158,22 +159,53 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChangedBG:) name:kReachabilityChangedNotification object:nil];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChangedBG:) name:kReachabilityChangedNotification object:nil];
+    //
+    //    NSString *remoteHostName = @"www.google.co.in";
+    //    self.hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
+    //    [self.hostReachability startNotifier];
+    ////    [self updateInterfaceWithReachability:self.hostReachability];
+    //
+    //    self.internetReachability = [Reachability reachabilityForInternetConnection];
+    ////    [self.internetReachability startNotifier];
+    //    //    [self updateInterfaceWithReachability:self.internetReachability];
+    //
+    //    self.wifiReachability = [Reachability reachabilityForLocalWiFi];
+    //    [self.wifiReachability startNotifier];
+    //    //    [self updateInterfaceWithReachability:self.wifiReachability];
+    //    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+    //    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
-    NSString *remoteHostName = @"www.google.co.in";
+    
+    self.locationTracker = [[LocationTracker alloc]init];
+    [self.locationTracker startLocationTracking];
+    
+    //Send the best location to server every 60 seconds
+    //You may adjust the time interval depends on the need of your app.
+    NSTimeInterval time = 60.0;
+    self.locationUpdateTimer =
+    [NSTimer scheduledTimerWithTimeInterval:time
+                                     target:self
+                                   selector:@selector(updateLocation)
+                                   userInfo:nil
+                                    repeats:YES];
+    
+}
+
+-(void)updateLocation {
+    NSLog(@"updateLocation");
+    
+    [self.locationTracker updateLocationToServer];
+    
+    NSString *remoteHostName = @"www.apple.com";
     self.hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
     [self.hostReachability startNotifier];
-//    [self updateInterfaceWithReachability:self.hostReachability];
-    
-    self.internetReachability = [Reachability reachabilityForInternetConnection];
-//    [self.internetReachability startNotifier];
-    //    [self updateInterfaceWithReachability:self.internetReachability];
+    [self updateInterfaceWithReachability:self.hostReachability];
     
     self.wifiReachability = [Reachability reachabilityForLocalWiFi];
     [self.wifiReachability startNotifier];
     //    [self updateInterfaceWithReachability:self.wifiReachability];
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -195,7 +227,42 @@
     UIApplicationState state = [application applicationState];
     if (state == UIApplicationStateInactive) {
         // Application was in the background when notification was delivered.
-    } else {
+        
+        NSLog(@"%@",notification.alertBody);
+        
+        NSArray *arr = [notification.alertBody componentsSeparatedByString:@"with "];
+        NSLog(@"%@",arr);
+        NSString *strSSID1 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiSSID1"];
+        NSString *strSSID2 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiSSID2"];
+        
+        if (arr.count>1) {
+            
+            if ([[arr objectAtIndex:1] isEqualToString:strSSID1]) {
+                
+                
+                NSLog(@"open popup");
+                
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+                
+                PopUpViewController *popupVc = [storyboard instantiateViewControllerWithIdentifier:@"PopUpViewController"];
+                popupVc.strWifi_Name = strSSID1;
+                popupVc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                [self.window.rootViewController presentViewController:popupVc animated:YES completion:nil];
+                
+            }
+            else if ([[arr objectAtIndex:1] isEqualToString:strSSID2]){
+                
+                NSLog(@"open popup");
+                
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+                
+                PopUpViewController *popupVc = [storyboard instantiateViewControllerWithIdentifier:@"PopUpViewController"];
+                popupVc.strWifi_Name = strSSID2;
+                popupVc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                [self.window.rootViewController presentViewController:popupVc animated:YES completion:nil];
+            }
+            
+        }
         
     }
 }
@@ -203,9 +270,7 @@
 #pragma mark -
 #pragma mark Notification Handling
 
-/*!
- * Called by Reachability whenever status changes.
- */
+
 
 - (void) reachabilityChanged:(NSNotification *)note
 {
@@ -217,7 +282,7 @@
 - (void) reachabilityChangedBG:(NSNotification *)note
 {
     
-    [self isWiFiEnabled];
+    //    [self isWiFiEnabled];
     Reachability* curReach = [note object];
     NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
     [self updateInterfaceWithReachability:curReach];
@@ -263,9 +328,7 @@
     {
         case NotReachable:        {
             statusString = NSLocalizedString(@"Access Not Available", @"Text field text for access is not available");
-            /*
-             Minor interface detail- connectionRequired may return YES even when the host is unreachable. We cover that up here...
-             */
+            
             connectionRequired = NO;
             break;
         }
@@ -283,6 +346,7 @@
             NSDictionary *dict = [NSDictionary dictionaryWithDictionary:[WifiModel fetchSSIDInfo]];
             NSString *strCarrierName = [NSString stringWithFormat:@"%@",[dict valueForKey:@"SSID"]];
             statusString = [NSString stringWithFormat:@"Reachable WiFi with %@",strCarrierName];
+            [self scheduleLocalNotificationwithMessage:statusString];
             //            statusString= NSLocalizedString(@"Reachable WiFi", @"");
             break;
         }
@@ -296,11 +360,6 @@
     
     NSLog(@"%@",statusString);
     
-
-    [self scheduleLocalNotificationwithMessage:statusString];
-    
-    [self showAlertViewTitle:@"Message" andMessage:statusString andTag:0];
-    
     
 }
 
@@ -310,13 +369,13 @@
     
     localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:0];
     
-    localNotification.alertBody = strMessage;
+    localNotification.alertTitle = strMessage;
     
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     
     localNotification.soundName = UILocalNotificationDefaultSoundName; // den den den
     
-    localNotification.soundName = @"sound.caf";
+    //    localNotification.soundName = @"sound.caf";
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
@@ -326,6 +385,8 @@
     UILocalNotification* localNotification = [[UILocalNotification alloc] init];
     
     localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:0];
+    
+    localNotification.alertTitle = @"Hello";
     
     localNotification.alertBody = @"BG Notification";
     
@@ -357,22 +418,22 @@
     
 }
 
-- (BOOL) isWiFiEnabled {
-    
-    NSCountedSet * cset = [NSCountedSet new];
-    
-    struct ifaddrs *interfaces;
-    
-    if( ! getifaddrs(&interfaces) ) {
-        for( struct ifaddrs *interface = interfaces; interface; interface = interface->ifa_next) {
-            if ( (interface->ifa_flags & IFF_UP) == IFF_UP ) {
-                [cset addObject:[NSString stringWithUTF8String:interface->ifa_name]];
-            }
-        }
-    }
-    
-    return [cset countForObject:@"awdl0"] > 1 ? YES : NO;
-}
+//- (BOOL) isWiFiEnabled {
+//
+//    NSCountedSet * cset = [NSCountedSet new];
+//
+//    struct ifaddrs *interfaces;
+//
+//    if( ! getifaddrs(&interfaces) ) {
+//        for( struct ifaddrs *interface = interfaces; interface; interface = interface->ifa_next) {
+//            if ( (interface->ifa_flags & IFF_UP) == IFF_UP ) {
+//                [cset addObject:[NSString stringWithUTF8String:interface->ifa_name]];
+//            }
+//        }
+//    }
+//
+//    return [cset countForObject:@"awdl0"] > 1 ? YES : NO;
+//}
 
 
 //===============================GeoFencing=====================================================

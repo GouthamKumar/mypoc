@@ -27,7 +27,6 @@
 }
 
 
-
 + (NSString *) carrierName {
     
     CTCarrier *carrier = [self carrier];

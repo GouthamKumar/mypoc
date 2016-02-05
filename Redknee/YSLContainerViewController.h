@@ -21,6 +21,7 @@
 @property (nonatomic, strong) UIScrollView *contentScrollView;
 @property (nonatomic, strong, readonly) NSMutableArray *titles;
 @property (nonatomic, strong, readonly) NSMutableArray *childControllers;
+@property (nonatomic, assign) CGFloat topBarHeight;
 
 @property (nonatomic, strong) UIFont  *menuItemFont;
 @property (nonatomic, strong) UIColor *menuItemTitleColor;

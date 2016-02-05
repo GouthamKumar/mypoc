@@ -47,4 +47,39 @@
     [container setLeftMenuWidth:300.0f];
     [self.menuContainerViewController toggleLeftSideMenuCompletion:nil];
 }
+
+- (IBAction)btnWifi_SaveTapped:(id)sender {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:[NSString stringWithFormat:@"%@",self.textWifi_SSID1.text] forKey:@"wifiSSID1"];
+    [defaults setValue:[NSString stringWithFormat:@"%@",self.textWifi_Message1.text] forKey:@"wifiMessage1"];
+    [defaults setValue:[NSString stringWithFormat:@"%@",self.textWifi_Promo1.text] forKey:@"wifiPromo1"];
+    [defaults setValue:[NSString stringWithFormat:@"%@",self.textWifi_Pack1.text] forKey:@"wifiPack1"];
+    [defaults setValue:[NSString stringWithFormat:@"%@",self.textWifi_Voice1.text] forKey:@"wifiVoice1"];
+    [defaults setValue:[NSString stringWithFormat:@"%@",self.textWifi_Data1.text] forKey:@"wifiData1"];
+    [defaults setValue:[NSString stringWithFormat:@"%@",self.textWifi_Price1.text] forKey:@"wifiPrice1"];
+    [defaults setValue:[NSString stringWithFormat:@"%@",self.textWifi_Validity1.text] forKey:@"wifiValidity1"];
+    
+    [defaults setValue:[NSString stringWithFormat:@"%@",self.textWifi_SSID2.text] forKey:@"wifiSSID2"];
+    [defaults setValue:[NSString stringWithFormat:@"%@",self.textWifi_Message2.text] forKey:@"wifiMessage2"];
+    [defaults setValue:[NSString stringWithFormat:@"%@",self.textWifi_Promo2.text] forKey:@"wifiPromo2"];
+    [defaults setValue:[NSString stringWithFormat:@"%@",self.textWifi_Pack2.text] forKey:@"wifiPack2"];
+    [defaults setValue:[NSString stringWithFormat:@"%@",self.textWifi_Voice2.text] forKey:@"wifiVoice2"];
+    [defaults setValue:[NSString stringWithFormat:@"%@",self.textWifi_Data2.text] forKey:@"wifiData2"];
+    [defaults setValue:[NSString stringWithFormat:@"%@",self.textWifi_Price2.text] forKey:@"wifiPrice2"];
+    [defaults setValue:[NSString stringWithFormat:@"%@",self.textWifi_Validity2.text] forKey:@"wifiValidity2"];
+    
+    [defaults synchronize];
+    
+    
+}
+
+#pragma mark - UItextField Methods
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return  YES;
+}
+
 @end

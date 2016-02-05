@@ -10,6 +10,8 @@
 
 @interface ViewController : UIViewController
 
+@property (nonatomic, retain) NSString *strWifiName;
+
 - (IBAction)btnMenuTapped:(id)sender;
 
 @end

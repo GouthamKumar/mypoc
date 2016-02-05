@@ -12,8 +12,12 @@
 		2221F0DD1C633505006863D1 /* MyUsageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2221F0DC1C633505006863D1 /* MyUsageViewController.m */; settings = {ASSET_TAGS = (); }; };
 		22302DB71C63611B00A03011 /* abc.png in Resources */ = {isa = PBXBuildFile; fileRef = 22302DB61C63611B00A03011 /* abc.png */; settings = {ASSET_TAGS = (); }; };
 		22302DBB1C63698100A03011 /* asdf.png in Resources */ = {isa = PBXBuildFile; fileRef = 22302DBA1C63698100A03011 /* asdf.png */; settings = {ASSET_TAGS = (); }; };
+		223C24921C647E05002BFA7E /* LocationTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 223C248D1C647E05002BFA7E /* LocationTracker.m */; settings = {ASSET_TAGS = (); }; };
+		223C24931C647E05002BFA7E /* BackgroundTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 223C248F1C647E05002BFA7E /* BackgroundTaskManager.m */; settings = {ASSET_TAGS = (); }; };
+		223C24941C647E05002BFA7E /* LocationShareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 223C24911C647E05002BFA7E /* LocationShareModel.m */; settings = {ASSET_TAGS = (); }; };
 		224E73571C638E6C00BFA7F4 /* libAmChartsMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 224E73541C638DCE00BFA7F4 /* libAmChartsMobile.a */; };
 		224E735B1C638ED300BFA7F4 /* AmChartResources.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 224E73561C638DCE00BFA7F4 /* AmChartResources.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2277FD5C1C64C2E90084A206 /* PopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2277FD5B1C64C2E90084A206 /* PopUpViewController.m */; settings = {ASSET_TAGS = (); }; };
 		22B2221F1C60B86B0028E7DB /* splash_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B2221E1C60B86B0028E7DB /* splash_screen.png */; };
 		22B222221C60B8FF0028E7DB /* redknee_logo326ppi.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B222201C60B8FF0028E7DB /* redknee_logo326ppi.png */; };
 		22B222231C60B8FF0028E7DB /* smart_logo_326ppi.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B222211C60B8FF0028E7DB /* smart_logo_326ppi.png */; };
@@ -129,7 +133,15 @@
 		2221F0DC1C633505006863D1 /* MyUsageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUsageViewController.m; sourceTree = "<group>"; };
 		22302DB61C63611B00A03011 /* abc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abc.png; sourceTree = "<group>"; };
 		22302DBA1C63698100A03011 /* asdf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asdf.png; sourceTree = "<group>"; };
+		223C248C1C647E05002BFA7E /* LocationTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationTracker.h; sourceTree = "<group>"; };
+		223C248D1C647E05002BFA7E /* LocationTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTracker.m; sourceTree = "<group>"; };
+		223C248E1C647E05002BFA7E /* BackgroundTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundTaskManager.h; sourceTree = "<group>"; };
+		223C248F1C647E05002BFA7E /* BackgroundTaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundTaskManager.m; sourceTree = "<group>"; };
+		223C24901C647E05002BFA7E /* LocationShareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationShareModel.h; sourceTree = "<group>"; };
+		223C24911C647E05002BFA7E /* LocationShareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationShareModel.m; sourceTree = "<group>"; };
 		224E73451C638DCE00BFA7F4 /* AmChartsLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AmChartsLibrary.xcodeproj; path = "../../../../Downloads/AmCharts-master/AmChartsLibrary.xcodeproj"; sourceTree = "<group>"; };
+		2277FD5A1C64C2E90084A206 /* PopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpViewController.h; sourceTree = "<group>"; };
+		2277FD5B1C64C2E90084A206 /* PopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpViewController.m; sourceTree = "<group>"; };
 		22B2221E1C60B86B0028E7DB /* splash_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_screen.png; sourceTree = "<group>"; };
 		22B222201C60B8FF0028E7DB /* redknee_logo326ppi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redknee_logo326ppi.png; sourceTree = "<group>"; };
 		22B222211C60B8FF0028E7DB /* smart_logo_326ppi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smart_logo_326ppi.png; sourceTree = "<group>"; };
@@ -232,6 +244,19 @@
 			name = Menu;
 			sourceTree = "<group>";
 		};
+		223C24991C64864C002BFA7E /* LocationTracker */ = {
+			isa = PBXGroup;
+			children = (
+				223C248C1C647E05002BFA7E /* LocationTracker.h */,
+				223C248D1C647E05002BFA7E /* LocationTracker.m */,
+				223C248E1C647E05002BFA7E /* BackgroundTaskManager.h */,
+				223C248F1C647E05002BFA7E /* BackgroundTaskManager.m */,
+				223C24901C647E05002BFA7E /* LocationShareModel.h */,
+				223C24911C647E05002BFA7E /* LocationShareModel.m */,
+			);
+			name = LocationTracker;
+			sourceTree = "<group>";
+		};
 		224E73461C638DCE00BFA7F4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +314,8 @@
 				40304E5F1C5E8147008E3EE5 /* ViewController.m */,
 				22B222241C60C0080028E7DB /* LoginViewController.h */,
 				22B222251C60C0080028E7DB /* LoginViewController.m */,
+				2277FD5A1C64C2E90084A206 /* PopUpViewController.h */,
+				2277FD5B1C64C2E90084A206 /* PopUpViewController.m */,
 				40304E8B1C5E82A4008E3EE5 /* CarrierModel.h */,
 				40304E8C1C5E82A5008E3EE5 /* CarrierModel.m */,
 				408375D61C5EEFF500B5E7F6 /* WifiModel.h */,
@@ -370,6 +397,7 @@
 		408375B81C5EE16300B5E7F6 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				223C24991C64864C002BFA7E /* LocationTracker */,
 				406F16871C60373F003AF8F5 /* SideMenu */,
 				408375B71C5EDF1E00B5E7F6 /* Rechability */,
 				408375C91C5EE84500B5E7F6 /* RechabilityManager */,
@@ -591,12 +619,15 @@
 				406F168F1C60374E003AF8F5 /* MFSideMenuContainerViewController.m in Sources */,
 				406F16911C60374E003AF8F5 /* MFSideMenuShadow.m in Sources */,
 				40304E5D1C5E8147008E3EE5 /* AppDelegate.m in Sources */,
+				223C24921C647E05002BFA7E /* LocationTracker.m in Sources */,
 				408375D81C5EEFF500B5E7F6 /* WifiModel.m in Sources */,
 				40304E8D1C5E82A5008E3EE5 /* CarrierModel.m in Sources */,
 				406F16901C60374E003AF8F5 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				22B222261C60C0080028E7DB /* LoginViewController.m in Sources */,
 				2221F0DD1C633505006863D1 /* MyUsageViewController.m in Sources */,
+				223C24931C647E05002BFA7E /* BackgroundTaskManager.m in Sources */,
 				2221F0DA1C6334EC006863D1 /* MyPlanViewController.m in Sources */,
+				2277FD5C1C64C2E90084A206 /* PopUpViewController.m in Sources */,
 				408375D51C5EEBBC00B5E7F6 /* Reachability.m in Sources */,
 				408375BE1C5EE19200B5E7F6 /* YSLScrollMenuView.m in Sources */,
 				2221F0D71C633482006863D1 /* SettingsViewController.m in Sources */,
@@ -604,6 +635,7 @@
 				A3A6E5291C6324E300947770 /* Utilities.m in Sources */,
 				40304E5A1C5E8147008E3EE5 /* main.m in Sources */,
 				408375BD1C5EE19200B5E7F6 /* YSLContainerViewController.m in Sources */,
+				223C24941C647E05002BFA7E /* LocationShareModel.m in Sources */,
 				408375C11C5EE2FA00B5E7F6 /* CurrentPlansViewController.m in Sources */,
 				408375C71C5EE33000B5E7F6 /* RecommendedPlansViewController.m in Sources */,
 				408375C41C5EE31400B5E7F6 /* BestOffersViewController.m in Sources */,
