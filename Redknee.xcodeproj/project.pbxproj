@@ -12,7 +12,7 @@
 		2221F0DD1C633505006863D1 /* MyUsageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2221F0DC1C633505006863D1 /* MyUsageViewController.m */; settings = {ASSET_TAGS = (); }; };
 		22302DB71C63611B00A03011 /* abc.png in Resources */ = {isa = PBXBuildFile; fileRef = 22302DB61C63611B00A03011 /* abc.png */; settings = {ASSET_TAGS = (); }; };
 		22302DBB1C63698100A03011 /* asdf.png in Resources */ = {isa = PBXBuildFile; fileRef = 22302DBA1C63698100A03011 /* asdf.png */; settings = {ASSET_TAGS = (); }; };
-		223C24921C647E05002BFA7E /* LocationTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 223C248D1C647E05002BFA7E /* LocationTracker.m */; settings = {ASSET_TAGS = (); }; };
+		223C24921C647E05002BFA7E /* LocationTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 223C248D1C647E05002BFA7E /* LocationTracker.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		223C24931C647E05002BFA7E /* BackgroundTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 223C248F1C647E05002BFA7E /* BackgroundTaskManager.m */; settings = {ASSET_TAGS = (); }; };
 		223C24941C647E05002BFA7E /* LocationShareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 223C24911C647E05002BFA7E /* LocationShareModel.m */; settings = {ASSET_TAGS = (); }; };
 		224E73571C638E6C00BFA7F4 /* libAmChartsMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 224E73541C638DCE00BFA7F4 /* libAmChartsMobile.a */; };

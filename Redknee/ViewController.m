@@ -70,6 +70,8 @@
     [[NSUserDefaults standardUserDefaults] setValue:@"no" forKey:@"enableGesture"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
 }
 
@@ -80,8 +82,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     
     [super viewDidAppear:animated];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
     
     if ([self.strWifiName length]) {
         

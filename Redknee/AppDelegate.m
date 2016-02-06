@@ -17,12 +17,16 @@
 #import "Geotification.h"
 #import "Utilities.h"
 #import "PopUpViewController.h"
+#import "LocationShareModel.h"
 
 //#import "MTReachabilityManager.h"
 
 @import CoreLocation;
 
-@interface AppDelegate () <CLLocationManagerDelegate, PopupDelegate>
+@interface AppDelegate () <CLLocationManagerDelegate, PopupDelegate>{
+    
+    int notificationFlag;
+}
 
 @property (nonatomic) Reachability *hostReachability;
 @property (nonatomic) Reachability *internetReachability;
@@ -30,6 +34,7 @@
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) NSMutableArray *geotifications;
+@property (strong,nonatomic) LocationShareModel * shareModel;
 
 @end
 
@@ -78,6 +83,9 @@
     
     
     [self performSelector:@selector(registerGeofencing) withObject:nil afterDelay:1.0];
+    
+    self.shareModel = [LocationShareModel sharedModel];
+    self.locationTracker = [[LocationTracker alloc]init];
     
     
     return YES;
@@ -129,24 +137,15 @@
 
 
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
-    
-    
-    //    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-    //        // Add code here to do background processing
-    //        //
-    //        //
-    //
-    //        [self scheduleLocalNotificationwithOUTMessage];
-    //        NSLog(@"results of the background processing");
-    //        dispatch_async( dispatch_get_main_queue(), ^{
-    //            // Add code here to update the UI/send notifications based on the
-    //            // results of the background processing
-    //
-    //
-    //        });
-    //    });
-    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChangedBG:) name:kReachabilityChangedNotification object:nil];
-    
+ 
+        dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSLog(@"results of the background processing");
+            dispatch_async( dispatch_get_main_queue(), ^{
+                
+                completionHandler(UIBackgroundFetchResultNewData);
+                
+            });
+        });
 }
 
 
@@ -159,30 +158,20 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     
-    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChangedBG:) name:kReachabilityChangedNotification object:nil];
-    //
-    //    NSString *remoteHostName = @"www.google.co.in";
-    //    self.hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
-    //    [self.hostReachability startNotifier];
-    ////    [self updateInterfaceWithReachability:self.hostReachability];
-    //
-    //    self.internetReachability = [Reachability reachabilityForInternetConnection];
-    ////    [self.internetReachability startNotifier];
-    //    //    [self updateInterfaceWithReachability:self.internetReachability];
-    //
-    //    self.wifiReachability = [Reachability reachabilityForLocalWiFi];
-    //    [self.wifiReachability startNotifier];
-    //    //    [self updateInterfaceWithReachability:self.wifiReachability];
-    //    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    //    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    
-    
-    self.locationTracker = [[LocationTracker alloc]init];
-    [self.locationTracker startLocationTracking];
-    
     //Send the best location to server every 60 seconds
     //You may adjust the time interval depends on the need of your app.
-    NSTimeInterval time = 60.0;
+    NSTimeInterval time = 8.0;
+    
+    if ([self.locationUpdateTimer isValid]) {
+        
+        [self.locationUpdateTimer invalidate];
+        
+    }
+    if ([self.locationTracker.shareModel.timer isValid]) {
+        
+        [self.locationTracker.shareModel.timer invalidate];
+    }
+    [self.locationTracker startLocationTracking];
     self.locationUpdateTimer =
     [NSTimer scheduledTimerWithTimeInterval:time
                                      target:self
@@ -193,11 +182,12 @@
 }
 
 -(void)updateLocation {
+    
     NSLog(@"updateLocation");
     
     [self.locationTracker updateLocationToServer];
-    
-    NSString *remoteHostName = @"www.apple.com";
+    notificationFlag = 0;
+    NSString *remoteHostName = @"www.google.co.in";
     self.hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
     [self.hostReachability startNotifier];
     [self updateInterfaceWithReachability:self.hostReachability];
@@ -213,6 +203,15 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    
+    NSLog(@"applicationDidBecomeActive");
+    
+    [self.locationUpdateTimer invalidate];
+    
+    [self.locationTracker.shareModel.timer invalidate];
+    
+    [self.locationTracker stopLocationTracking];
+    
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
@@ -230,39 +229,46 @@
         
         NSLog(@"%@",notification.alertBody);
         
-        NSArray *arr = [notification.alertBody componentsSeparatedByString:@"with "];
-        NSLog(@"%@",arr);
-        NSString *strSSID1 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiSSID1"];
-        NSString *strSSID2 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiSSID2"];
+        NSString *strSSID1 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage1"];
+        NSString *strSSID2 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage2"];
         
-        if (arr.count>1) {
+        if ([notification.alertBody isEqualToString:strSSID1]) {
             
-            if ([[arr objectAtIndex:1] isEqualToString:strSSID1]) {
-                
-                
-                NSLog(@"open popup");
-                
-                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-                
-                PopUpViewController *popupVc = [storyboard instantiateViewControllerWithIdentifier:@"PopUpViewController"];
-                popupVc.strWifi_Name = strSSID1;
-                popupVc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-                popupVc.delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                [self.window.rootViewController presentViewController:popupVc animated:YES completion:nil];
-                
-            }
-            else if ([[arr objectAtIndex:1] isEqualToString:strSSID2]){
-                
-                NSLog(@"open popup");
-                
-                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-                
-                PopUpViewController *popupVc = [storyboard instantiateViewControllerWithIdentifier:@"PopUpViewController"];
-                popupVc.strWifi_Name = strSSID2;
-                popupVc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-                [self.window.rootViewController presentViewController:popupVc animated:YES completion:nil];
-            }
             
+            NSLog(@"open popup 1");
+            
+            [[NSUserDefaults standardUserDefaults] setValue:strSSID1 forKey:@"selectedMessage"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+            
+            MFSideMenuContainerViewController *container = (MFSideMenuContainerViewController *)self.window.rootViewController;
+            UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"popupNavigation"];
+            UIViewController *leftSideMenuViewController = [storyboard instantiateViewControllerWithIdentifier:@"SideMenuViewController"];
+            [container setLeftMenuViewController:leftSideMenuViewController];
+            [container setCenterViewController:navigationController];
+            
+            [container setCenterViewController:navigationController];
+            
+            
+        }
+        else if ([notification.alertBody isEqualToString:strSSID2]){
+            
+            NSLog(@"open popup 2");
+            
+            
+            [[NSUserDefaults standardUserDefaults] setValue:strSSID2 forKey:@"selectedMessage"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+            
+            MFSideMenuContainerViewController *container = (MFSideMenuContainerViewController *)self.window.rootViewController;
+            UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"popupNavigation"];
+            UIViewController *leftSideMenuViewController = [storyboard instantiateViewControllerWithIdentifier:@"SideMenuViewController"];
+            [container setLeftMenuViewController:leftSideMenuViewController];
+            [container setCenterViewController:navigationController];
+            
+            [container setCenterViewController:navigationController];
         }
         
     }
@@ -351,9 +357,20 @@
             NSLog(@"%@",[WifiModel fetchSSIDInfo]);
             NSDictionary *dict = [NSDictionary dictionaryWithDictionary:[WifiModel fetchSSIDInfo]];
             NSString *strCarrierName = [NSString stringWithFormat:@"%@",[dict valueForKey:@"SSID"]];
-            statusString = [NSString stringWithFormat:@"Reachable WiFi with %@",strCarrierName];
-            [self scheduleLocalNotificationwithMessage:statusString];
-            //            statusString= NSLocalizedString(@"Reachable WiFi", @"");
+            NSString *strSSID1 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiSSID1"];
+            if ([strCarrierName isEqualToString:strSSID1]) {
+                
+                [self scheduleLocalNotificationwithMessage:[[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage1"]];
+            }
+            NSString *strSSID2 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiSSID2"];
+            if ([strCarrierName isEqualToString:strSSID2]) {
+                
+                [self scheduleLocalNotificationwithMessage:[[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage2"]];
+            }
+            else{
+                
+                [self scheduleLocalNotificationwithMessage:statusString];
+            }
             break;
         }
     }
@@ -371,21 +388,23 @@
 
 -(void)scheduleLocalNotificationwithMessage:(NSString *)strMessage{
     
-    UILocalNotification* localNotification = [[UILocalNotification alloc] init];
-    
-    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:0];
-    
-    localNotification.alertTitle = @"Goutham";
-    
-    localNotification.alertTitle = strMessage;
-    
-    localNotification.timeZone = [NSTimeZone defaultTimeZone];
-    
-    localNotification.soundName = UILocalNotificationDefaultSoundName; // den den den
-    
-    //    localNotification.soundName = @"sound.caf";
-    
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    if (notificationFlag == 0) {
+        
+        UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+        
+        localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:0];
+        
+        localNotification.alertBody = strMessage;
+        
+        localNotification.timeZone = [NSTimeZone defaultTimeZone];
+        
+        localNotification.soundName = UILocalNotificationDefaultSoundName; // den den den
+        
+        //    localNotification.soundName = @"sound.caf";
+        
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    }
+    notificationFlag++;
 }
 
 -(void)scheduleLocalNotificationwithOUTMessage{
@@ -393,8 +412,6 @@
     UILocalNotification* localNotification = [[UILocalNotification alloc] init];
     
     localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:0];
-    
-    localNotification.alertTitle = @"Hello";
     
     localNotification.alertBody = @"BG Notification";
     

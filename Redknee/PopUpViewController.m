@@ -11,8 +11,13 @@
 #import "CurrentPlansViewController.h"
 #import "BestOffersViewController.h"
 #import "RecommendedPlansViewController.h"
+#import "LoginViewController.h"
+#import "MFSideMenu.h"
 
-@interface PopUpViewController ()<YSLContainerViewControllerDelegate>
+@interface PopUpViewController ()<YSLContainerViewControllerDelegate>{
+    
+    YSLContainerViewController *containerVC;
+}
 
 @end
 
@@ -21,7 +26,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.lblTitle.text = [NSString stringWithFormat:@"Connected with %@ wifi",self.strWifi_Name];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    
+    NSString *strMessage = [[NSUserDefaults standardUserDefaults] valueForKey:@"selectedMessage"];
+    
+    self.lblTitle.text = [NSString stringWithFormat:@"Connected with %@ wifi",strMessage];
+    
     
     // Do any additional setup after loading the view.
 }
@@ -30,29 +42,11 @@
     
     [super viewDidAppear:animated];
     
-    CurrentPlansViewController *currentPlansVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CurrentPlansViewController"];
-    currentPlansVC.title = @"CURRENT PLANS";
     
-    BestOffersViewController *bestOffersVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BestOffersViewController"];
-    bestOffersVC.title = @"BEST OFFERS";
-    
-    RecommendedPlansViewController *recomendedVC = [self.storyboard instantiateViewControllerWithIdentifier:@"RecommendedPlansViewController"];
-    recomendedVC.title = @"RECOMMENDED PLANS";
-    
-    // ContainerView
-    
-    float navigationHeight = 64;
-    
-    YSLContainerViewController *containerVC = [[YSLContainerViewController alloc]initWithControllers:@[currentPlansVC,bestOffersVC,recomendedVC]
-                                                                                        topBarHeight:navigationHeight+128
-                                                                                parentViewController:self];
-    containerVC.delegate = self;
-    containerVC.menuItemFont = [UIFont fontWithName:@"Futura-Medium" size:14];
-    
-    [self.view addSubview:containerVC.view];
-    
+    [self addChildViewsWithHeight:192];
     
     [self.view bringSubviewToFront:self.viewAlert];
+    [self.view bringSubviewToFront:self.btnMenu];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,14 +72,70 @@
 }
 */
 
+#pragma mark - User Actions
+
 - (IBAction)btnCancelTapped:(id)sender {
     
-    [self.delegate dismissfromRootView:self];
-//    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    
 }
 
 - (IBAction)btnBuyTapped:(id)sender {
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        self.viewAlert.frame =  CGRectMake(0, 0, 0, 0);
+//        [self.viewAlert removeFromSuperview];
+        self.viewAlert.alpha = 0.0;
+        
+    }];
+    
+    [containerVC.view removeFromSuperview];
+    
+    [UIView animateWithDuration:0.50 animations:^{
+        
+        [self addChildViewsWithHeight:64];
+        
+    }];
+    
+    [self.view bringSubviewToFront:self.btnMenu];
 }
+
+- (IBAction)btnMenuTapped:(id)sender {
+//    [self dismissViewControllerAnimated:YES completion:nil];
+    UIApplication *myApplication = [UIApplication sharedApplication];
+    UIWindow *mainWindow = [myApplication keyWindow];
+    MFSideMenuContainerViewController *container  = (MFSideMenuContainerViewController*)[mainWindow rootViewController];
+    
+    UIViewController *flyoutMenu = [self.storyboard instantiateViewControllerWithIdentifier:@"SideMenuViewController"];
+    [container setLeftMenuViewController:flyoutMenu];
+    [container setLeftMenuWidth:300.0f];
+    [self.menuContainerViewController toggleLeftSideMenuCompletion:nil];
+    
+}
+
+#pragma mark - Add Childviews
+
+-(void)addChildViewsWithHeight:(float)height{
+    
+    CurrentPlansViewController *currentPlansVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CurrentPlansViewController"];
+    currentPlansVC.title = @"CURRENT PLANS";
+    
+    BestOffersViewController *bestOffersVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BestOffersViewController"];
+    bestOffersVC.title = @"BEST OFFERS";
+    
+    RecommendedPlansViewController *recomendedVC = [self.storyboard instantiateViewControllerWithIdentifier:@"RecommendedPlansViewController"];
+    recomendedVC.title = @"RECOMMENDED PLANS";
+    
+    // ContainerView
+    
+    containerVC = [[YSLContainerViewController alloc]initWithControllers:@[currentPlansVC,bestOffersVC,recomendedVC]
+                                                            topBarHeight:height
+                                                    parentViewController:self];
+    containerVC.delegate = self;
+    containerVC.menuItemFont = [UIFont fontWithName:@"Futura-Medium" size:14];
+    
+    [self.view addSubview:containerVC.view];
+}
+
 @end

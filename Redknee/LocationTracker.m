@@ -77,7 +77,7 @@
     if(IS_OS_8_OR_LATER) {
         [locationManager requestAlwaysAuthorization];
     }
-//    [locationManager startUpdatingLocation];
+    [locationManager startUpdatingLocation];
 }
 
 
@@ -119,6 +119,7 @@
     
 	CLLocationManager *locationManager = [LocationTracker sharedLocationManager];
 	[locationManager stopUpdatingLocation];
+    
 }
 
 #pragma mark - CLLocationManagerDelegate Methods
@@ -167,7 +168,7 @@
     [self.shareModel.bgTask beginNewBackgroundTask];
     
     //Restart the locationMaanger after 1 minute
-    self.shareModel.timer = [NSTimer scheduledTimerWithTimeInterval:60 target:self
+    self.shareModel.timer = [NSTimer scheduledTimerWithTimeInterval:8 target:self
                                                            selector:@selector(restartLocationUpdates)
                                                            userInfo:nil
                                                             repeats:NO];
@@ -179,7 +180,7 @@
         self.shareModel.delay10Seconds = nil;
     }
     
-    self.shareModel.delay10Seconds = [NSTimer scheduledTimerWithTimeInterval:10 target:self
+    self.shareModel.delay10Seconds = [NSTimer scheduledTimerWithTimeInterval:3 target:self
                                                     selector:@selector(stopLocationDelayBy10Seconds)
                                                     userInfo:nil
                                                      repeats:NO];

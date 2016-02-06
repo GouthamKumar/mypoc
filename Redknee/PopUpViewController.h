@@ -17,10 +17,13 @@
 @interface PopUpViewController : UIViewController
 
 @property (nonatomic, retain) NSString *strWifi_Name;
+
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 @property (weak, nonatomic) IBOutlet UIButton *btnBuy;
 @property (weak, nonatomic) IBOutlet UIButton *btnCancel;
 @property (weak, nonatomic) IBOutlet UIView *viewAlert;
+@property (weak, nonatomic) IBOutlet UIButton *btnMenu;
+
 @property (nonatomic, weak) id<PopupDelegate> delegate;
 
 - (IBAction)btnCancelTapped:(id)sender;
