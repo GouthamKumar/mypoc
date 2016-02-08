@@ -20,6 +20,8 @@
 		22B222221C60B8FF0028E7DB /* redknee_logo326ppi.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B222201C60B8FF0028E7DB /* redknee_logo326ppi.png */; };
 		22B222231C60B8FF0028E7DB /* smart_logo_326ppi.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B222211C60B8FF0028E7DB /* smart_logo_326ppi.png */; };
 		22B222261C60C0080028E7DB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B222251C60C0080028E7DB /* LoginViewController.m */; };
+		22C466EB1C6855F4003A74D8 /* CommonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C466EA1C6855F4003A74D8 /* CommonView.m */; settings = {ASSET_TAGS = (); }; };
+		22C466ED1C685620003A74D8 /* CommonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22C466EC1C685620003A74D8 /* CommonView.xib */; settings = {ASSET_TAGS = (); }; };
 		22F461541C637677003A95FB /* pinkimg.png in Resources */ = {isa = PBXBuildFile; fileRef = 22F461511C637677003A95FB /* pinkimg.png */; };
 		22F461551C637677003A95FB /* grayimg.png in Resources */ = {isa = PBXBuildFile; fileRef = 22F461521C637677003A95FB /* grayimg.png */; };
 		22F461571C637755003A95FB /* slideThumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 22F461561C637755003A95FB /* slideThumb.png */; };
@@ -123,6 +125,9 @@
 		22B222211C60B8FF0028E7DB /* smart_logo_326ppi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smart_logo_326ppi.png; sourceTree = "<group>"; };
 		22B222241C60C0080028E7DB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		22B222251C60C0080028E7DB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		22C466E91C6855F4003A74D8 /* CommonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonView.h; sourceTree = "<group>"; };
+		22C466EA1C6855F4003A74D8 /* CommonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonView.m; sourceTree = "<group>"; };
+		22C466EC1C685620003A74D8 /* CommonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonView.xib; sourceTree = "<group>"; };
 		22F461511C637677003A95FB /* pinkimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinkimg.png; sourceTree = "<group>"; };
 		22F461521C637677003A95FB /* grayimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayimg.png; sourceTree = "<group>"; };
 		22F461561C637755003A95FB /* slideThumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slideThumb.png; sourceTree = "<group>"; };
@@ -333,6 +338,9 @@
 				408375C31C5EE31400B5E7F6 /* BestOffersViewController.m */,
 				408375C51C5EE33000B5E7F6 /* RecommendedPlansViewController.h */,
 				408375C61C5EE33000B5E7F6 /* RecommendedPlansViewController.m */,
+				22C466E91C6855F4003A74D8 /* CommonView.h */,
+				22C466EA1C6855F4003A74D8 /* CommonView.m */,
+				22C466EC1C685620003A74D8 /* CommonView.xib */,
 				407F9A7A1C6813F700E1AF34 /* MyCustomeCell.h */,
 				407F9A7B1C6813F700E1AF34 /* MyCustomeCell.m */,
 				40304E641C5E8147008E3EE5 /* Assets.xcassets */,
@@ -607,6 +615,7 @@
 				22B222221C60B8FF0028E7DB /* redknee_logo326ppi.png in Resources */,
 				22B2221F1C60B86B0028E7DB /* splash_screen.png in Resources */,
 				22F461571C637755003A95FB /* slideThumb.png in Resources */,
+				22C466ED1C685620003A74D8 /* CommonView.xib in Resources */,
 				22302DB71C63611B00A03011 /* abc.png in Resources */,
 				407F9A791C680BF500E1AF34 /* expandableImage@2x.png in Resources */,
 				22B222231C60B8FF0028E7DB /* smart_logo_326ppi.png in Resources */,
@@ -670,6 +679,7 @@
 				406123531C66E186009A85A7 /* PNCircleChart.m in Sources */,
 				A3A6E5291C6324E300947770 /* Utilities.m in Sources */,
 				407F9A751C680BF500E1AF34 /* SKSTableView.m in Sources */,
+				22C466EB1C6855F4003A74D8 /* CommonView.m in Sources */,
 				406123511C66E186009A85A7 /* PNBar.m in Sources */,
 				4061234F1C66E186009A85A7 /* PNChartLabel.m in Sources */,
 				40304E5A1C5E8147008E3EE5 /* main.m in Sources */,

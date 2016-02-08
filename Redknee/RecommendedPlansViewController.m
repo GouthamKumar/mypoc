@@ -9,7 +9,13 @@
 #import "RecommendedPlansViewController.h"
 #import "SKSTableViewCell.h"
 
-@interface RecommendedPlansViewController ()<SKSTableViewDelegate>
+@interface RecommendedPlansViewController ()<SKSTableViewDelegate>{
+    
+    UIView *viewDetails;
+}
+
+@property (nonatomic, retain) NSMutableArray *arrData;
+
 
 @end
 
@@ -21,11 +27,57 @@
     self.tableView.SKSTableViewDelegate = self;
     self.tableView.shouldExpandOnlyOneCell = TRUE;
     
+    self.arrData = [[NSMutableArray alloc] init];
     
     // Do any additional setup after loading the view.
     
+    [self.arrData removeAllObjects];
+    
+    
+    viewDetails = [[[NSBundle mainBundle] loadNibNamed:@"CommonView" owner:self options:nil] objectAtIndex:0];
+    viewDetails.frame = CGRectMake(0, 2, self.view.frame.size.width, 300);
+    
+    
+    NSString *strSSID1 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage1"];
+    NSString *strSSID2 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage2"];
+    
+    NSString *strMessage = [[NSUserDefaults standardUserDefaults] valueForKey:@"selectedMessage"];
+    
+    if ([strMessage isEqualToString:strSSID1]) {
+        
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *strPack = [defaults valueForKey:@"wifiPack1"];
+        NSString *strVoice = [defaults valueForKey:@"wifiVoice1"];
+        NSString *strData = [defaults valueForKey:@"wifiData1"];
+        NSString *strPrice = [defaults valueForKey:@"wifiPrice1"];
+        
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [dict setValue:strPack forKey:@"pack"];
+        [dict setValue:strVoice forKey:@"voice"];
+        [dict setValue:strData forKey:@"data"];
+        [dict setValue:strPrice forKey:@"price"];
+        
+        [self.arrData addObject:dict];
+        
+        
+    }
+    else if ([strMessage isEqualToString:strSSID2]){
+        
+        
+    }
+    
 }
 
+
+-(void) viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    
+    
+//    [self.tableView reloadData];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -55,7 +107,7 @@
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 3;
+    return [self.arrData count];
     
 }
 
@@ -66,22 +118,17 @@
 
 - (BOOL)tableView:(SKSTableView *)tableView shouldExpandSubRowsOfCellAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == 0){
-        
-        return YES;
-    }
-    else{
-        
-        return NO;
-    }
+    return NO;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     SKSTableViewCell *cell = [[SKSTableViewCell alloc] init];
     
+    NSDictionary *dict = [self.arrData objectAtIndex:indexPath.row];
+    
     UILabel *lblPrice = [self createLabelwithFrame:CGRectMake(5, 15, 100, 40)
-                                           andText:@"$ 20 per month"
+                                           andText:[NSString stringWithFormat:@"$ %@ per month",[dict valueForKey:@"price"]]
                                       andNoOfLines:0
                                        andFontName:@""
                                      andFontHeight:14
@@ -91,7 +138,7 @@
     [cell.contentView addSubview:lblPrice];
     
     UILabel *lblName = [self createLabelwithFrame:CGRectMake(105, 15, self.view.frame.size.width-210, 40)
-                                          andText:@"Unlimited voice & data"
+                                          andText:[dict valueForKey:@"pack"]
                                      andNoOfLines:0
                                       andFontName:@""
                                     andFontHeight:16
@@ -99,7 +146,6 @@
                                      andTextColor:[UIColor whiteColor]
                                      andTextAlign:NSTextAlignmentCenter];
     [cell.contentView addSubview:lblName];
-    
     
     UIImageView *imageVw = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width-60, 15, 40, 40)];
     imageVw.image = [UIImage imageNamed:@"globe"];
@@ -119,7 +165,13 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    cell.textLabel.text = @"iOS";
+//    cell.textLabel.text = @"iOS";
+    
+    cell.backgroundColor = [UIColor magentaColor];
+    
+    viewDetails.frame = CGRectMake(0, 0, self.view.bounds.size.width, 300);
+    
+    [cell.contentView addSubview:viewDetails];
     
     return cell;
 }
@@ -132,7 +184,7 @@
 - (CGFloat)tableView:(SKSTableView *)tableView heightForSubRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    return 150;
+    return 302;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -160,5 +212,21 @@
     return lbl;
 }
 
+
+
+-(void)createViewwithData:(NSDictionary *)dict{
+    
+    UILabel *lblHeader = [self createLabelwithFrame:CGRectMake(8, 8, self.view.frame.size.width-16, 25)
+                                            andText:[dict valueForKey:@"pack"]
+                                       andNoOfLines:0
+                                        andFontName:@""
+                                      andFontHeight:15
+                                         andBGColor:[UIColor clearColor]
+                                       andTextColor:[UIColor whiteColor]
+                                       andTextAlign:NSTextAlignmentCenter];
+    
+    
+    [viewDetails addSubview:lblHeader];
+}
 
 @end

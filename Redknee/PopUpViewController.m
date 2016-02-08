@@ -17,6 +17,7 @@
 @interface PopUpViewController ()<YSLContainerViewControllerDelegate>{
     
     YSLContainerViewController *containerVC;
+    NSString *strMessage;
 }
 
 @end
@@ -32,7 +33,7 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     
-    NSString *strMessage = [[NSUserDefaults standardUserDefaults] valueForKey:@"selectedMessage"];
+    strMessage = [[NSUserDefaults standardUserDefaults] valueForKey:@"selectedMessage"];
     
     self.lblTitle.text = [NSString stringWithFormat:@"%@",strMessage];
     
@@ -110,17 +111,20 @@
     
     [containerVC.view removeFromSuperview];
     
-    [UIView animateWithDuration:0.50 animations:^{
+    [UIView animateWithDuration:1.0 animations:^{
         
         [self addChildViewsWithHeight:64];
         
     }];
     
     [self.view bringSubviewToFront:self.btnMenu];
+    
+    
+    [containerVC scrollMenuViewSelectedIndex:2];
+    
 }
 
 - (IBAction)btnMenuTapped:(id)sender {
-
     
     UIApplication *myApplication = [UIApplication sharedApplication];
     UIWindow *mainWindow = [myApplication keyWindow];
