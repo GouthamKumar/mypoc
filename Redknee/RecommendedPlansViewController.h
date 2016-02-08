@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SKSTableView.h"
 
 @interface RecommendedPlansViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet SKSTableView *tableView;
 
 @end

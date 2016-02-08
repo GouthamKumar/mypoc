@@ -33,4 +33,6 @@
              topBarHeight:(CGFloat)topBarHeight
      parentViewController:(UIViewController *)parentViewController;
 
+- (void)scrollMenuViewSelectedIndex:(NSInteger)index;
+
 @end

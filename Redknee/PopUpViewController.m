@@ -26,13 +26,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"REDKNEE";
+    
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     
     NSString *strMessage = [[NSUserDefaults standardUserDefaults] valueForKey:@"selectedMessage"];
     
-    self.lblTitle.text = [NSString stringWithFormat:@"Connected with %@ wifi",strMessage];
+    self.lblTitle.text = [NSString stringWithFormat:@"%@",strMessage];
     
     
     // Do any additional setup after loading the view.
@@ -76,7 +78,23 @@
 
 - (IBAction)btnCancelTapped:(id)sender {
     
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        self.viewAlert.frame =  CGRectMake(0, 0, 0, 0);
+        //        [self.viewAlert removeFromSuperview];
+        self.viewAlert.alpha = 0.0;
+        
+    }];
     
+    [containerVC.view removeFromSuperview];
+    
+    [UIView animateWithDuration:0.50 animations:^{
+        
+        [self addChildViewsWithHeight:64];
+        
+    }];
+    
+    [self.view bringSubviewToFront:self.btnMenu];
     
 }
 
@@ -102,7 +120,8 @@
 }
 
 - (IBAction)btnMenuTapped:(id)sender {
-//    [self dismissViewControllerAnimated:YES completion:nil];
+
+    
     UIApplication *myApplication = [UIApplication sharedApplication];
     UIWindow *mainWindow = [myApplication keyWindow];
     MFSideMenuContainerViewController *container  = (MFSideMenuContainerViewController*)[mainWindow rootViewController];
@@ -111,7 +130,6 @@
     [container setLeftMenuViewController:flyoutMenu];
     [container setLeftMenuWidth:300.0f];
     [self.menuContainerViewController toggleLeftSideMenuCompletion:nil];
-    
 }
 
 #pragma mark - Add Childviews

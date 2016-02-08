@@ -88,6 +88,9 @@
     self.locationTracker = [[LocationTracker alloc]init];
     
     
+//    [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
+//    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    
     return YES;
 }
 
@@ -234,7 +237,6 @@
         
         if ([notification.alertBody isEqualToString:strSSID1]) {
             
-            
             NSLog(@"open popup 1");
             
             [[NSUserDefaults standardUserDefaults] setValue:strSSID1 forKey:@"selectedMessage"];
@@ -334,7 +336,7 @@
 {
     NetworkStatus netStatus = [reachability currentReachabilityStatus];
     BOOL connectionRequired = [reachability connectionRequired];
-    NSString* statusString = @"";
+    NSString* statusString = @"  ";
     
     switch (netStatus)
     {
@@ -367,10 +369,10 @@
                 
                 [self scheduleLocalNotificationwithMessage:[[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage2"]];
             }
-            else{
-                
-                [self scheduleLocalNotificationwithMessage:statusString];
-            }
+//            else{
+//                
+//                [self scheduleLocalNotificationwithMessage:statusString];
+//            }
             break;
         }
     }
@@ -400,7 +402,9 @@
         
         localNotification.soundName = UILocalNotificationDefaultSoundName; // den den den
         
-        //    localNotification.soundName = @"sound.caf";
+        localNotification.soundName = @"sound.caf";
+        
+//        localNotification.applicationIconBadgeNumber = 1;
         
         [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     }
@@ -420,6 +424,8 @@
     localNotification.soundName = UILocalNotificationDefaultSoundName; // den den den
     
     localNotification.soundName = @"sound.caf";
+    
+    localNotification.applicationIconBadgeNumber = 1;
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }

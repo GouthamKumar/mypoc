@@ -57,7 +57,6 @@
                                                                                 parentViewController:self];
     containerVC.delegate = self;
     containerVC.menuItemFont = [UIFont fontWithName:@"Futura-Medium" size:14];
-    
     [self.view addSubview:containerVC.view];
     
     // Do any additional setup after loading the view, typically from a nib.
@@ -72,7 +71,6 @@
     
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    
 }
 
 /*
@@ -82,7 +80,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     
     [super viewDidAppear:animated];
-    
+    [containerVC scrollMenuViewSelectedIndex:1];
     
     if ([self.strWifiName length]) {
         
@@ -93,6 +91,7 @@
 //        [self presentViewController:popupVc animated:YES completion:nil];
         [self.navigationController pushViewController:popupVc animated:YES];
     }
+    
 }
 
 - (void)didReceiveMemoryWarning {

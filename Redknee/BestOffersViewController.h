@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PNChartDelegate.h"
+#import "PNChart.h"
 
-@interface BestOffersViewController : UIViewController
+@interface BestOffersViewController : UIViewController<PNChartDelegate>
+@property (weak, nonatomic) IBOutlet UIView *viewRightPieChart;
+
+@property (weak, nonatomic) IBOutlet UIView *viewLeftPieChart;
+
+
+
+
+@property(nonatomic, strong) NSMutableArray *slices;
+@property(nonatomic, strong) NSArray        *sliceColors;
 
 @end
