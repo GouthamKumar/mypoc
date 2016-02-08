@@ -11,6 +11,6 @@
 
 @interface RecommendedPlansViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet SKSTableView *tableView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

@@ -9,7 +9,7 @@
 #import "SKSTableViewCell.h"
 
 @interface MyCustomeCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *lblPrice;
-@property (weak, nonatomic) IBOutlet UILabel *lblName;
+
+@property (weak, nonatomic) IBOutlet UIView *customView;
 
 @end

@@ -79,32 +79,74 @@
 
 - (IBAction)btnCancelTapped:(id)sender {
     
+    
+    NSString *strPath = [[NSBundle mainBundle] pathForResource:@"Recommended" ofType:@"plist"];
+    NSArray *arr = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *strDestPath = [NSString stringWithFormat:@"%@/Recommended.plist",[arr objectAtIndex:0]];
+    
+    
+    NSString *strSSID1 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage1"];
+    NSString *strSSID2 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage2"];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if (![fileManager fileExistsAtPath:strDestPath]) {
+        
+        [fileManager copyItemAtPath:strPath toPath:strDestPath error:nil];
+    }
+    
+    if ([strSSID1 isEqualToString:strMessage]) {
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *strPack = [defaults valueForKey:@"wifiPack1"];
+        NSString *strVoice = [defaults valueForKey:@"wifiVoice1"];
+        NSString *strData = [defaults valueForKey:@"wifiData1"];
+        NSString *strPrice = [defaults valueForKey:@"wifiPrice1"];
+        
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithContentsOfFile:strDestPath];
+        
+        [dict removeObjectForKey:@"wifiDetails1"];
+        
+        [dict setValue:strPack forKey:@"pack"];
+        [dict setValue:strVoice forKey:@"voice"];
+        [dict setValue:strData forKey:@"data"];
+        [dict setValue:strPrice forKey:@"price"];
+        
+        
+        NSDictionary *dictnry = [NSDictionary dictionaryWithObjectsAndKeys:dict,@"wifiDetails1", nil];
+        
+        [dictnry writeToFile:strDestPath atomically:YES];
+    }
+    
+    else if ([strSSID2 isEqualToString:strMessage]){
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *strPack = [defaults valueForKey:@"wifiPack2"];
+        NSString *strVoice = [defaults valueForKey:@"wifiVoice2"];
+        NSString *strData = [defaults valueForKey:@"wifiData2"];
+        NSString *strPrice = [defaults valueForKey:@"wifiPrice2"];
+        
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithContentsOfFile:strDestPath];
+        
+        [dict removeObjectForKey:@"wifiDetails2"];
+        
+        
+        [dict setValue:strPack forKey:@"pack"];
+        [dict setValue:strVoice forKey:@"voice"];
+        [dict setValue:strData forKey:@"data"];
+        [dict setValue:strPrice forKey:@"price"];
+        
+        
+        NSDictionary *dictnry = [NSDictionary dictionaryWithObjectsAndKeys:dict,@"wifiDetails2", nil];
+        
+        [dictnry writeToFile:strDestPath atomically:YES];
+    }
+    
+    
     [UIView animateWithDuration:0.25 animations:^{
         
         self.viewAlert.frame =  CGRectMake(0, 0, 0, 0);
         //        [self.viewAlert removeFromSuperview];
-        self.viewAlert.alpha = 0.0;
-        
-    }];
-    
-    [containerVC.view removeFromSuperview];
-    
-    [UIView animateWithDuration:0.50 animations:^{
-        
-        [self addChildViewsWithHeight:64];
-        
-    }];
-    
-    [self.view bringSubviewToFront:self.btnMenu];
-    
-}
-
-- (IBAction)btnBuyTapped:(id)sender {
-    
-    [UIView animateWithDuration:0.25 animations:^{
-        
-        self.viewAlert.frame =  CGRectMake(0, 0, 0, 0);
-//        [self.viewAlert removeFromSuperview];
         self.viewAlert.alpha = 0.0;
         
     }];
@@ -119,8 +161,95 @@
     
     [self.view bringSubviewToFront:self.btnMenu];
     
-    
     [containerVC scrollMenuViewSelectedIndex:2];
+    
+}
+
+- (IBAction)btnBuyTapped:(id)sender {
+    
+    NSString *strPath = [[NSBundle mainBundle] pathForResource:@"BestOffer" ofType:@"plist"];
+    NSArray *arr = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *strDestPath = [NSString stringWithFormat:@"%@/BestOffer.plist",[arr objectAtIndex:0]];
+    
+    
+    NSString *strSSID1 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage1"];
+    NSString *strSSID2 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage2"];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if (![fileManager fileExistsAtPath:strDestPath]) {
+        
+        [fileManager copyItemAtPath:strPath toPath:strDestPath error:nil];
+    }
+    
+    if ([strSSID1 isEqualToString:strMessage]) {
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *strPack = [defaults valueForKey:@"wifiPack1"];
+        NSString *strVoice = [defaults valueForKey:@"wifiVoice1"];
+        NSString *strData = [defaults valueForKey:@"wifiData1"];
+        NSString *strPrice = [defaults valueForKey:@"wifiPrice1"];
+        
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithContentsOfFile:strDestPath];
+        
+        [dict removeObjectForKey:@"wifiDetails1"];
+        
+        [dict setValue:strPack forKey:@"pack"];
+        [dict setValue:strVoice forKey:@"voice"];
+        [dict setValue:strData forKey:@"data"];
+        [dict setValue:strPrice forKey:@"price"];
+        
+        
+        NSDictionary *dictnry = [NSDictionary dictionaryWithObjectsAndKeys:dict,@"wifiDetails1", nil];
+        
+        [dictnry writeToFile:strDestPath atomically:YES];
+    }
+    
+    else if ([strSSID2 isEqualToString:strMessage]){
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *strPack = [defaults valueForKey:@"wifiPack2"];
+        NSString *strVoice = [defaults valueForKey:@"wifiVoice2"];
+        NSString *strData = [defaults valueForKey:@"wifiData2"];
+        NSString *strPrice = [defaults valueForKey:@"wifiPrice2"];
+        
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithContentsOfFile:strDestPath];
+        
+        [dict removeObjectForKey:@"wifiDetails2"];
+        
+        
+        [dict setValue:strPack forKey:@"pack"];
+        [dict setValue:strVoice forKey:@"voice"];
+        [dict setValue:strData forKey:@"data"];
+        [dict setValue:strPrice forKey:@"price"];
+        
+        
+        NSDictionary *dictnry = [NSDictionary dictionaryWithObjectsAndKeys:dict,@"wifiDetails2", nil];
+        
+        [dictnry writeToFile:strDestPath atomically:YES];
+    }
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        self.viewAlert.frame =  CGRectMake(0, 0, 0, 0);
+//        [self.viewAlert removeFromSuperview];
+        self.viewAlert.alpha = 0.0;
+        
+    }];
+    
+    
+    [containerVC.view removeFromSuperview];
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        
+        [self addChildViewsWithHeight:64];
+        
+    }];
+    
+    [self.view bringSubviewToFront:self.btnMenu];
+    
+    
+    [containerVC scrollMenuViewSelectedIndex:1];
     
 }
 

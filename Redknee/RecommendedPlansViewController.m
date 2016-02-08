@@ -8,8 +8,9 @@
 
 #import "RecommendedPlansViewController.h"
 #import "SKSTableViewCell.h"
+#import "MyCustomeCell.h"
 
-@interface RecommendedPlansViewController ()<SKSTableViewDelegate>{
+@interface RecommendedPlansViewController (){
     
     UIView *viewDetails;
 }
@@ -24,48 +25,40 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.SKSTableViewDelegate = self;
-    self.tableView.shouldExpandOnlyOneCell = TRUE;
-    
     self.arrData = [[NSMutableArray alloc] init];
     
     // Do any additional setup after loading the view.
     
     [self.arrData removeAllObjects];
     
-    
     viewDetails = [[[NSBundle mainBundle] loadNibNamed:@"CommonView" owner:self options:nil] objectAtIndex:0];
     viewDetails.frame = CGRectMake(0, 2, self.view.frame.size.width, 300);
     
+//    NSString *strPath = [[NSBundle mainBundle] pathForResource:@"Recommended" ofType:@"plist"];
+    NSArray *arr = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *strDestPath = [NSString stringWithFormat:@"%@/Recommended.plist",[arr objectAtIndex:0]];
     
-    NSString *strSSID1 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage1"];
-    NSString *strSSID2 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage2"];
     
-    NSString *strMessage = [[NSUserDefaults standardUserDefaults] valueForKey:@"selectedMessage"];
+    NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:strDestPath];
     
-    if ([strMessage isEqualToString:strSSID1]) {
+    NSLog(@"wifi Details %@ details2 %@",[dict valueForKey:@"wifiDetails1"],[dict valueForKey:@"wifiDetails2"]);
+    
+    
+    NSDictionary *dictWifi1 = [dict valueForKey:@"wifiDetails1"];
+    NSDictionary *dictWifi2 = [dict valueForKey:@"wifiDetails2"];
+    
+    
+    if (dictWifi1 != nil) {
         
-        
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSString *strPack = [defaults valueForKey:@"wifiPack1"];
-        NSString *strVoice = [defaults valueForKey:@"wifiVoice1"];
-        NSString *strData = [defaults valueForKey:@"wifiData1"];
-        NSString *strPrice = [defaults valueForKey:@"wifiPrice1"];
-        
-        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-        [dict setValue:strPack forKey:@"pack"];
-        [dict setValue:strVoice forKey:@"voice"];
-        [dict setValue:strData forKey:@"data"];
-        [dict setValue:strPrice forKey:@"price"];
-        
-        [self.arrData addObject:dict];
-        
-        
+        [self.arrData addObject:dictWifi1];
     }
-    else if ([strMessage isEqualToString:strSSID2]){
+    if (dictWifi2 != nil){
         
-        
+        [self.arrData addObject:dictWifi2];
     }
+    
+    
+    
     
 }
 
@@ -99,6 +92,68 @@
 
 #pragma mark - TableView Methods
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray<NSIndexPath *> *selectedRows = [tableView indexPathsForSelectedRows];
+    if (selectedRows && [selectedRows containsObject:indexPath]) {
+        
+        return 350.0; // Expanded height
+    }
+    
+    return 50; // Normal height
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section; {
+    
+    return 5;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath; {
+    
+    static NSString *cellID = @"Cell";
+    
+    MyCustomeCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID
+                                                                forIndexPath:indexPath];
+    //cell.textLabel.text = [NSString stringWithFormat:@"row %li", (long)indexPath.row];
+    //cell.detailTextLabel.text = [NSString stringWithFormat:@"section %li", (long)indexPath.section];
+    
+    cell.customView.hidden = YES;
+    [cell.contentView sendSubviewToBack:cell.customView];
+    return cell;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    [self updateTableView];
+    
+    MyCustomeCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    cell.customView.hidden = NO;
+    [cell.contentView bringSubviewToFront:cell.customView];
+    
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self updateTableView];
+    
+    MyCustomeCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.customView.hidden = YES;
+    [cell.contentView sendSubviewToBack:cell.customView];
+    
+    
+}
+
+- (void)updateTableView
+{
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+}
+
+/*
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
     return 1;
@@ -197,6 +252,7 @@
     
     NSLog(@"didSelectSubRowAtIndexPath");
 }
+*/
 
 
 #pragma mark - Create Custome Label

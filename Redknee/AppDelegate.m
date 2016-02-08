@@ -232,8 +232,12 @@
         
         NSLog(@"%@",notification.alertBody);
         
+        
+        
+        
         NSString *strSSID1 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage1"];
         NSString *strSSID2 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage2"];
+        
         
         if ([notification.alertBody isEqualToString:strSSID1]) {
             

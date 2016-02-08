@@ -30,6 +30,8 @@
     PNPieChart *pieCharts,*pieChart;
 }
 
+@property (nonatomic, retain) NSMutableArray *arrData;
+
 @end
 
 @implementation BestOffersViewController
@@ -44,6 +46,9 @@
         NSNumber *one = [NSNumber numberWithInt:rand()%60+20];
         [_slices addObject:one];
     }
+    
+    
+    self.arrData = [[NSMutableArray alloc] init];
     
     self.sliceColors =[NSArray arrayWithObjects:
                        [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1],
@@ -116,6 +121,32 @@
     [super viewWillAppear:animated];
     [pieChart strokeChart];
     [pieCharts strokeChart];
+    
+    [self.arrData removeAllObjects];
+    
+    
+    NSArray *arr = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *strDestPath = [NSString stringWithFormat:@"%@/BestOffer.plist",[arr objectAtIndex:0]];
+    
+    NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:strDestPath];
+    
+    NSLog(@"wifi Details %@ details2 %@",[dict valueForKey:@"wifiDetails1"],[dict valueForKey:@"wifiDetails2"]);
+    
+    
+    NSDictionary *dictWifi1 = [dict valueForKey:@"wifiDetails1"];
+    NSDictionary *dictWifi2 = [dict valueForKey:@"wifiDetails2"];
+    
+    
+    if (dictWifi1 != nil) {
+        
+        [self.arrData addObject:dictWifi1];
+    }
+    if (dictWifi2 != nil){
+        
+        [self.arrData addObject:dictWifi2];
+    }
+    
+    [self.tableViewBestOffers reloadData];
 }
 
 -(void) viewDidAppear:(BOOL)animated{
@@ -125,6 +156,8 @@
 
 /*
 #pragma mark - Navigation
+ 
+ wifiDetails
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -132,5 +165,51 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - UITableView Methods
+
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return [self.arrData count];
+}
+
+-(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"wifiDetails" forIndexPath:indexPath];
+    
+    if (cell == nil) {
+        
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"wifiDetails"];
+    }
+    
+    NSDictionary *dict = [self.arrData objectAtIndex:indexPath.row];
+    
+    UILabel *lblName = (UILabel *)[cell viewWithTag:1];
+    lblName.text = [dict valueForKey:@"pack"];
+    
+    UILabel *lblTatal_Data = (UILabel *)[cell viewWithTag:2];
+    lblTatal_Data.text = @"1.00 GB";
+    
+    UILabel *lblRemain_Data = (UILabel *)[cell viewWithTag:3];
+    lblRemain_Data.text = @"800 MB";
+    
+    UILabel *lblValid_Date = (UILabel *)[cell viewWithTag:4];
+    lblValid_Date.text = @"30 Jan 2016";
+    
+    UIButton *btnUnSub = (UIButton *)[cell viewWithTag:5];
+    btnUnSub.layer.borderColor=[[UIColor whiteColor]CGColor];
+    btnUnSub.layer.borderWidth= 1.0f;
+    btnUnSub.tag = 100+indexPath.row;
+    [btnUnSub addTarget:self action:@selector(btnUnsubTapped:) forControlEvents:UIControlEventTouchUpInside];
+    
+    return cell;
+}
+
+
+-(void) btnUnsubTapped:(id)sender{
+    
+    
+    NSLog(@"btnUnsubTapped tag %d",[sender tag]);
+}
 
 @end
