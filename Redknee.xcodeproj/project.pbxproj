@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220CC55F1C6A0ACD00B3C826 /* MyAddOnsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CC55E1C6A0ACD00B3C826 /* MyAddOnsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		220CC5621C6A0ADC00B3C826 /* AvailableAddOnsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CC5611C6A0ADC00B3C826 /* AvailableAddOnsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		220CC5651C6A0B0000B3C826 /* ShopCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CC5641C6A0B0000B3C826 /* ShopCartViewController.m */; settings = {ASSET_TAGS = (); }; };
+		220CC5691C6A0DE000B3C826 /* BillPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CC5681C6A0DE000B3C826 /* BillPaymentViewController.m */; settings = {ASSET_TAGS = (); }; };
+		220CC56D1C6A0EB200B3C826 /* TransactionHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CC56C1C6A0EB200B3C826 /* TransactionHistoryViewController.m */; settings = {ASSET_TAGS = (); }; };
+		220CC5711C6A0FA200B3C826 /* StoreLocatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CC5701C6A0FA200B3C826 /* StoreLocatorViewController.m */; settings = {ASSET_TAGS = (); }; };
 		2221F0D71C633482006863D1 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2221F0D61C633482006863D1 /* SettingsViewController.m */; };
 		2221F0DA1C6334EC006863D1 /* MyPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2221F0D91C6334EC006863D1 /* MyPlanViewController.m */; };
 		2221F0DD1C633505006863D1 /* MyUsageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2221F0DC1C633505006863D1 /* MyUsageViewController.m */; };
@@ -106,6 +112,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		220CC55D1C6A0ACD00B3C826 /* MyAddOnsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAddOnsViewController.h; sourceTree = "<group>"; };
+		220CC55E1C6A0ACD00B3C826 /* MyAddOnsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAddOnsViewController.m; sourceTree = "<group>"; };
+		220CC5601C6A0ADC00B3C826 /* AvailableAddOnsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableAddOnsViewController.h; sourceTree = "<group>"; };
+		220CC5611C6A0ADC00B3C826 /* AvailableAddOnsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailableAddOnsViewController.m; sourceTree = "<group>"; };
+		220CC5631C6A0B0000B3C826 /* ShopCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopCartViewController.h; sourceTree = "<group>"; };
+		220CC5641C6A0B0000B3C826 /* ShopCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopCartViewController.m; sourceTree = "<group>"; };
+		220CC5671C6A0DE000B3C826 /* BillPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillPaymentViewController.h; sourceTree = "<group>"; };
+		220CC5681C6A0DE000B3C826 /* BillPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillPaymentViewController.m; sourceTree = "<group>"; };
+		220CC56B1C6A0EB200B3C826 /* TransactionHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionHistoryViewController.h; sourceTree = "<group>"; };
+		220CC56C1C6A0EB200B3C826 /* TransactionHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionHistoryViewController.m; sourceTree = "<group>"; };
+		220CC56F1C6A0FA200B3C826 /* StoreLocatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreLocatorViewController.h; sourceTree = "<group>"; };
+		220CC5701C6A0FA200B3C826 /* StoreLocatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreLocatorViewController.m; sourceTree = "<group>"; };
 		2221F0D51C633482006863D1 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		2221F0D61C633482006863D1 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		2221F0D81C6334EC006863D1 /* MyPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlanViewController.h; sourceTree = "<group>"; };
@@ -257,9 +275,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		220CC55C1C6A0A8800B3C826 /* Shop&Cart */ = {
+			isa = PBXGroup;
+			children = (
+				220CC5631C6A0B0000B3C826 /* ShopCartViewController.h */,
+				220CC5641C6A0B0000B3C826 /* ShopCartViewController.m */,
+				220CC55D1C6A0ACD00B3C826 /* MyAddOnsViewController.h */,
+				220CC55E1C6A0ACD00B3C826 /* MyAddOnsViewController.m */,
+				220CC5601C6A0ADC00B3C826 /* AvailableAddOnsViewController.h */,
+				220CC5611C6A0ADC00B3C826 /* AvailableAddOnsViewController.m */,
+			);
+			name = "Shop&Cart";
+			sourceTree = "<group>";
+		};
+		220CC5661C6A0DC400B3C826 /* BillPayment */ = {
+			isa = PBXGroup;
+			children = (
+				220CC5671C6A0DE000B3C826 /* BillPaymentViewController.h */,
+				220CC5681C6A0DE000B3C826 /* BillPaymentViewController.m */,
+			);
+			name = BillPayment;
+			sourceTree = "<group>";
+		};
+		220CC56A1C6A0E9800B3C826 /* TransactionHistory */ = {
+			isa = PBXGroup;
+			children = (
+				220CC56B1C6A0EB200B3C826 /* TransactionHistoryViewController.h */,
+				220CC56C1C6A0EB200B3C826 /* TransactionHistoryViewController.m */,
+			);
+			name = TransactionHistory;
+			sourceTree = "<group>";
+		};
+		220CC56E1C6A0F8400B3C826 /* StoreLocator */ = {
+			isa = PBXGroup;
+			children = (
+				220CC56F1C6A0FA200B3C826 /* StoreLocatorViewController.h */,
+				220CC5701C6A0FA200B3C826 /* StoreLocatorViewController.m */,
+			);
+			name = StoreLocator;
+			sourceTree = "<group>";
+		};
 		2221F0DE1C633518006863D1 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				220CC56E1C6A0F8400B3C826 /* StoreLocator */,
+				220CC56A1C6A0E9800B3C826 /* TransactionHistory */,
+				220CC5661C6A0DC400B3C826 /* BillPayment */,
+				220CC55C1C6A0A8800B3C826 /* Shop&Cart */,
 				406F16921C603814003AF8F5 /* SideMenuViewController.h */,
 				406F16931C603814003AF8F5 /* SideMenuViewController.m */,
 				2221F0D81C6334EC006863D1 /* MyPlanViewController.h */,
@@ -657,12 +719,15 @@
 				406F16941C603814003AF8F5 /* SideMenuViewController.m in Sources */,
 				40304E601C5E8147008E3EE5 /* ViewController.m in Sources */,
 				406F168F1C60374E003AF8F5 /* MFSideMenuContainerViewController.m in Sources */,
+				220CC5621C6A0ADC00B3C826 /* AvailableAddOnsViewController.m in Sources */,
 				4061235A1C66E186009A85A7 /* PNRadarChart.m in Sources */,
+				220CC56D1C6A0EB200B3C826 /* TransactionHistoryViewController.m in Sources */,
 				406F16911C60374E003AF8F5 /* MFSideMenuShadow.m in Sources */,
 				40304E5D1C5E8147008E3EE5 /* AppDelegate.m in Sources */,
 				223C24921C647E05002BFA7E /* LocationTracker.m in Sources */,
 				408375D81C5EEFF500B5E7F6 /* WifiModel.m in Sources */,
 				40304E8D1C5E82A5008E3EE5 /* CarrierModel.m in Sources */,
+				220CC5711C6A0FA200B3C826 /* StoreLocatorViewController.m in Sources */,
 				406123551C66E186009A85A7 /* PNLineChartData.m in Sources */,
 				406F16901C60374E003AF8F5 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				4061234C1C66E186009A85A7 /* PNScatterChart.m in Sources */,
@@ -675,6 +740,7 @@
 				406123591C66E186009A85A7 /* PNGenericChart.m in Sources */,
 				406123561C66E186009A85A7 /* PNLineChartDataItem.m in Sources */,
 				4061235B1C66E186009A85A7 /* PNRadarChartDataItem.m in Sources */,
+				220CC5691C6A0DE000B3C826 /* BillPaymentViewController.m in Sources */,
 				407F9A7C1C6813F700E1AF34 /* MyCustomeCell.m in Sources */,
 				406123581C66E186009A85A7 /* PNPieChartDataItem.m in Sources */,
 				408375D51C5EEBBC00B5E7F6 /* Reachability.m in Sources */,
@@ -693,11 +759,13 @@
 				40304E5A1C5E8147008E3EE5 /* main.m in Sources */,
 				4061234E1C66E186009A85A7 /* PNScatterChartDataItem.m in Sources */,
 				408375BD1C5EE19200B5E7F6 /* YSLContainerViewController.m in Sources */,
+				220CC55F1C6A0ACD00B3C826 /* MyAddOnsViewController.m in Sources */,
 				223C24941C647E05002BFA7E /* LocationShareModel.m in Sources */,
 				406123541C66E186009A85A7 /* PNLineChart.m in Sources */,
 				408375C11C5EE2FA00B5E7F6 /* CurrentPlansViewController.m in Sources */,
 				407F9A761C680BF500E1AF34 /* SKSTableViewCell.m in Sources */,
 				408375C71C5EE33000B5E7F6 /* RecommendedPlansViewController.m in Sources */,
+				220CC5651C6A0B0000B3C826 /* ShopCartViewController.m in Sources */,
 				408375C41C5EE31400B5E7F6 /* BestOffersViewController.m in Sources */,
 				407F9A771C680BF500E1AF34 /* SKSTableViewCellIndicator.m in Sources */,
 			);
@@ -846,7 +914,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hopon.employeeapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2e9ce48f-6f75-432d-a2d6-a386bdb654a4";
+				PROVISIONING_PROFILE = "3966b029-65c2-4f3a-b98f-016862a82e32";
 			};
 			name = Debug;
 		};
@@ -862,7 +930,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hopon.employeeapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2e9ce48f-6f75-432d-a2d6-a386bdb654a4";
+				PROVISIONING_PROFILE = "3966b029-65c2-4f3a-b98f-016862a82e32";
 			};
 			name = Release;
 		};

@@ -13,6 +13,11 @@
 #import "LoginViewController.h"
 #import "SettingsViewController.h"
 #import "MFSideMenu.h"
+#import "ShopCartViewController.h"
+#import "BillPaymentViewController.h"
+#import "TransactionHistoryViewController.h"
+#import "StoreLocatorViewController.h"
+
 
 @interface SideMenuViewController ()
 
@@ -25,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.arrMenuList = [[NSArray alloc] initWithObjects:@"Exclusive Offer", @"My Services", @"Current Plan", @"Current Balance", @"My Usage", @"Settings", @"Mock Location", @"Log Out", nil];
+    self.arrMenuList = [[NSArray alloc] initWithObjects:@"Exclusive Offers", @"Current Plan", @"Recommendations", @"Shop & Cart", @"Bill & Payment", @"Transaction History", @"Store Locator", @"Log Out", @"Settings", @"Mock Location", nil];
     // Do any additional setup after loading the view.
 }
 
@@ -71,42 +76,61 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.row == 0 || indexPath.row == 1) {
+    if (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2) {
         
         ViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+        viewController.scrollIndexFlag = (int)indexPath.row+1;
         UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
         NSArray *controllers = [NSArray arrayWithObject:viewController];
         navigationController.viewControllers = controllers;
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
         
     }
-    else if (indexPath.row == 2){
+    else if (indexPath.row == 3){
         
-        MyPlanViewController *myPlanVc = [self.storyboard instantiateViewControllerWithIdentifier:@"MyPlanViewController"];
+        ShopCartViewController *shopCartVc = [self.storyboard instantiateViewControllerWithIdentifier:@"ShopCartViewController"];
         UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
-        NSArray *controllers = [NSArray arrayWithObject:myPlanVc];
+        NSArray *controllers = [NSArray arrayWithObject:shopCartVc];
         navigationController.viewControllers = controllers;
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
+        
     }
     else if (indexPath.row == 4){
         
-        MyUsageViewController *myUsageVc = [self.storyboard instantiateViewControllerWithIdentifier:@"MyUsageViewController"];
+        BillPaymentViewController *billPayVc = [self.storyboard instantiateViewControllerWithIdentifier:@"BillPaymentViewController"];
         UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
-        NSArray *controllers = [NSArray arrayWithObject:myUsageVc];
+        NSArray *controllers = [NSArray arrayWithObject:billPayVc];
         navigationController.viewControllers = controllers;
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
+        
     }
     else if (indexPath.row == 5){
         
-        SettingsViewController *settingsVc = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
+        TransactionHistoryViewController *transactionHistoryVc = [self.storyboard instantiateViewControllerWithIdentifier:@"TransactionHistoryViewController"];
         UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
-        NSArray *controllers = [NSArray arrayWithObject:settingsVc];
+        NSArray *controllers = [NSArray arrayWithObject:transactionHistoryVc];
+        navigationController.viewControllers = controllers;
+        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
+    }
+    else if (indexPath.row == 6){
+        
+        StoreLocatorViewController *storeLocatorVc = [self.storyboard instantiateViewControllerWithIdentifier:@"StoreLocatorViewController"];
+        UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
+        NSArray *controllers = [NSArray arrayWithObject:storeLocatorVc];
         navigationController.viewControllers = controllers;
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
     }
     else if (indexPath.row == 7){
         
         [self showAlertViewTitle:@"Message...!" andMessage:@"Are you sure want to logout?" andTag:200];
+    }
+    else if (indexPath.row == 8){
+        
+        SettingsViewController *settingsVc = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
+        UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
+        NSArray *controllers = [NSArray arrayWithObject:settingsVc];
+        navigationController.viewControllers = controllers;
+        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
     }
 }
 

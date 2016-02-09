@@ -9,10 +9,12 @@
 #import "RecommendedPlansViewController.h"
 #import "SKSTableViewCell.h"
 #import "MyCustomeCell.h"
+#import "AppDelegate.h"
 
 @interface RecommendedPlansViewController (){
     
     UIView *viewDetails;
+    AppDelegate *appDelegate;
 }
 
 @property (nonatomic, retain) NSMutableArray *arrData;
@@ -28,23 +30,11 @@
     self.arrData = [[NSMutableArray alloc] init];
     
     // Do any additional setup after loading the view.
-    
+    appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self.arrData removeAllObjects];
     
     viewDetails = [[[NSBundle mainBundle] loadNibNamed:@"CommonView" owner:self options:nil] objectAtIndex:0];
     viewDetails.frame = CGRectMake(0, 2, self.view.frame.size.width, 300);
-    
-//    NSString *strPath = [[NSBundle mainBundle] pathForResource:@"Recommended" ofType:@"plist"];
-    NSArray *arr = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *strDestPath = [NSString stringWithFormat:@"%@/Recommended.plist",[arr objectAtIndex:0]];
-    
-    
-    NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:strDestPath];
-    
-    NSLog(@"rec wifi Details %@",[dict valueForKey:@"wifiDetails"]);
-    
-    
-    self.arrData = [dict valueForKey:@"wifiDetails"];
     
     
     
@@ -55,10 +45,25 @@
     
     [super viewWillAppear:animated];
     
+    NSArray *arr = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *strDestPath = [NSString stringWithFormat:@"%@/Recommended.plist",[arr objectAtIndex:0]];
     
     
-//    [self.tableView reloadData];
+    NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:strDestPath];
+    
+    NSLog(@"rec wifi Details %@",[dict valueForKey:@"wifiDetails"]);
+    
+    
+    self.arrData = [[dict valueForKey:@"wifiDetails"] mutableCopy];
+    
+    if (self.arrData == nil) {
+        
+        self.arrData = [[NSMutableArray alloc] init];
+    }
+    
+    [self.tableView reloadData];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -82,19 +87,21 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray<NSIndexPath *> *selectedRows = [tableView indexPathsForSelectedRows];
-    if (selectedRows && [selectedRows containsObject:indexPath]) {
-        
-        return 350.0; // Expanded height
-    }
+//    NSArray<NSIndexPath *> *selectedRows = [tableView indexPathsForSelectedRows];
+//    if (selectedRows && [selectedRows containsObject:indexPath]) {
+//        
+//        return 350.0; // Expanded height
+//    }
+//    
+//    return 50; // Normal height
     
-    return 50; // Normal height
+    return 350.0;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section; {
     
-    return 5;
+    return [self.arrData count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath; {
@@ -106,8 +113,38 @@
     //cell.textLabel.text = [NSString stringWithFormat:@"row %li", (long)indexPath.row];
     //cell.detailTextLabel.text = [NSString stringWithFormat:@"section %li", (long)indexPath.section];
     
-    cell.customView.hidden = YES;
-    [cell.contentView sendSubviewToBack:cell.customView];
+    NSDictionary *dict = [self.arrData objectAtIndex:indexPath.row];
+    
+    UILabel *lblPrice = (UILabel *)[cell viewWithTag:1];
+    lblPrice.text = [NSString stringWithFormat:@"$ %@ per month",[dict valueForKey:@"price"]];
+    
+    UILabel *lblPack = (UILabel *)[cell viewWithTag:2];
+    lblPack.text = [dict valueForKey:@"pack"];
+    
+    UILabel *lblPack_Details = (UILabel *)[cell viewWithTag:4];
+    lblPack_Details.text = [dict valueForKey:@"pack"];
+    
+    UILabel *lblVoice_Details = (UILabel *)[cell viewWithTag:5];
+    lblVoice_Details.text = [NSString stringWithFormat:@"Voice %@ min",[dict valueForKey:@"voice"]];
+    
+    UILabel *lblData_Details = (UILabel *)[cell viewWithTag:6];
+    lblData_Details.text = [NSString stringWithFormat:@"Data %@ MB",[dict valueForKey:@"pack"]];
+    
+    UILabel *lblPrice_Detail = (UILabel *)[cell viewWithTag:7];
+    lblPrice_Detail.text = [NSString stringWithFormat:@"$ %@",[dict valueForKey:@"price"]];
+    
+    UILabel *lblTotal_Detail = (UILabel *)[cell viewWithTag:8];
+    lblTotal_Detail.text = [NSString stringWithFormat:@"$ %@",[dict valueForKey:@"price"]];
+    
+    
+    UIButton *btnSub = (UIButton *)[cell viewWithTag:9];
+    btnSub.layer.borderColor=[[UIColor whiteColor]CGColor];
+    btnSub.layer.borderWidth= 1.0f;
+    btnSub.tag = 100+indexPath.row;
+    [btnSub addTarget:self action:@selector(btnSubTapped:) forControlEvents:UIControlEventTouchUpInside];
+    
+//    cell.customView.hidden = YES;
+//    [cell.contentView sendSubviewToBack:cell.customView];
     return cell;
 }
 
@@ -115,22 +152,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    [self updateTableView];
-    
-    MyCustomeCell* cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    cell.customView.hidden = NO;
-    [cell.contentView bringSubviewToFront:cell.customView];
+//    [self updateTableView];
+//    
+//    MyCustomeCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+//    
+//    cell.customView.hidden = NO;
+//    [cell.contentView bringSubviewToFront:cell.customView];
     
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self updateTableView];
-    
-    MyCustomeCell* cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.customView.hidden = YES;
-    [cell.contentView sendSubviewToBack:cell.customView];
+//    [self updateTableView];
+//    
+//    MyCustomeCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+//    cell.customView.hidden = YES;
+//    [cell.contentView sendSubviewToBack:cell.customView];
     
     
 }
@@ -139,6 +176,44 @@
 {
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
+}
+
+-(void) btnSubTapped:(id) sender{
+    
+    NSLog(@"tag is %ld",[sender tag]);
+    
+    NSInteger flagVal = [sender tag]-100;
+    
+    if (self.arrData.count>flagVal) {
+        
+        NSDictionary *dict = [self.arrData objectAtIndex:flagVal];
+        
+        [self.arrData removeObjectAtIndex:flagVal];
+        
+        NSArray *arr = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *strDestPath = [NSString stringWithFormat:@"%@/BestOffer.plist",[arr objectAtIndex:0]];
+        
+        NSMutableArray *arrWifiDetails = [[NSMutableArray alloc] init];
+        NSDictionary *dictRoot = [[NSDictionary alloc] initWithContentsOfFile:strDestPath];
+        arrWifiDetails = [[dictRoot valueForKey:@"wifiDetails"] mutableCopy];
+        
+        [arrWifiDetails addObject:dict];
+        
+        NSDictionary *dictWifi = [NSDictionary dictionaryWithObjectsAndKeys:arrWifiDetails,@"wifiDetails", nil];
+        [dictWifi writeToFile:strDestPath atomically:YES];
+        
+        [appDelegate.containerVC scrollMenuViewSelectedIndex:1];
+        
+        
+        NSString *strDestPathReco = [NSString stringWithFormat:@"%@/Recommended.plist",[arr objectAtIndex:0]];
+        
+        NSDictionary *dictWifiReco = [NSDictionary dictionaryWithObjectsAndKeys:self.arrData,@"wifiDetails", nil];
+        [dictWifiReco writeToFile:strDestPathReco atomically:YES];
+        
+        [self.tableView reloadData];
+        
+        
+    }
 }
 
 /*

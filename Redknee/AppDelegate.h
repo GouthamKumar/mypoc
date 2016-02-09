@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LocationTracker.h"
+#import "YSLContainerViewController.h"
 
 static NSString *kSavedItemsKey = @"savedItems";
 
@@ -16,6 +17,7 @@ static NSString *kSavedItemsKey = @"savedItems";
 @property (strong, nonatomic) UIWindow *window;
 @property LocationTracker * locationTracker;
 @property (nonatomic) NSTimer* locationUpdateTimer;
+@property (nonatomic, retain) YSLContainerViewController *containerVC;
 
 @end
 

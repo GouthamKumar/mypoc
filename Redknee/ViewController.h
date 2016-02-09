@@ -12,6 +12,8 @@
 
 @property (nonatomic, retain) NSString *strWifiName;
 
+@property (nonatomic, assign) int scrollIndexFlag;
+
 - (IBAction)btnMenuTapped:(id)sender;
 
 @end

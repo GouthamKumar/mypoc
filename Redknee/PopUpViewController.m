@@ -13,11 +13,13 @@
 #import "RecommendedPlansViewController.h"
 #import "LoginViewController.h"
 #import "MFSideMenu.h"
+#import "AppDelegate.h"
 
-@interface PopUpViewController ()<YSLContainerViewControllerDelegate>{
+@interface PopUpViewController ()<YSLContainerViewControllerDelegate,RecommendedDelegate>{
     
-    YSLContainerViewController *containerVC;
+//    YSLContainerViewController *containerVC;
     NSString *strMessage;
+    AppDelegate *appDelegate;
 }
 
 @end
@@ -37,6 +39,7 @@
     
     self.lblTitle.text = [NSString stringWithFormat:@"%@",strMessage];
     
+    appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // Do any additional setup after loading the view.
 }
@@ -169,7 +172,7 @@
         
     }];
     
-    [containerVC.view removeFromSuperview];
+    [appDelegate.containerVC.view removeFromSuperview];
     
     [UIView animateWithDuration:1.0 animations:^{
         
@@ -179,7 +182,7 @@
     
     [self.view bringSubviewToFront:self.btnMenu];
     
-    [containerVC scrollMenuViewSelectedIndex:2];
+    [appDelegate.containerVC scrollMenuViewSelectedIndex:2];
     
 }
 
@@ -272,7 +275,7 @@
     }];
     
     
-    [containerVC.view removeFromSuperview];
+    [appDelegate.containerVC.view removeFromSuperview];
     
     [UIView animateWithDuration:1.0 animations:^{
         
@@ -283,7 +286,7 @@
     [self.view bringSubviewToFront:self.btnMenu];
     
     
-    [containerVC scrollMenuViewSelectedIndex:1];
+    [appDelegate.containerVC scrollMenuViewSelectedIndex:1];
     
 }
 
@@ -304,23 +307,35 @@
 -(void)addChildViewsWithHeight:(float)height{
     
     CurrentPlansViewController *currentPlansVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CurrentPlansViewController"];
-    currentPlansVC.title = @"CURRENT PLANS";
+    currentPlansVC.title = @"Exclusive";
     
     BestOffersViewController *bestOffersVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BestOffersViewController"];
-    bestOffersVC.title = @"BEST OFFERS";
+    bestOffersVC.title = @"Current Plan";
     
     RecommendedPlansViewController *recomendedVC = [self.storyboard instantiateViewControllerWithIdentifier:@"RecommendedPlansViewController"];
-    recomendedVC.title = @"RECOMMENDED PLANS";
+    recomendedVC.title = @"Recommended";
     
     // ContainerView
     
-    containerVC = [[YSLContainerViewController alloc]initWithControllers:@[currentPlansVC,bestOffersVC,recomendedVC]
+    if (appDelegate.containerVC) {
+        
+        appDelegate.containerVC = nil;
+    }
+    
+    appDelegate.containerVC = [[YSLContainerViewController alloc]initWithControllers:@[currentPlansVC,bestOffersVC,recomendedVC]
                                                             topBarHeight:height
                                                     parentViewController:self];
-    containerVC.delegate = self;
-    containerVC.menuItemFont = [UIFont fontWithName:@"Futura-Medium" size:14];
+    appDelegate.containerVC.delegate = self;
+    appDelegate.containerVC.menuItemFont = [UIFont fontWithName:@"Futura-Medium" size:14];
     
-    [self.view addSubview:containerVC.view];
+    [self.view addSubview:appDelegate.containerVC.view];
 }
+
+//#pragma mark - Custom Delegates
+//
+//-(void) scrolltoIndex:(int)flagValue{
+//    
+//    [appDelegate.containerVC scrollMenuViewSelectedIndex:flagValue];
+//}
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "BestOffersViewController.h"
+#import "AppDelegate.h"
 
 #define ARC4RANDOM_MAX 0x100000000
 
@@ -28,6 +29,8 @@
 @interface BestOffersViewController (){
     
     PNPieChart *pieCharts,*pieChart;
+    
+    AppDelegate *appDelegate;
 }
 
 @property (nonatomic, retain) NSMutableArray *arrData;
@@ -40,6 +43,8 @@
     [super viewDidLoad];
     
     self.slices = [NSMutableArray arrayWithCapacity:2];
+    
+    appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     for(int i = 0; i < 5; i ++)
     {
@@ -198,7 +203,41 @@
 -(void) btnUnsubTapped:(id)sender{
     
     
-    NSLog(@"btnUnsubTapped tag %d",[sender tag]);
+    NSLog(@"btnUnsubTapped tag %ld",(long)[sender tag]);
+    
+    NSInteger flagVal = [sender tag]-100;
+    
+    if (self.arrData.count>flagVal) {
+        
+        NSDictionary *dict = [self.arrData objectAtIndex:flagVal];
+        
+        [self.arrData removeObjectAtIndex:flagVal];
+        
+        NSArray *arr = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *strDestPath = [NSString stringWithFormat:@"%@/Recommended.plist",[arr objectAtIndex:0]];
+        
+        NSMutableArray *arrWifiDetails = [[NSMutableArray alloc] init];
+        NSDictionary *dictRoot = [[NSDictionary alloc] initWithContentsOfFile:strDestPath];
+        arrWifiDetails = [[dictRoot valueForKey:@"wifiDetails"] mutableCopy];
+        
+        [arrWifiDetails addObject:dict];
+        
+        NSDictionary *dictWifi = [NSDictionary dictionaryWithObjectsAndKeys:arrWifiDetails,@"wifiDetails", nil];
+        [dictWifi writeToFile:strDestPath atomically:YES];
+        
+        [appDelegate.containerVC scrollMenuViewSelectedIndex:2];
+        
+        
+        NSString *strDestPathReco = [NSString stringWithFormat:@"%@/BestOffer.plist",[arr objectAtIndex:0]];
+        
+        NSDictionary *dictWifiReco = [NSDictionary dictionaryWithObjectsAndKeys:self.arrData,@"wifiDetails", nil];
+        [dictWifiReco writeToFile:strDestPathReco atomically:YES];
+        
+        [self.tableViewBestOffers reloadData];
+        
+    }
+    
+    
 }
 
 @end

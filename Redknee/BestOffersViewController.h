@@ -11,6 +11,7 @@
 #import "PNChart.h"
 
 @interface BestOffersViewController : UIViewController<PNChartDelegate, UITableViewDataSource, UITableViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UIView *viewRightPieChart;
 
 @property (weak, nonatomic) IBOutlet UIView *viewLeftPieChart;

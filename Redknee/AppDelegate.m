@@ -35,6 +35,7 @@
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) NSMutableArray *geotifications;
 @property (strong,nonatomic) LocationShareModel * shareModel;
+@property (nonatomic, retain) CTTelephonyNetworkInfo *telephonyNetworkInfo;
 
 @end
 
@@ -45,6 +46,14 @@
     // Override point for customization after application launch.
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+    
+    self.telephonyNetworkInfo = [[CTTelephonyNetworkInfo alloc] init];
+    self.telephonyNetworkInfo.subscriberCellularProviderDidUpdateNotifier = ^(CTCarrier *carrier) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"User did change SIM");
+        });
+    };
+    
     
     [[NSUserDefaults standardUserDefaults] setValue:@"no" forKey:@"enableGesture"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -115,7 +124,7 @@
     //Calling the the method to add the co-ordinates of the mumbai location to user NSUseDefaults
     [self addGeotificationCoordinate:coordinate radius:radius identifier:identifier note:note eventType:eventType];
     
-    //Co-ordinates of the maumbai
+    //Co-ordinates of the Tokyo
     CLLocationCoordinate2D tcoordinate;
     tcoordinate.latitude = 35.6833;
     tcoordinate.longitude = 139.6833;
@@ -197,6 +206,17 @@
     
     self.wifiReachability = [Reachability reachabilityForLocalWiFi];
     [self.wifiReachability startNotifier];
+    
+    __weak typeof(self) weakSelf = self;
+    self.telephonyNetworkInfo.subscriberCellularProviderDidUpdateNotifier = ^(CTCarrier *carrier) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"User did change SIM");
+            
+            [weakSelf scheduleLocalNotificationwithMessage:@"User Changed Simcard"];
+        });
+    };
+    
+    
     //    [self updateInterfaceWithReachability:self.wifiReachability];
     
 }
@@ -228,16 +248,12 @@
     //[super application:application didReceiveLocalNotification:notification]; // In most case, you don't need this line
     UIApplicationState state = [application applicationState];
     if (state == UIApplicationStateInactive) {
-        // Application was in the background when notification was delivered.
+        // Application was in the background when notification was delivered. 7338332813
         
         NSLog(@"%@",notification.alertBody);
         
-        
-        
-        
         NSString *strSSID1 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage1"];
         NSString *strSSID2 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage2"];
-        
         
         if ([notification.alertBody isEqualToString:strSSID1]) {
             
@@ -646,8 +662,6 @@
         }
     }
 }
-
-
 
 
 

@@ -14,12 +14,15 @@
 #import "RecommendedPlansViewController.h"
 #import "MFSideMenu.h"
 #import "PopUpViewController.h"
+#import "AppDelegate.h"
 
 //#import "MTReachabilityManager.h"
 
 @interface ViewController ()<YSLContainerViewControllerDelegate>
 {
-    YSLContainerViewController *containerVC;
+//    YSLContainerViewController *containerVC;
+    
+    AppDelegate *appDelegate;
 }
 
 
@@ -39,25 +42,32 @@
      Observe the kNetworkReachabilityChangedNotification. When that notification is posted, the method reachabilityChanged will be called.
      */
     
+    appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     CurrentPlansViewController *currentPlansVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CurrentPlansViewController"];
-    currentPlansVC.title = @"CURRENT PLANS";
+    currentPlansVC.title = @"Exclusive";
     
     BestOffersViewController *bestOffersVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BestOffersViewController"];
-    bestOffersVC.title = @"BEST OFFERS";
+    bestOffersVC.title = @"Current Plan";
     
     RecommendedPlansViewController *recomendedVC = [self.storyboard instantiateViewControllerWithIdentifier:@"RecommendedPlansViewController"];
-    recomendedVC.title = @"RECOMMENDED PLANS";
+    recomendedVC.title = @"Recommended";
     
     // ContainerView
     float statusHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
     float navigationHeight = self.navigationController.navigationBar.frame.size.height;
     
-    containerVC = [[YSLContainerViewController alloc]initWithControllers:@[currentPlansVC,bestOffersVC,recomendedVC]
+    if (appDelegate.containerVC) {
+        
+        appDelegate.containerVC = nil;
+    }
+    
+    appDelegate.containerVC = [[YSLContainerViewController alloc]initWithControllers:@[currentPlansVC,bestOffersVC,recomendedVC]
                                                                                         topBarHeight:statusHeight + navigationHeight
                                                                                 parentViewController:self];
-    containerVC.delegate = self;
-    containerVC.menuItemFont = [UIFont fontWithName:@"Futura-Medium" size:14];
-    [self.view addSubview:containerVC.view];
+    appDelegate.containerVC.delegate = self;
+    appDelegate.containerVC.menuItemFont = [UIFont fontWithName:@"Futura-Medium" size:14];
+    [self.view addSubview:appDelegate.containerVC.view];
     
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -80,7 +90,15 @@
 -(void)viewDidAppear:(BOOL)animated{
     
     [super viewDidAppear:animated];
-    [containerVC scrollMenuViewSelectedIndex:1];
+    
+    if (self.scrollIndexFlag != 0) {
+        
+        [appDelegate.containerVC scrollMenuViewSelectedIndex:self.scrollIndexFlag-1];
+    }
+    else{
+        
+        [appDelegate.containerVC scrollMenuViewSelectedIndex:1];
+    }
     
     if ([self.strWifiName length]) {
         

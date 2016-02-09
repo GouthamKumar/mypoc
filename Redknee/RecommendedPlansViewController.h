@@ -9,8 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "SKSTableView.h"
 
+@protocol RecommendedDelegate <NSObject>
+
+-(void) scrolltoIndex:(int)flagValue;
+
+@end
+
 @interface RecommendedPlansViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) id<RecommendedDelegate> delegate;
 
 @end
