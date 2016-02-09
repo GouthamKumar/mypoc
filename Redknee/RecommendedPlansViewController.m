@@ -41,22 +41,10 @@
     
     NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:strDestPath];
     
-    NSLog(@"wifi Details %@ details2 %@",[dict valueForKey:@"wifiDetails1"],[dict valueForKey:@"wifiDetails2"]);
+    NSLog(@"rec wifi Details %@",[dict valueForKey:@"wifiDetails"]);
     
     
-    NSDictionary *dictWifi1 = [dict valueForKey:@"wifiDetails1"];
-    NSDictionary *dictWifi2 = [dict valueForKey:@"wifiDetails2"];
-    
-    
-    if (dictWifi1 != nil) {
-        
-        [self.arrData addObject:dictWifi1];
-    }
-    if (dictWifi2 != nil){
-        
-        [self.arrData addObject:dictWifi2];
-    }
-    
+    self.arrData = [dict valueForKey:@"wifiDetails"];
     
     
     

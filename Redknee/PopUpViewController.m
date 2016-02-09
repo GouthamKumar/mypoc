@@ -95,6 +95,15 @@
         [fileManager copyItemAtPath:strPath toPath:strDestPath error:nil];
     }
     
+    NSMutableArray *arrWifiDetails = [[NSMutableArray alloc] init];
+    NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:strDestPath];
+    arrWifiDetails = [[dict valueForKey:@"wifiDetails"] mutableCopy];
+    
+    if (arrWifiDetails == nil) {
+        
+        arrWifiDetails = [[NSMutableArray alloc] init];
+    }
+    
     if ([strSSID1 isEqualToString:strMessage]) {
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -103,19 +112,23 @@
         NSString *strData = [defaults valueForKey:@"wifiData1"];
         NSString *strPrice = [defaults valueForKey:@"wifiPrice1"];
         
-        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithContentsOfFile:strDestPath];
-        
-        [dict removeObjectForKey:@"wifiDetails1"];
-        
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+//        [dict removeObjectForKey:@"wifiDetails"];
         [dict setValue:strPack forKey:@"pack"];
         [dict setValue:strVoice forKey:@"voice"];
         [dict setValue:strData forKey:@"data"];
         [dict setValue:strPrice forKey:@"price"];
         
         
-        NSDictionary *dictnry = [NSDictionary dictionaryWithObjectsAndKeys:dict,@"wifiDetails1", nil];
-        
-        [dictnry writeToFile:strDestPath atomically:YES];
+        if (arrWifiDetails.count>0) {
+            
+            [arrWifiDetails removeObjectAtIndex:0];
+            [arrWifiDetails insertObject:dict atIndex:0];
+        }
+        else{
+            
+            [arrWifiDetails addObject:dict];
+        }
     }
     
     else if ([strSSID2 isEqualToString:strMessage]){
@@ -126,21 +139,26 @@
         NSString *strData = [defaults valueForKey:@"wifiData2"];
         NSString *strPrice = [defaults valueForKey:@"wifiPrice2"];
         
-        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithContentsOfFile:strDestPath];
-        
-        [dict removeObjectForKey:@"wifiDetails2"];
-        
-        
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+//        [dict removeObjectForKey:@"wifiDetails"];
         [dict setValue:strPack forKey:@"pack"];
         [dict setValue:strVoice forKey:@"voice"];
         [dict setValue:strData forKey:@"data"];
         [dict setValue:strPrice forKey:@"price"];
         
         
-        NSDictionary *dictnry = [NSDictionary dictionaryWithObjectsAndKeys:dict,@"wifiDetails2", nil];
-        
-        [dictnry writeToFile:strDestPath atomically:YES];
+        if (arrWifiDetails.count>1) {
+            
+            [arrWifiDetails removeObjectAtIndex:1];
+            [arrWifiDetails insertObject:dict atIndex:1];
+        }
+        else{
+            
+            [arrWifiDetails addObject:dict];
+        }
     }
+    NSDictionary *dictWifi = [NSDictionary dictionaryWithObjectsAndKeys:arrWifiDetails,@"wifiDetails", nil];
+    [dictWifi writeToFile:strDestPath atomically:YES];
     
     
     [UIView animateWithDuration:0.25 animations:^{
@@ -181,6 +199,14 @@
         
         [fileManager copyItemAtPath:strPath toPath:strDestPath error:nil];
     }
+    NSMutableArray *arrWifiDetails = [[NSMutableArray alloc] init];
+    NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:strDestPath];
+    arrWifiDetails = [[dict valueForKey:@"wifiDetails"] mutableCopy];
+    
+    if (arrWifiDetails == nil) {
+        
+        arrWifiDetails = [[NSMutableArray alloc] init];
+    }
     
     if ([strSSID1 isEqualToString:strMessage]) {
         
@@ -190,19 +216,22 @@
         NSString *strData = [defaults valueForKey:@"wifiData1"];
         NSString *strPrice = [defaults valueForKey:@"wifiPrice1"];
         
-        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithContentsOfFile:strDestPath];
-        
-        [dict removeObjectForKey:@"wifiDetails1"];
-        
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
         [dict setValue:strPack forKey:@"pack"];
         [dict setValue:strVoice forKey:@"voice"];
         [dict setValue:strData forKey:@"data"];
         [dict setValue:strPrice forKey:@"price"];
         
         
-        NSDictionary *dictnry = [NSDictionary dictionaryWithObjectsAndKeys:dict,@"wifiDetails1", nil];
-        
-        [dictnry writeToFile:strDestPath atomically:YES];
+        if (arrWifiDetails.count>0) {
+            
+            [arrWifiDetails removeObjectAtIndex:0];
+            [arrWifiDetails insertObject:dict atIndex:0];
+        }
+        else{
+            
+            [arrWifiDetails addObject:dict];
+        }
     }
     
     else if ([strSSID2 isEqualToString:strMessage]){
@@ -213,21 +242,26 @@
         NSString *strData = [defaults valueForKey:@"wifiData2"];
         NSString *strPrice = [defaults valueForKey:@"wifiPrice2"];
         
-        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithContentsOfFile:strDestPath];
-        
-        [dict removeObjectForKey:@"wifiDetails2"];
-        
-        
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+//        [dict removeObjectForKey:@"wifiDetails"];
         [dict setValue:strPack forKey:@"pack"];
         [dict setValue:strVoice forKey:@"voice"];
         [dict setValue:strData forKey:@"data"];
         [dict setValue:strPrice forKey:@"price"];
         
         
-        NSDictionary *dictnry = [NSDictionary dictionaryWithObjectsAndKeys:dict,@"wifiDetails2", nil];
-        
-        [dictnry writeToFile:strDestPath atomically:YES];
+        if (arrWifiDetails.count>1) {
+            
+            [arrWifiDetails removeObjectAtIndex:1];
+            [arrWifiDetails insertObject:dict atIndex:1];
+        }
+        else{
+            
+            [arrWifiDetails addObject:dict];
+        }
     }
+    NSDictionary *dictWifi = [NSDictionary dictionaryWithObjectsAndKeys:arrWifiDetails,@"wifiDetails", nil];
+    [dictWifi writeToFile:strDestPath atomically:YES];
     
     [UIView animateWithDuration:0.25 animations:^{
         
