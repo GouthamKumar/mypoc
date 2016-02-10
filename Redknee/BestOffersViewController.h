@@ -21,5 +21,6 @@
 @property(nonatomic, strong) NSMutableArray *slices;
 @property (weak, nonatomic) IBOutlet UIButton *btnCreate;
 @property(nonatomic, strong) NSArray        *sliceColors;
+- (IBAction)btnCreateTapped:(id)sender;
 
 @end

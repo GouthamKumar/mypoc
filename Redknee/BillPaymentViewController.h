@@ -10,5 +10,7 @@
 
 @interface BillPaymentViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *btnPayNow;
+
 - (IBAction)btnMenuTapped:(id)sender;
 @end

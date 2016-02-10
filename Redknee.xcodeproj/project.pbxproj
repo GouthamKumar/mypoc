@@ -21,7 +21,10 @@
 		223C24921C647E05002BFA7E /* LocationTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 223C248D1C647E05002BFA7E /* LocationTracker.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		223C24931C647E05002BFA7E /* BackgroundTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 223C248F1C647E05002BFA7E /* BackgroundTaskManager.m */; };
 		223C24941C647E05002BFA7E /* LocationShareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 223C24911C647E05002BFA7E /* LocationShareModel.m */; };
+		227296E21C6B394300E11385 /* MyLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 227296E11C6B394300E11385 /* MyLocation.m */; settings = {ASSET_TAGS = (); }; };
+		227296E41C6B395800E11385 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 227296E31C6B395800E11385 /* MapKit.framework */; };
 		2277FD5C1C64C2E90084A206 /* PopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2277FD5B1C64C2E90084A206 /* PopUpViewController.m */; };
+		228C55B91C6AFFD700F0A804 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 228C55B81C6AFFD700F0A804 /* MBProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
 		22B2221F1C60B86B0028E7DB /* splash_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B2221E1C60B86B0028E7DB /* splash_screen.png */; };
 		22B222221C60B8FF0028E7DB /* redknee_logo326ppi.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B222201C60B8FF0028E7DB /* redknee_logo326ppi.png */; };
 		22B222231C60B8FF0028E7DB /* smart_logo_326ppi.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B222211C60B8FF0028E7DB /* smart_logo_326ppi.png */; };
@@ -138,8 +141,13 @@
 		223C248F1C647E05002BFA7E /* BackgroundTaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundTaskManager.m; sourceTree = "<group>"; };
 		223C24901C647E05002BFA7E /* LocationShareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationShareModel.h; sourceTree = "<group>"; };
 		223C24911C647E05002BFA7E /* LocationShareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationShareModel.m; sourceTree = "<group>"; };
+		227296E01C6B394300E11385 /* MyLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLocation.h; sourceTree = "<group>"; };
+		227296E11C6B394300E11385 /* MyLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLocation.m; sourceTree = "<group>"; };
+		227296E31C6B395800E11385 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		2277FD5A1C64C2E90084A206 /* PopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpViewController.h; sourceTree = "<group>"; };
 		2277FD5B1C64C2E90084A206 /* PopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpViewController.m; sourceTree = "<group>"; };
+		228C55B71C6AFFD700F0A804 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		228C55B81C6AFFD700F0A804 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		22B2221E1C60B86B0028E7DB /* splash_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_screen.png; sourceTree = "<group>"; };
 		22B222201C60B8FF0028E7DB /* redknee_logo326ppi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redknee_logo326ppi.png; sourceTree = "<group>"; };
 		22B222211C60B8FF0028E7DB /* smart_logo_326ppi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smart_logo_326ppi.png; sourceTree = "<group>"; };
@@ -252,6 +260,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				227296E41C6B395800E11385 /* MapKit.framework in Frameworks */,
 				40474A531C618C2C00959AC7 /* NetworkExtension.framework in Frameworks */,
 				408375DA1C5EF02900B5E7F6 /* SystemConfiguration.framework in Frameworks */,
 				40304E901C5E82E6008E3EE5 /* CoreTelephony.framework in Frameworks */,
@@ -311,6 +320,8 @@
 			children = (
 				220CC56F1C6A0FA200B3C826 /* StoreLocatorViewController.h */,
 				220CC5701C6A0FA200B3C826 /* StoreLocatorViewController.m */,
+				227296E01C6B394300E11385 /* MyLocation.h */,
+				227296E11C6B394300E11385 /* MyLocation.m */,
 			);
 			name = StoreLocator;
 			sourceTree = "<group>";
@@ -345,6 +356,15 @@
 				223C24911C647E05002BFA7E /* LocationShareModel.m */,
 			);
 			name = LocationTracker;
+			sourceTree = "<group>";
+		};
+		228C55B61C6AFFCC00F0A804 /* ProgressHud */ = {
+			isa = PBXGroup;
+			children = (
+				228C55B71C6AFFD700F0A804 /* MBProgressHUD.h */,
+				228C55B81C6AFFD700F0A804 /* MBProgressHUD.m */,
+			);
+			name = ProgressHud;
 			sourceTree = "<group>";
 		};
 		40304E4C1C5E8146008E3EE5 = {
@@ -448,6 +468,7 @@
 		40304E8E1C5E82D3008E3EE5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				227296E31C6B395800E11385 /* MapKit.framework */,
 				40474A521C618C2C00959AC7 /* NetworkExtension.framework */,
 				408375D91C5EF02800B5E7F6 /* SystemConfiguration.framework */,
 				40304E8F1C5E82E6008E3EE5 /* CoreTelephony.framework */,
@@ -496,6 +517,7 @@
 		408375B81C5EE16300B5E7F6 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				228C55B61C6AFFCC00F0A804 /* ProgressHud */,
 				407F9A6C1C680BE000E1AF34 /* DropdownTableView */,
 				40BCC4431C66CFEC00401A98 /* PieChart */,
 				223C24991C64864C002BFA7E /* LocationTracker */,
@@ -712,6 +734,7 @@
 				40304E601C5E8147008E3EE5 /* ViewController.m in Sources */,
 				406F168F1C60374E003AF8F5 /* MFSideMenuContainerViewController.m in Sources */,
 				220CC5621C6A0ADC00B3C826 /* AvailableAddOnsViewController.m in Sources */,
+				227296E21C6B394300E11385 /* MyLocation.m in Sources */,
 				4061235A1C66E186009A85A7 /* PNRadarChart.m in Sources */,
 				220CC56D1C6A0EB200B3C826 /* TransactionHistoryViewController.m in Sources */,
 				406F16911C60374E003AF8F5 /* MFSideMenuShadow.m in Sources */,
@@ -732,6 +755,7 @@
 				406123591C66E186009A85A7 /* PNGenericChart.m in Sources */,
 				406123561C66E186009A85A7 /* PNLineChartDataItem.m in Sources */,
 				4061235B1C66E186009A85A7 /* PNRadarChartDataItem.m in Sources */,
+				228C55B91C6AFFD700F0A804 /* MBProgressHUD.m in Sources */,
 				220CC5691C6A0DE000B3C826 /* BillPaymentViewController.m in Sources */,
 				407F9A7C1C6813F700E1AF34 /* MyCustomeCell.m in Sources */,
 				406123581C66E186009A85A7 /* PNPieChartDataItem.m in Sources */,
@@ -906,7 +930,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hopon.employeeapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2e9ce48f-6f75-432d-a2d6-a386bdb654a4";
+				PROVISIONING_PROFILE = "3966b029-65c2-4f3a-b98f-016862a82e32";
 			};
 			name = Debug;
 		};
@@ -922,7 +946,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hopon.employeeapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2e9ce48f-6f75-432d-a2d6-a386bdb654a4";
+				PROVISIONING_PROFILE = "3966b029-65c2-4f3a-b98f-016862a82e32";
 			};
 			name = Release;
 		};

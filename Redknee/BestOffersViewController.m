@@ -8,6 +8,7 @@
 
 #import "BestOffersViewController.h"
 #import "AppDelegate.h"
+#import "MyPlanViewController.h"
 
 #define ARC4RANDOM_MAX 0x100000000
 
@@ -68,15 +69,15 @@
     CGRect newFrame;
     if (IS_IPHONE_5 || IS_IPHONE_4_OR_LESS) {
         
-        newFrame = CGRectMake(30, 84, 100, 10);
+        newFrame = CGRectMake(30, 75, 100, 10);
     }
     else if (IS_IPHONE_6){
         
-        newFrame = CGRectMake(self.viewRightPieChart.frame.size.width/4-40, 84, 110, 10);
+        newFrame = CGRectMake(self.viewRightPieChart.frame.size.width/4-30, 75, 100, 10);
     }
     else{
         
-        newFrame = CGRectMake(self.viewRightPieChart.frame.size.width/4-30, 84, 120, 10);
+        newFrame = CGRectMake(self.viewRightPieChart.frame.size.width/4-25, 78, 105, 10);
     }
     
     pieChart = [[PNPieChart alloc] initWithFrame:newFrame items:item];
@@ -93,8 +94,8 @@
     
     [self.viewLeftPieChart addSubview:pieChart];
     
-    NSArray *items = @[[PNPieChartDataItem dataItemWithValue:2 color:[UIColor redColor]],
-                       [PNPieChartDataItem dataItemWithValue:10 color:PNGreen],
+    NSArray *items = @[[PNPieChartDataItem dataItemWithValue:60 color:[UIColor redColor]],
+                       [PNPieChartDataItem dataItemWithValue:100 color:PNGreen],
                        ];
     
     pieCharts = [[PNPieChart alloc] initWithFrame:newFrame items:items];
@@ -243,4 +244,10 @@
     
 }
 
+- (IBAction)btnCreateTapped:(id)sender {
+    
+    MyPlanViewController *myPlanVc = [self.storyboard instantiateViewControllerWithIdentifier:@"MyPlanViewController"];
+    [self.navigationController pushViewController:myPlanVc animated:YES];
+//    [self presentViewController:myPlanVc animated:YES completion:nil];
+}
 @end

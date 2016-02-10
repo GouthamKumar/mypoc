@@ -15,7 +15,7 @@
 #import "MFSideMenu.h"
 #import "AppDelegate.h"
 
-@interface PopUpViewController ()<YSLContainerViewControllerDelegate,RecommendedDelegate>{
+@interface PopUpViewController ()<YSLContainerViewControllerDelegate>{
     
 //    YSLContainerViewController *containerVC;
     NSString *strMessage;

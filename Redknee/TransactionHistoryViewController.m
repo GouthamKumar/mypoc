@@ -18,6 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
     // Do any additional setup after loading the view.
 }
 
@@ -46,5 +48,43 @@
     [container setLeftMenuViewController:flyoutMenu];
     [container setLeftMenuWidth:300.0f];
     [self.menuContainerViewController toggleLeftSideMenuCompletion:nil];
+}
+
+
+#pragma mark - TableView Delegate
+
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return 6;
+}
+
+-(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"historyCell" forIndexPath:indexPath];
+    
+    if (cell == nil) {
+        
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"historyCell"];
+    }
+    
+    UILabel *lblDate = (UILabel *)[cell viewWithTag:1];
+    lblDate.numberOfLines = 0;
+    lblDate.text = [NSString stringWithFormat:@"10:02:2016 %ld:00 AM",indexPath.row+6];
+    
+    UILabel *lblMobileNo = (UILabel *)[cell viewWithTag:2];
+    lblMobileNo.numberOfLines = 0;
+    lblMobileNo.text = [NSString stringWithFormat:@"+91 970480201%ld",indexPath.row+1];
+    
+    UILabel *lblMins = (UILabel *)[cell viewWithTag:3];
+    lblMins.text = [NSString stringWithFormat:@"%ld Mins",indexPath.row+26];
+    
+    
+    return cell;
+    
+}
+
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 50;
 }
 @end

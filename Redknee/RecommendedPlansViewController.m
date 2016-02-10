@@ -101,7 +101,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section; {
     
-    return [self.arrData count];
+    return 2;//[self.arrData count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath; {
@@ -113,31 +113,31 @@
     //cell.textLabel.text = [NSString stringWithFormat:@"row %li", (long)indexPath.row];
     //cell.detailTextLabel.text = [NSString stringWithFormat:@"section %li", (long)indexPath.section];
     
-    NSDictionary *dict = [self.arrData objectAtIndex:indexPath.row];
+//    NSDictionary *dict = [self.arrData objectAtIndex:indexPath.row];
     
     UILabel *lblPrice = (UILabel *)[cell viewWithTag:1];
-    lblPrice.text = [NSString stringWithFormat:@"$ %@ per month",[dict valueForKey:@"price"]];
+    lblPrice.text = @"iOS SDK";//[NSString stringWithFormat:@"$ %@ per month",[dict valueForKey:@"price"]];
     
     UILabel *lblPack = (UILabel *)[cell viewWithTag:2];
-    lblPack.text = [dict valueForKey:@"pack"];
+    lblPack.text = @"iOS SDK";//[dict valueForKey:@"pack"];
     
     UILabel *lblPack_Details = (UILabel *)[cell viewWithTag:4];
-    lblPack_Details.text = [dict valueForKey:@"pack"];
+    lblPack_Details.text = @"iOS SDK";//[dict valueForKey:@"pack"];
     
-    UILabel *lblVoice_Details = (UILabel *)[cell viewWithTag:5];
-    lblVoice_Details.text = [NSString stringWithFormat:@"Voice %@ min",[dict valueForKey:@"voice"]];
+//    UILabel *lblVoice_Details = (UILabel *)[cell viewWithTag:5];
+//    lblVoice_Details.text = @"iOS SDK";//[NSString stringWithFormat:@"Voice %@ min",[dict valueForKey:@"voice"]];
+//    
+//    UILabel *lblData_Details = (UILabel *)[cell viewWithTag:6];
+//    lblData_Details.text = @"iOS SDK";//[NSString stringWithFormat:@"Data %@ MB",[dict valueForKey:@"pack"]];
+//    
+//    UILabel *lblPrice_Detail = (UILabel *)[cell viewWithTag:7];
+//    lblPrice_Detail.text = @"iOS SDK";//[NSString stringWithFormat:@"$ %@",[dict valueForKey:@"price"]];
+//    
+//    UILabel *lblTotal_Detail = (UILabel *)[cell viewWithTag:8];
+//    lblTotal_Detail.text = @"iOS SDK";//[NSString stringWithFormat:@"$ %@",[dict valueForKey:@"price"]];
     
-    UILabel *lblData_Details = (UILabel *)[cell viewWithTag:6];
-    lblData_Details.text = [NSString stringWithFormat:@"Data %@ MB",[dict valueForKey:@"pack"]];
     
-    UILabel *lblPrice_Detail = (UILabel *)[cell viewWithTag:7];
-    lblPrice_Detail.text = [NSString stringWithFormat:@"$ %@",[dict valueForKey:@"price"]];
-    
-    UILabel *lblTotal_Detail = (UILabel *)[cell viewWithTag:8];
-    lblTotal_Detail.text = [NSString stringWithFormat:@"$ %@",[dict valueForKey:@"price"]];
-    
-    
-    UIButton *btnSub = (UIButton *)[cell viewWithTag:9];
+    UIButton *btnSub = (UIButton *)[cell viewWithTag:5];
     btnSub.layer.borderColor=[[UIColor whiteColor]CGColor];
     btnSub.layer.borderWidth= 1.0f;
     btnSub.tag = 100+indexPath.row;

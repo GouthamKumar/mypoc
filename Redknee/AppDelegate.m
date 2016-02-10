@@ -172,7 +172,7 @@
     
     //Send the best location to server every 60 seconds
     //You may adjust the time interval depends on the need of your app.
-    NSTimeInterval time = 8.0;
+    NSTimeInterval time = 60.0;
     
     if ([self.locationUpdateTimer isValid]) {
         

@@ -17,6 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.btnPayNow.layer.borderColor=[[UIColor whiteColor]CGColor];
+    self.btnPayNow.layer.borderWidth= 1.0f;
+    
     // Do any additional setup after loading the view.
 }
 

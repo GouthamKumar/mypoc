@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @interface StoreLocatorViewController : UIViewController
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 - (IBAction)btnMenuTapped:(id)sender;
 
 @end

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TransactionHistoryViewController : UIViewController
+@interface TransactionHistoryViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 
+@property (weak, nonatomic) IBOutlet UITableView *tableViewHistory;
 
 @end

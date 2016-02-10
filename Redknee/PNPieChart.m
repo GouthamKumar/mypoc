@@ -60,7 +60,7 @@
 - (void)baseInit{
     _selectedItems = [NSMutableDictionary dictionary];
     _outerCircleRadius  = CGRectGetWidth(self.bounds) / 2;
-    _innerCircleRadius  = CGRectGetWidth(self.bounds) / 6;
+    _innerCircleRadius  = CGRectGetWidth(self.bounds) / 40;
     _descriptionTextColor = [UIColor whiteColor];
     _descriptionTextFont  = [UIFont fontWithName:@"Avenir-Medium" size:18.0];
     _descriptionTextShadowColor  = [[UIColor blackColor] colorWithAlphaComponent:0.4];
@@ -101,7 +101,7 @@
 /** Override this to change how inner attributes are computed. **/
 - (void)recompute {
     self.outerCircleRadius = CGRectGetWidth(self.bounds) / 2;
-    self.innerCircleRadius = CGRectGetWidth(self.bounds) / 6;
+    self.innerCircleRadius = CGRectGetWidth(self.bounds) / 40;
 }
 
 #pragma mark -
