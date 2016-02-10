@@ -113,6 +113,9 @@
     
     [self.viewRightPieChart addSubview:pieCharts];
     
+    self.btnCreate.layer.borderColor=[[UIColor whiteColor]CGColor];
+    self.btnCreate.layer.borderWidth= 1.0f;
+    
     // Do any additional setup after loading the view.
 }
 
@@ -164,7 +167,7 @@
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return [self.arrData count];
+    return 2;
 }
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -176,10 +179,10 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"wifiDetails"];
     }
     
-    NSDictionary *dict = [self.arrData objectAtIndex:indexPath.row];
+//    NSDictionary *dict = [self.arrData objectAtIndex:indexPath.row];
     
     UILabel *lblName = (UILabel *)[cell viewWithTag:1];
-    lblName.text = [dict valueForKey:@"pack"];
+    lblName.text = @"gk_ pack";//[dict valueForKey:@"pack"];
     
     UILabel *lblTatal_Data = (UILabel *)[cell viewWithTag:2];
     lblTatal_Data.text = @"1.00 GB";

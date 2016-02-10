@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		220CC55F1C6A0ACD00B3C826 /* MyAddOnsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CC55E1C6A0ACD00B3C826 /* MyAddOnsViewController.m */; settings = {ASSET_TAGS = (); }; };
-		220CC5621C6A0ADC00B3C826 /* AvailableAddOnsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CC5611C6A0ADC00B3C826 /* AvailableAddOnsViewController.m */; settings = {ASSET_TAGS = (); }; };
-		220CC5651C6A0B0000B3C826 /* ShopCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CC5641C6A0B0000B3C826 /* ShopCartViewController.m */; settings = {ASSET_TAGS = (); }; };
-		220CC5691C6A0DE000B3C826 /* BillPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CC5681C6A0DE000B3C826 /* BillPaymentViewController.m */; settings = {ASSET_TAGS = (); }; };
-		220CC56D1C6A0EB200B3C826 /* TransactionHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CC56C1C6A0EB200B3C826 /* TransactionHistoryViewController.m */; settings = {ASSET_TAGS = (); }; };
-		220CC5711C6A0FA200B3C826 /* StoreLocatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CC5701C6A0FA200B3C826 /* StoreLocatorViewController.m */; settings = {ASSET_TAGS = (); }; };
+		220CC55F1C6A0ACD00B3C826 /* MyAddOnsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CC55E1C6A0ACD00B3C826 /* MyAddOnsViewController.m */; };
+		220CC5621C6A0ADC00B3C826 /* AvailableAddOnsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CC5611C6A0ADC00B3C826 /* AvailableAddOnsViewController.m */; };
+		220CC5651C6A0B0000B3C826 /* ShopCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CC5641C6A0B0000B3C826 /* ShopCartViewController.m */; };
+		220CC5691C6A0DE000B3C826 /* BillPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CC5681C6A0DE000B3C826 /* BillPaymentViewController.m */; };
+		220CC56D1C6A0EB200B3C826 /* TransactionHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CC56C1C6A0EB200B3C826 /* TransactionHistoryViewController.m */; };
+		220CC5711C6A0FA200B3C826 /* StoreLocatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CC5701C6A0FA200B3C826 /* StoreLocatorViewController.m */; };
 		2221F0D71C633482006863D1 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2221F0D61C633482006863D1 /* SettingsViewController.m */; };
 		2221F0DA1C6334EC006863D1 /* MyPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2221F0D91C6334EC006863D1 /* MyPlanViewController.m */; };
 		2221F0DD1C633505006863D1 /* MyUsageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2221F0DC1C633505006863D1 /* MyUsageViewController.m */; };
@@ -501,7 +501,6 @@
 				223C24991C64864C002BFA7E /* LocationTracker */,
 				406F16871C60373F003AF8F5 /* SideMenu */,
 				408375B71C5EDF1E00B5E7F6 /* Rechability */,
-				408375C91C5EE84500B5E7F6 /* RechabilityManager */,
 				408375C81C5EE82E00B5E7F6 /* TopMenuTab */,
 			);
 			name = Custom;
@@ -516,13 +515,6 @@
 				408375BC1C5EE19200B5E7F6 /* YSLScrollMenuView.m */,
 			);
 			name = TopMenuTab;
-			sourceTree = "<group>";
-		};
-		408375C91C5EE84500B5E7F6 /* RechabilityManager */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = RechabilityManager;
 			sourceTree = "<group>";
 		};
 		40BCC4431C66CFEC00401A98 /* PieChart */ = {
@@ -914,7 +906,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hopon.employeeapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3966b029-65c2-4f3a-b98f-016862a82e32";
+				PROVISIONING_PROFILE = "2e9ce48f-6f75-432d-a2d6-a386bdb654a4";
 			};
 			name = Debug;
 		};
@@ -930,7 +922,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hopon.employeeapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3966b029-65c2-4f3a-b98f-016862a82e32";
+				PROVISIONING_PROFILE = "2e9ce48f-6f75-432d-a2d6-a386bdb654a4";
 			};
 			name = Release;
 		};

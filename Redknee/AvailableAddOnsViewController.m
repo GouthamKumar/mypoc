@@ -16,6 +16,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.btnRemove1.layer.borderColor=[[UIColor whiteColor]CGColor];
+    self.btnRemove1.layer.borderWidth= 1.0f;
+    self.btnRemove2.layer.borderWidth= 1.0f;
+    self.btnRemove2.layer.borderColor=[[UIColor whiteColor]CGColor];
+    
+    
     // Do any additional setup after loading the view.
 }
 

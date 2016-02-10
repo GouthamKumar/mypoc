@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableViewBestOffers;
 
 @property(nonatomic, strong) NSMutableArray *slices;
+@property (weak, nonatomic) IBOutlet UIButton *btnCreate;
 @property(nonatomic, strong) NSArray        *sliceColors;
 
 @end

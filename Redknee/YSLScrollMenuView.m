@@ -8,7 +8,7 @@
 
 #import "YSLScrollMenuView.h"
 
-static const CGFloat kYSLScrollMenuViewWidth  = 140;
+static const CGFloat kYSLScrollMenuViewWidth  = 120;
 static const CGFloat kYSLScrollMenuViewMargin = 10;
 static const CGFloat kYSLIndicatorHeight = 3;
 
@@ -90,7 +90,7 @@ static const CGFloat kYSLIndicatorHeight = 3;
             itemView.userInteractionEnabled = YES;
             itemView.backgroundColor = [UIColor clearColor];
             itemView.textAlignment = NSTextAlignmentCenter;
-            itemView.font = self.itemfont;
+            itemView.font = [UIFont fontWithName:@"Helvetica Neue" size:14];
             itemView.textColor = _itemTitleColor;
             [views addObject:itemView];
             

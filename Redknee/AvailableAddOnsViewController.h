@@ -10,4 +10,6 @@
 
 @interface AvailableAddOnsViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *btnRemove1;
+@property (weak, nonatomic) IBOutlet UIButton *btnRemove2;
 @end
