@@ -91,7 +91,7 @@
     [application registerUserNotificationSettings:settings];
     
     
-    [self performSelector:@selector(registerGeofencing) withObject:nil afterDelay:1.0];
+//    [self performSelector:@selector(registerGeofencing) withObject:nil afterDelay:1.0];
     
     self.shareModel = [LocationShareModel sharedModel];
     self.locationTracker = [[LocationTracker alloc]init];
