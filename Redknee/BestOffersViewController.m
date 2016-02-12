@@ -131,18 +131,49 @@
     [pieChart strokeChart];
     [pieCharts strokeChart];
     
-    [self.arrData removeAllObjects];
+//    [self.arrData removeAllObjects];
     
+    NSString *strSSID1 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage1"];
+    NSString *strSSID2 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage2"];
     
-    NSArray *arr = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *strDestPath = [NSString stringWithFormat:@"%@/BestOffer.plist",[arr objectAtIndex:0]];
+    NSString *strMessage = [[NSUserDefaults standardUserDefaults] valueForKey:@"selectedMessage"];
+    if ([strSSID1 isEqualToString:strMessage]) {
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *strPack = [defaults valueForKey:@"wifiPack1"];
+        NSString *strVoice = [defaults valueForKey:@"wifiVoice1"];
+        NSString *strData = [defaults valueForKey:@"wifiData1"];
+        NSString *strPrice = [defaults valueForKey:@"wifiPrice1"];
+        
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+        //        [dict removeObjectForKey:@"wifiDetails"];
+        [dict setValue:strPack forKey:@"pack"];
+        [dict setValue:strVoice forKey:@"voice"];
+        [dict setValue:strData forKey:@"data"];
+        [dict setValue:strPrice forKey:@"price"];
+        [self.arrData addObject:dict];
+        [defaults setValue:@"" forKey:@"selectedMessage"];
+        [defaults synchronize];
+    }
     
-    NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:strDestPath];
-    
-    NSLog(@"best wifi Details %@",[dict valueForKey:@"wifiDetails"]);
-    
-    
-    self.arrData = [dict valueForKey:@"wifiDetails"];
+    else if ([strSSID2 isEqualToString:strMessage]){
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *strPack = [defaults valueForKey:@"wifiPack2"];
+        NSString *strVoice = [defaults valueForKey:@"wifiVoice2"];
+        NSString *strData = [defaults valueForKey:@"wifiData2"];
+        NSString *strPrice = [defaults valueForKey:@"wifiPrice2"];
+        
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+        //        [dict removeObjectForKey:@"wifiDetails"];
+        [dict setValue:strPack forKey:@"pack"];
+        [dict setValue:strVoice forKey:@"voice"];
+        [dict setValue:strData forKey:@"data"];
+        [dict setValue:strPrice forKey:@"price"];
+        [self.arrData addObject:dict];
+        [defaults setValue:@"" forKey:@"selectedMessage"];
+        [defaults synchronize];
+    }
     
     [self.tableViewBestOffers reloadData];
 }
@@ -168,7 +199,7 @@
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 2;
+    return [self.arrData count];
 }
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -180,10 +211,10 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"wifiDetails"];
     }
     
-//    NSDictionary *dict = [self.arrData objectAtIndex:indexPath.row];
+    NSDictionary *dict = [self.arrData objectAtIndex:indexPath.row];
     
     UILabel *lblName = (UILabel *)[cell viewWithTag:1];
-    lblName.text = @"gk_ pack";//[dict valueForKey:@"pack"];
+    lblName.text = [dict valueForKey:@"pack"];
     
     UILabel *lblTatal_Data = (UILabel *)[cell viewWithTag:2];
     lblTatal_Data.text = @"1.00 GB";
