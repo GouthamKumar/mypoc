@@ -32,6 +32,8 @@
     PNPieChart *pieCharts,*pieChart;
     
     AppDelegate *appDelegate;
+    
+    NSString *strMessage;
 }
 
 @property (nonatomic, retain) NSMutableArray *arrData;
@@ -136,7 +138,7 @@
     NSString *strSSID1 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage1"];
     NSString *strSSID2 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage2"];
     
-    NSString *strMessage = [[NSUserDefaults standardUserDefaults] valueForKey:@"selectedMessage"];
+    strMessage = [[NSUserDefaults standardUserDefaults] valueForKey:@"selectedMessage"];
     if ([strSSID1 isEqualToString:strMessage]) {
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -239,46 +241,21 @@
     
     
     NSLog(@"btnUnsubTapped tag %ld",(long)[sender tag]);
-    
-    NSInteger flagVal = [sender tag]-100;
-    
-    if (self.arrData.count>flagVal) {
-        
-        NSDictionary *dict = [self.arrData objectAtIndex:flagVal];
-        
-        [self.arrData removeObjectAtIndex:flagVal];
-        
-        NSArray *arr = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *strDestPath = [NSString stringWithFormat:@"%@/Recommended.plist",[arr objectAtIndex:0]];
-        
-        NSMutableArray *arrWifiDetails = [[NSMutableArray alloc] init];
-        NSDictionary *dictRoot = [[NSDictionary alloc] initWithContentsOfFile:strDestPath];
-        arrWifiDetails = [[dictRoot valueForKey:@"wifiDetails"] mutableCopy];
-        
-        [arrWifiDetails addObject:dict];
-        
-        NSDictionary *dictWifi = [NSDictionary dictionaryWithObjectsAndKeys:arrWifiDetails,@"wifiDetails", nil];
-        [dictWifi writeToFile:strDestPath atomically:YES];
-        
-        [appDelegate.containerVC scrollMenuViewSelectedIndex:2];
-        
-        
-        NSString *strDestPathReco = [NSString stringWithFormat:@"%@/BestOffer.plist",[arr objectAtIndex:0]];
-        
-        NSDictionary *dictWifiReco = [NSDictionary dictionaryWithObjectsAndKeys:self.arrData,@"wifiDetails", nil];
-        [dictWifiReco writeToFile:strDestPathReco atomically:YES];
-        
-        [self.tableViewBestOffers reloadData];
-        
-    }
-    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *strMess = [defaults valueForKey:@"selectediMessage"];
+    [defaults setValue:strMess forKey:@"selectedMessage"];
+    [defaults synchronize];
+    [self.arrData removeAllObjects];
+    [self.tableViewBestOffers reloadData];
+    [appDelegate.containerVC scrollMenuViewSelectedIndex:2];
     
 }
 
 - (IBAction)btnCreateTapped:(id)sender {
     
     MyPlanViewController *myPlanVc = [self.storyboard instantiateViewControllerWithIdentifier:@"MyPlanViewController"];
-    [self.navigationController pushViewController:myPlanVc animated:YES];
-//    [self presentViewController:myPlanVc animated:YES completion:nil];
+    myPlanVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+//    [self.navigationController pushViewController:myPlanVc animated:YES];
+    [self presentViewController:myPlanVc animated:YES completion:nil];
 }
 @end

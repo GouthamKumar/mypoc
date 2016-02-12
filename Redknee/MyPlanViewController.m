@@ -116,6 +116,10 @@
 //    self.dataLabel.text = [NSString stringWithFormat:@"%.2f", SliderValue];
 }
 
+- (IBAction)btnBackTapped:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 -(void) dismissfromRootView:(UIViewController *)viewController{
     

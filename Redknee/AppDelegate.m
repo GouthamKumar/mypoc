@@ -54,7 +54,6 @@
         });
     };
     
-    
     [[NSUserDefaults standardUserDefaults] setValue:@"no" forKey:@"enableGesture"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
@@ -91,10 +90,12 @@
     [application registerUserNotificationSettings:settings];
     
     
-//    [self performSelector:@selector(registerGeofencing) withObject:nil afterDelay:1.0];
+    [self performSelector:@selector(registerGeofencing) withObject:nil afterDelay:1.0];
     
+//    [self performSelector:@selector(registerLocation) withObject:nil afterDelay:1.0];
     self.shareModel = [LocationShareModel sharedModel];
     self.locationTracker = [[LocationTracker alloc]init];
+    [self.locationTracker startLocationTracking];
     
     
 //    [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
@@ -103,6 +104,11 @@
     return YES;
 }
 
+
+-(void)registerLocation{
+    
+    
+}
 
 -(void)registerGeofencing{
     
@@ -122,7 +128,7 @@
     EventType eventType = OnEntry;  //(self.eventTypeSegmentedControl.selectedSegmentIndex == 0) ? OnEntry : OnExit;
     
     //Calling the the method to add the co-ordinates of the mumbai location to user NSUseDefaults
-    [self addGeotificationCoordinate:coordinate radius:radius identifier:identifier note:note eventType:eventType];
+//    [self addGeotificationCoordinate:coordinate radius:radius identifier:identifier note:note eventType:eventType];
     
     //Co-ordinates of the Tokyo
     CLLocationCoordinate2D tcoordinate;
@@ -134,12 +140,12 @@
     EventType teventType = OnEntry;  //(self.eventTypeSegmentedControl.selectedSegmentIndex == 0) ? OnEntry : OnExit;
     
     //Calling the the method to add the co-ordinates of the mumbai location to user NSUseDefaults
-    [self addGeotificationCoordinate:tcoordinate radius:tradius identifier:tidentifier note:tnote eventType:teventType];
+//    [self addGeotificationCoordinate:tcoordinate radius:tradius identifier:tidentifier note:tnote eventType:teventType];
     
     
-    [self saveAllGeotifications];
-    
-    [self startGeotificationMonitoring];
+//    [self saveAllGeotifications];
+//    
+//    [self startGeotificationMonitoring];
 }
 
 -(BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler{
@@ -183,7 +189,7 @@
         
         [self.locationTracker.shareModel.timer invalidate];
     }
-    [self.locationTracker startLocationTracking];
+    
     self.locationUpdateTimer =
     [NSTimer scheduledTimerWithTimeInterval:time
                                      target:self
@@ -196,7 +202,6 @@
 -(void)updateLocation {
     
     NSLog(@"updateLocation");
-    
     [self.locationTracker updateLocationToServer];
     notificationFlag = 0;
     NSString *remoteHostName = @"www.google.co.in";
@@ -259,7 +264,7 @@
             
             NSLog(@"open popup 1");
             
-            [[NSUserDefaults standardUserDefaults] setValue:strSSID1 forKey:@"selectedMessage"];
+            [[NSUserDefaults standardUserDefaults] setValue:strSSID1 forKey:@"selectediMessage"];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
@@ -279,7 +284,7 @@
             NSLog(@"open popup 2");
             
             
-            [[NSUserDefaults standardUserDefaults] setValue:strSSID2 forKey:@"selectedMessage"];
+            [[NSUserDefaults standardUserDefaults] setValue:strSSID2 forKey:@"selectediMessage"];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];

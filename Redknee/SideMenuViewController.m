@@ -78,6 +78,12 @@
     
     if (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2) {
         
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *strMess = [defaults valueForKey:@"selectediMessage"];
+        [defaults setValue:strMess forKey:@"selectedMessage"];
+        [defaults synchronize];
+        
         ViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
         viewController.scrollIndexFlag = (int)indexPath.row+1;
         UINavigationController *navigationController = self.menuContainerViewController.centerViewController;

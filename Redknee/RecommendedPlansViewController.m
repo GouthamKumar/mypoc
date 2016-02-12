@@ -15,6 +15,8 @@
     
     UIView *viewDetails;
     AppDelegate *appDelegate;
+    
+    NSString *strMessage;
 }
 
 @property (nonatomic, retain) NSMutableArray *arrData;
@@ -45,21 +47,49 @@
     
     [super viewWillAppear:animated];
     
-    NSArray *arr = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *strDestPath = [NSString stringWithFormat:@"%@/Recommended.plist",[arr objectAtIndex:0]];
+    NSString *strSSID1 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage1"];
+    NSString *strSSID2 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage2"];
     
-    
-    NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:strDestPath];
-    
-    NSLog(@"rec wifi Details %@",[dict valueForKey:@"wifiDetails"]);
-    
-    
-    self.arrData = [[dict valueForKey:@"wifiDetails"] mutableCopy];
-    
-    if (self.arrData == nil) {
+    strMessage = [[NSUserDefaults standardUserDefaults] valueForKey:@"selectedMessage"];
+    if ([strSSID1 isEqualToString:strMessage]) {
         
-        self.arrData = [[NSMutableArray alloc] init];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *strPack = [defaults valueForKey:@"wifiPack1"];
+        NSString *strVoice = [defaults valueForKey:@"wifiVoice1"];
+        NSString *strData = [defaults valueForKey:@"wifiData1"];
+        NSString *strPrice = [defaults valueForKey:@"wifiPrice1"];
+        
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+        //        [dict removeObjectForKey:@"wifiDetails"];
+        [dict setValue:strPack forKey:@"pack"];
+        [dict setValue:strVoice forKey:@"voice"];
+        [dict setValue:strData forKey:@"data"];
+        [dict setValue:strPrice forKey:@"price"];
+        [self.arrData addObject:dict];
+        
+        [defaults setValue:@"" forKey:@"selectedMessage"];
+        [defaults synchronize];
     }
+    
+    else if ([strSSID2 isEqualToString:strMessage]){
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *strPack = [defaults valueForKey:@"wifiPack2"];
+        NSString *strVoice = [defaults valueForKey:@"wifiVoice2"];
+        NSString *strData = [defaults valueForKey:@"wifiData2"];
+        NSString *strPrice = [defaults valueForKey:@"wifiPrice2"];
+        
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+        //        [dict removeObjectForKey:@"wifiDetails"];
+        [dict setValue:strPack forKey:@"pack"];
+        [dict setValue:strVoice forKey:@"voice"];
+        [dict setValue:strData forKey:@"data"];
+        [dict setValue:strPrice forKey:@"price"];
+        [self.arrData addObject:dict];
+        [defaults setValue:@"" forKey:@"selectedMessage"];
+        [defaults synchronize];
+    }
+    
     
     [self.tableView reloadData];
 }
@@ -101,7 +131,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section; {
     
-    return 2;//[self.arrData count];
+    return [self.arrData count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath; {
@@ -110,41 +140,26 @@
     
     MyCustomeCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID
                                                                 forIndexPath:indexPath];
-    //cell.textLabel.text = [NSString stringWithFormat:@"row %li", (long)indexPath.row];
-    //cell.detailTextLabel.text = [NSString stringWithFormat:@"section %li", (long)indexPath.section];
+    NSDictionary *dict = [self.arrData objectAtIndex:indexPath.row];
     
-//    NSDictionary *dict = [self.arrData objectAtIndex:indexPath.row];
+    UILabel *lblName = (UILabel *)[cell viewWithTag:1];
+    lblName.text = [dict valueForKey:@"pack"];
     
-    UILabel *lblPrice = (UILabel *)[cell viewWithTag:1];
-    lblPrice.text = @"iOS SDK";//[NSString stringWithFormat:@"$ %@ per month",[dict valueForKey:@"price"]];
+    UILabel *lblTatal_Data = (UILabel *)[cell viewWithTag:2];
+    lblTatal_Data.text = @"1.00 GB";
     
-    UILabel *lblPack = (UILabel *)[cell viewWithTag:2];
-    lblPack.text = @"iOS SDK";//[dict valueForKey:@"pack"];
+    UILabel *lblRemain_Data = (UILabel *)[cell viewWithTag:3];
+    lblRemain_Data.text = @"800 MB";
     
-    UILabel *lblPack_Details = (UILabel *)[cell viewWithTag:4];
-    lblPack_Details.text = @"iOS SDK";//[dict valueForKey:@"pack"];
+    UILabel *lblValid_Date = (UILabel *)[cell viewWithTag:4];
+    lblValid_Date.text = @"30 Jan 2016";
     
-//    UILabel *lblVoice_Details = (UILabel *)[cell viewWithTag:5];
-//    lblVoice_Details.text = @"iOS SDK";//[NSString stringWithFormat:@"Voice %@ min",[dict valueForKey:@"voice"]];
-//    
-//    UILabel *lblData_Details = (UILabel *)[cell viewWithTag:6];
-//    lblData_Details.text = @"iOS SDK";//[NSString stringWithFormat:@"Data %@ MB",[dict valueForKey:@"pack"]];
-//    
-//    UILabel *lblPrice_Detail = (UILabel *)[cell viewWithTag:7];
-//    lblPrice_Detail.text = @"iOS SDK";//[NSString stringWithFormat:@"$ %@",[dict valueForKey:@"price"]];
-//    
-//    UILabel *lblTotal_Detail = (UILabel *)[cell viewWithTag:8];
-//    lblTotal_Detail.text = @"iOS SDK";//[NSString stringWithFormat:@"$ %@",[dict valueForKey:@"price"]];
+    UIButton *btnUnSub = (UIButton *)[cell viewWithTag:5];
+    btnUnSub.layer.borderColor=[[UIColor whiteColor]CGColor];
+    btnUnSub.layer.borderWidth= 1.0f;
+    btnUnSub.tag = 100+indexPath.row;
+    [btnUnSub addTarget:self action:@selector(btnSubTapped:) forControlEvents:UIControlEventTouchUpInside];
     
-    
-    UIButton *btnSub = (UIButton *)[cell viewWithTag:5];
-    btnSub.layer.borderColor=[[UIColor whiteColor]CGColor];
-    btnSub.layer.borderWidth= 1.0f;
-    btnSub.tag = 100+indexPath.row;
-    [btnSub addTarget:self action:@selector(btnSubTapped:) forControlEvents:UIControlEventTouchUpInside];
-    
-//    cell.customView.hidden = YES;
-//    [cell.contentView sendSubviewToBack:cell.customView];
     return cell;
 }
 
@@ -181,39 +196,12 @@
 -(void) btnSubTapped:(id) sender{
     
     NSLog(@"tag is %ld",[sender tag]);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *strMess = [defaults valueForKey:@"selectedMessage"];
+    [defaults setValue:strMessage forKey:@"selectedMessage"];
+    [defaults synchronize];
     
-    NSInteger flagVal = [sender tag]-100;
-    
-    if (self.arrData.count>flagVal) {
-        
-        NSDictionary *dict = [self.arrData objectAtIndex:flagVal];
-        
-        [self.arrData removeObjectAtIndex:flagVal];
-        
-        NSArray *arr = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *strDestPath = [NSString stringWithFormat:@"%@/BestOffer.plist",[arr objectAtIndex:0]];
-        
-        NSMutableArray *arrWifiDetails = [[NSMutableArray alloc] init];
-        NSDictionary *dictRoot = [[NSDictionary alloc] initWithContentsOfFile:strDestPath];
-        arrWifiDetails = [[dictRoot valueForKey:@"wifiDetails"] mutableCopy];
-        
-        [arrWifiDetails addObject:dict];
-        
-        NSDictionary *dictWifi = [NSDictionary dictionaryWithObjectsAndKeys:arrWifiDetails,@"wifiDetails", nil];
-        [dictWifi writeToFile:strDestPath atomically:YES];
-        
-        [appDelegate.containerVC scrollMenuViewSelectedIndex:1];
-        
-        
-        NSString *strDestPathReco = [NSString stringWithFormat:@"%@/Recommended.plist",[arr objectAtIndex:0]];
-        
-        NSDictionary *dictWifiReco = [NSDictionary dictionaryWithObjectsAndKeys:self.arrData,@"wifiDetails", nil];
-        [dictWifiReco writeToFile:strDestPathReco atomically:YES];
-        
-        [self.tableView reloadData];
-        
-        
-    }
+    [appDelegate.containerVC scrollMenuViewSelectedIndex:1];
 }
 
 /*
