@@ -197,10 +197,11 @@
     
     NSLog(@"tag is %ld",[sender tag]);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *strMess = [defaults valueForKey:@"selectedMessage"];
-    [defaults setValue:strMessage forKey:@"selectedMessage"];
+    NSString *strMess = [defaults valueForKey:@"selectediMessage"];
+    [defaults setValue:strMess forKey:@"selectedMessage"];
     [defaults synchronize];
-    
+    [self.arrData removeAllObjects];
+    [self.tableView reloadData];
     [appDelegate.containerVC scrollMenuViewSelectedIndex:1];
 }
 

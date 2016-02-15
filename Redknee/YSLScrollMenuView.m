@@ -29,8 +29,8 @@ static const CGFloat kYSLIndicatorHeight = 3;
         // default
         _viewbackgroudColor = [UIColor whiteColor];
         _itemfont = [UIFont systemFontOfSize:16];
-        _itemTitleColor = [UIColor colorWithRed:0.866667 green:0.866667 blue:0.866667 alpha:1.0];
-        _itemSelectedTitleColor = [UIColor colorWithRed:0.333333 green:0.333333 blue:0.333333 alpha:1.0];
+        _itemTitleColor = [UIColor colorWithRed:0.333333 green:0.333333 blue:0.333333 alpha:1.0];
+        _itemSelectedTitleColor = [UIColor colorWithRed:0.866667 green:0.866667 blue:0.866667 alpha:1.0];
         _itemIndicatorColor = [UIColor colorWithRed:0.168627 green:0.498039 blue:0.839216 alpha:1.0];
         
         self.backgroundColor = _viewbackgroudColor;

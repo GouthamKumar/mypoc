@@ -82,10 +82,6 @@
 
 - (IBAction)btnCancelTapped:(id)sender {
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setValue:strMessage forKey:@"selectedMessage"];
-    [defaults synchronize];
-    
     [UIView animateWithDuration:0.25 animations:^{
         
         self.viewAlert.frame =  CGRectMake(0, 0, 0, 0);
@@ -103,6 +99,10 @@
     }];
     
     [self.view bringSubviewToFront:self.btnMenu];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:strMessage forKey:@"selectedMessage"];
+    [defaults synchronize];
     
     [appDelegate.containerVC scrollMenuViewSelectedIndex:2];
     

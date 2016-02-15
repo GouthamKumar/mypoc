@@ -128,7 +128,7 @@
     EventType eventType = OnEntry;  //(self.eventTypeSegmentedControl.selectedSegmentIndex == 0) ? OnEntry : OnExit;
     
     //Calling the the method to add the co-ordinates of the mumbai location to user NSUseDefaults
-//    [self addGeotificationCoordinate:coordinate radius:radius identifier:identifier note:note eventType:eventType];
+    [self addGeotificationCoordinate:coordinate radius:radius identifier:identifier note:note eventType:eventType];
     
     //Co-ordinates of the Tokyo
     CLLocationCoordinate2D tcoordinate;
@@ -140,12 +140,12 @@
     EventType teventType = OnEntry;  //(self.eventTypeSegmentedControl.selectedSegmentIndex == 0) ? OnEntry : OnExit;
     
     //Calling the the method to add the co-ordinates of the mumbai location to user NSUseDefaults
-//    [self addGeotificationCoordinate:tcoordinate radius:tradius identifier:tidentifier note:tnote eventType:teventType];
+    [self addGeotificationCoordinate:tcoordinate radius:tradius identifier:tidentifier note:tnote eventType:teventType];
     
     
-//    [self saveAllGeotifications];
-//    
-//    [self startGeotificationMonitoring];
+    [self saveAllGeotifications];
+    
+    [self startGeotificationMonitoring];
 }
 
 -(BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler{
@@ -197,6 +197,13 @@
                                    userInfo:nil
                                     repeats:YES];
     
+//    NSString *strCarrierName = [NSString stringWithFormat:@"sampath"];
+//    
+//    NSString *strSSID1 = [[NSUserDefaults standardUserDefaults] valueForKey:@"wifiSSID1"];
+//    if ([strCarrierName isEqualToString:strSSID1]) {
+//        
+//        [self scheduleLocalNotificationwithMessage:[[NSUserDefaults standardUserDefaults] valueForKey:@"wifiMessage1"]];
+//    }
 }
 
 -(void)updateLocation {
@@ -667,7 +674,6 @@
         }
     }
 }
-
 
 
 @end

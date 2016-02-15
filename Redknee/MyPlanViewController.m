@@ -35,38 +35,43 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    UIImage *sliderThumb = [UIImage imageNamed:@"slideThumb.png"];
-//    
-//    
-//    UIImage *sliderMinimum = [UIImage imageNamed:@"pinkimg.png"];
-//    UIImage *sliderMaximum = [UIImage imageNamed:@"grayimg.png"] ;
-//    
-//    //Voice Slider UI
-//    [self.voiceSlider setMinimumTrackTintColor:[UIColor orangeColor]];
-//    [self.voiceSlider setThumbImage:sliderThumb forState:UIControlStateNormal];
-//    [self.voiceSlider setThumbImage:sliderThumb forState:UIControlStateHighlighted];
-//    [self.voiceSlider setMinimumTrackImage:sliderMinimum forState:UIControlStateNormal];
-//    [self.voiceSlider setMaximumTrackImage:sliderMaximum forState:UIControlStateNormal];
-//    
-//    
-//    //[voiceSlider setMaximumTrackTintColor:[UIColor blueColor]];
-//    
-//    //SMS Slider UI
-//    [self.smsSlider setMinimumTrackTintColor:[UIColor greenColor]];
-//    [self.smsSlider setThumbImage:sliderThumb forState:UIControlStateNormal];
-//    [self.smsSlider setThumbImage:sliderThumb forState:UIControlStateHighlighted];
-//    [self.smsSlider setMinimumTrackImage:sliderMinimum forState:UIControlStateNormal];
-//    [self.smsSlider setMaximumTrackImage:sliderMaximum forState:UIControlStateNormal];
-//    
-//    
-//    //[smsSlider setMaximumTrackTintColor:[UIColor blueColor]];
-//    
-//    //Data Slider UI
-//    [self.dataSlider setMinimumTrackTintColor:[UIColor yellowColor]];
-//    [self.dataSlider setThumbImage:sliderThumb forState:UIControlStateNormal];
-//    [self.dataSlider setThumbImage:sliderThumb forState:UIControlStateHighlighted];
-//    [self.dataSlider setMinimumTrackImage:sliderMinimum forState:UIControlStateNormal];
-//    [self.dataSlider setMaximumTrackImage:sliderMaximum forState:UIControlStateNormal];
+    UIImage *sliderThumb = [UIImage imageNamed:@"dd.png"];
+    
+    
+    UIImage *sliderMinimum = [UIImage imageNamed:@"pnk.png"];
+    UIImage *sliderMaximum = [UIImage imageNamed:@"grayimg.png"] ;
+    
+    //Voice Slider UI
+    [self.voiceSlider setMinimumTrackTintColor:[UIColor orangeColor]];
+    [self.voiceSlider setThumbImage:sliderThumb forState:UIControlStateNormal];
+    [self.voiceSlider setThumbImage:sliderThumb forState:UIControlStateHighlighted];
+    [self.voiceSlider setMinimumTrackImage:sliderMinimum forState:UIControlStateNormal];
+    [self.voiceSlider setMaximumTrackImage:sliderMaximum forState:UIControlStateNormal];
+    
+    
+    //[voiceSlider setMaximumTrackTintColor:[UIColor blueColor]];
+    
+    //SMS Slider UI
+    
+    sliderMinimum = [UIImage imageNamed:@"grn.png"];
+    
+    [self.smsSlider setMinimumTrackTintColor:[UIColor greenColor]];
+    [self.smsSlider setThumbImage:sliderThumb forState:UIControlStateNormal];
+    [self.smsSlider setThumbImage:sliderThumb forState:UIControlStateHighlighted];
+    [self.smsSlider setMinimumTrackImage:sliderMinimum forState:UIControlStateNormal];
+    [self.smsSlider setMaximumTrackImage:sliderMaximum forState:UIControlStateNormal];
+    
+    
+    //[smsSlider setMaximumTrackTintColor:[UIColor blueColor]];
+    
+    sliderMinimum = [UIImage imageNamed:@"ylo.png"];
+    
+    //Data Slider UI
+    [self.dataSlider setMinimumTrackTintColor:[UIColor yellowColor]];
+    [self.dataSlider setThumbImage:sliderThumb forState:UIControlStateNormal];
+    [self.dataSlider setThumbImage:sliderThumb forState:UIControlStateHighlighted];
+    [self.dataSlider setMinimumTrackImage:sliderMinimum forState:UIControlStateNormal];
+    [self.dataSlider setMaximumTrackImage:sliderMaximum forState:UIControlStateNormal];
     // Do any additional setup after loading the view.
 }
 
